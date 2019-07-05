@@ -1,0 +1,219 @@
+{"frames": {
+
+"AlienShip6_1.png":
+{
+	"frame": {"x":0,"y":0,"w":23,"h":27},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":27},
+	"sourceSize": {"w":23,"h":27}
+},
+"AlienShip6_2.png":
+{
+	"frame": {"x":23,"y":0,"w":24,"h":27},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":27},
+	"sourceSize": {"w":24,"h":27}
+},
+"AlienShip4_1.png":
+{
+	"frame": {"x":70,"y":0,"w":24,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":29},
+	"sourceSize": {"w":24,"h":29}
+},
+"AlienShip70_1.png":
+{
+	"frame": {"x":47,"y":0,"w":23,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":30},
+	"sourceSize": {"w":23,"h":30}
+},
+"AlienShip70_2.png":
+{
+	"frame": {"x":94,"y":0,"w":23,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":30},
+	"sourceSize": {"w":23,"h":30}
+},
+"AlienShip7_2.png":
+{
+	"frame": {"x":141,"y":0,"w":24,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":30},
+	"sourceSize": {"w":24,"h":30}
+},
+"AlienShip7_1.png":
+{
+	"frame": {"x":117,"y":0,"w":24,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":30},
+	"sourceSize": {"w":24,"h":30}
+},
+"AlienShip8_1.png":
+{
+	"frame": {"x":165,"y":0,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+"AlienShip9_1.png":
+{
+	"frame": {"x":193,"y":0,"w":24,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":36},
+	"sourceSize": {"w":24,"h":36}
+},
+"AlienShip5_1.png":
+{
+	"frame": {"x":217,"y":0,"w":32,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":35},
+	"sourceSize": {"w":32,"h":35}
+},
+"AlienShip3_1.png":
+{
+	"frame": {"x":249,"y":0,"w":36,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":32},
+	"sourceSize": {"w":36,"h":32}
+},
+"PowerUps_4.png":
+{
+	"frame": {"x":0,"y":40,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":40},
+	"sourceSize": {"w":32,"h":40}
+},
+"PowerUps_3.png":
+{
+	"frame": {"x":384,"y":0,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":40},
+	"sourceSize": {"w":32,"h":40}
+},
+"PowerUps_1.png":
+{
+	"frame": {"x":317,"y":0,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":40},
+	"sourceSize": {"w":32,"h":40}
+},
+"HeroShip.png":
+{
+	"frame": {"x":349,"y":0,"w":35,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":37},
+	"sourceSize": {"w":35,"h":37}
+},
+"PowerUps_2.png":
+{
+	"frame": {"x":285,"y":0,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":40},
+	"sourceSize": {"w":32,"h":40}
+},
+"AlienShip1_1.png":
+{
+	"frame": {"x":32,"y":40,"w":40,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":34},
+	"sourceSize": {"w":40,"h":34}
+},
+"AlienShip2_2.png":
+{
+	"frame": {"x":107,"y":40,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+"AlienShip2_3.png":
+{
+	"frame": {"x":142,"y":40,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+"AlienShip2_1.png":
+{
+	"frame": {"x":72,"y":40,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+"AlienShip10_1.png":
+{
+	"frame": {"x":177,"y":40,"w":39,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":41},
+	"sourceSize": {"w":39,"h":41}
+},
+"AlienShip11_1.png":
+{
+	"frame": {"x":216,"y":40,"w":107,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":38},
+	"sourceSize": {"w":107,"h":38}
+},
+"BossShip1_1.png":
+{
+	"frame": {"x":323,"y":40,"w":101,"h":109},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":109},
+	"sourceSize": {"w":101,"h":109}
+},
+"BossShip2_1.png":
+{
+	"frame": {"x":0,"y":149,"w":111,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":111,"h":169},
+	"sourceSize": {"w":111,"h":169}
+},
+"BossShip3_1.png":
+{
+	"frame": {"x":111,"y":149,"w":260,"h":219},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":260,"h":219},
+	"sourceSize": {"w":260,"h":219}
+}},
+"animations": {
+	"AlienShip2": ["AlienShip2_1.png","AlienShip2_2.png","AlienShip2_3.png"],
+	"AlienShip6": ["AlienShip6_1.png","AlienShip6_2.png"],
+	"AlienShip7": ["AlienShip7_1.png","AlienShip7_2.png"],
+	"AlienShip70": ["AlienShip70_1.png","AlienShip70_2.png"],
+	"PowerUps": ["PowerUps_1.png","PowerUps_2.png","PowerUps_3.png","PowerUps_4.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ships-texture.png",
+	"format": "RGBA8888",
+	"size": {"w":424,"h":368},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6498d225d5e1f365fdb6d323a5f4617a:33e64c82da0ed75bf3612d4ed012030c:37688952f264008af4e7a5abb7e014c0$"
+}
+}
