@@ -14,12 +14,12 @@ var Main = /** @class */ (function () {
 	};
 
 	Main.gameArea = {
-		top: 10,
+		top: 3,
 		left: 140,
 		bottom: 10,
-		enemyBottom : 140,
-		right: 75,
-		padding: 3
+		enemyBottom: 140,
+		right: 78,
+		padding: 7
 	}
 
 	Main.resources = [
@@ -192,7 +192,7 @@ var Main = /** @class */ (function () {
 						"vx": -2,
 						"vy": 2
 					},
-					"intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 } ]
+					"intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }]
 				}
 			]
 		},
@@ -345,6 +345,30 @@ var Main = /** @class */ (function () {
 			],
 			"bonuses": []
 		},
+		8: {
+			"enemies": [
+				{ "type": "alien4", "position": { x: 165, y: 177 } },
+				{ "type": "alien4", "position": { x: 520, y: 172 } },
+				{ "type": "alien1", "position": { x: 164, y: 20 } },
+				{ "type": "alien1", "position": { x: 510, y: 23 } },
+				{ "type": "alien1", "position": { x: 235, y: 55 } },
+				{ "type": "alien1", "position": { x: 336, y: 60 } },
+				{ "type": "alien1", "position": { x: 450, y: 55 } },
+				{ "type": "alien1", "position": { x: 177, y: 100 } },
+				{ "type": "alien1", "position": { x: 290, y: 105 } },
+				{ "type": "alien1", "position": { x: 405, y: 100 } },
+				{ "type": "alien1", "position": { x: 505, y: 102 } },
+				{ "type": "alien1", "position": { x: 240, y: 140 } },
+				{ "type": "alien1", "position": { x: 340, y: 135 } },
+				{ "type": "alien1", "position": { x: 450, y: 150 } },
+				{ "type": "alien1", "position": { x: 285, y: 180 } },
+				{ "type": "alien1", "position": { x: 400, y: 180 } },
+				{ "type": "alien1", "position": { x: 340, y: 215 } },
+			],
+			"bonuses": [
+				{ "type": "bonus1", "position": { x: 350, y: 10 } },
+			]
+		}
 	};
 
 	Main.heroSpeed = 10;
@@ -376,11 +400,47 @@ var Main = /** @class */ (function () {
 		"textObject": null,
 		"font": "sans-serif",
 		"size": "20px",
-		"color": "#00FF00"
+		"color": "#009200"
 	};
 
+	Main.prototype.waveText = {
+		"position": { "x": 620, "y": 23 },
+		"textObject": null,
+		"font": "sans-serif",
+		"size": "12px",
+		"color": "#F0F0F0"
+	};
+
+	Main.prototype.levelText = {
+		"position": { "x": 620, "y": 5 },
+		"textObject": null,
+		"font": "sans-serif",
+		"size": "12px",
+		"color": "#F0F0F0"
+	};
+
+	Main.prototype.levelLabelText = {
+		"position": { "x": 565, "y": 5 },
+		"textObject": null,
+		"font": "sans-serif",
+		"size": "12px",
+		"color": "#99CC00",
+		"text": "LEVEL"
+	};
+
+	Main.prototype.waveLabelText = {
+		"position": { "x": 565, "y": 23 },
+		"textObject": null,
+		"font": "sans-serif",
+		"size": "12px",
+		"color": "#9DD19D",
+		"text": "WAVE"
+	};
+
+
+
 	Main.prototype.level = {
-		"wave": 1,
+		"wave": 8,
 		"type": 1
 	};
 
@@ -433,9 +493,9 @@ var Main = /** @class */ (function () {
 
 		this.gameScene = this.hexi.group();
 		var gameArea = this.hexi.rectangle(
-			this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.left,
-			this.hexi.canvas.height - Main.gameArea.top - Main.gameArea.bottom,
-			null, "violet", 1, Main.gameArea.left, Main.gameArea.top);
+			this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.left - Main.gameArea.padding,
+			this.hexi.canvas.height - Main.gameArea.top - Main.gameArea.bottom - Main.gameArea.padding,
+			null, "#785E3A", Main.gameArea.padding, Main.gameArea.left, Main.gameArea.top);
 		this.gameScene.addChild(gameArea);
 
 		this.hero = new HeroShip(this.hexi, this);
@@ -445,8 +505,29 @@ var Main = /** @class */ (function () {
 			this.lifeText.position.x, this.lifeText.position.y);
 		this.gameScene.addChild(this.lifeText.textObject);
 
+		this.levelText.textObject = this.hexi.text(_this.level.type, this.waveText.font, this.waveText.size,
+			this.levelText.color,
+			this.levelText.position.x, this.levelText.position.y);
+		this.gameScene.addChild(this.levelText.textObject);
+
+		this.levelLabelText.textObject = this.hexi.text(_this.levelLabelText.text, this.levelLabelText.font, this.levelLabelText.size,
+			this.levelLabelText.color,
+			this.levelLabelText.position.x, this.levelLabelText.position.y);
+		this.gameScene.addChild(this.levelLabelText.textObject);
+
+		this.waveText.textObject = this.hexi.text(_this.level.wave, this.waveText.font, this.waveText.size,
+			this.waveText.color,
+			this.waveText.position.x, this.waveText.position.y);
+		this.gameScene.addChild(this.waveText.textObject);
+
+		this.waveLabelText.textObject = this.hexi.text(_this.waveLabelText.text, this.waveLabelText.font, this.waveLabelText.size,
+			this.waveLabelText.color,
+			this.waveLabelText.position.x, this.waveLabelText.position.y);
+		this.gameScene.addChild(this.waveLabelText.textObject);
+
 
 		this.setupLevel(this.level.wave);
+		this.changeState();
 
 		this.hexi.pointer.press = (function () {
 			this.hero.startShoot();
@@ -524,6 +605,7 @@ var Main = /** @class */ (function () {
 		this.heroBullets = [];
 
 		this.setupLevel(this.level.wave);
+		this.changeState();
 		this.hexi.resume();
 	};
 
@@ -548,9 +630,10 @@ var Main = /** @class */ (function () {
 		});
 
 
-		if (this.enemies.length == 0) {
+		if (this.enemies.length == 0 && this.bonuses.length == 0) {
 			this.level.wave++;
-			this.setupLevel(this.level.wave)
+			this.setupLevel(this.level.wave);
+			this.changeState();
 		}
 
 		this.heroBullets.forEach(function (bullet) {
@@ -605,8 +688,13 @@ var Main = /** @class */ (function () {
 		this.hexi.move(this.heroBullets);
 		this.hexi.move(this.enemyBullets);
 		this.hexi.move(this.upgrades);
+	};
 
+
+	Main.prototype.changeState = function () {
 		this.lifeText.textObject.content = this.hero.life;
+		this.waveText.textObject.content = this.level.wave;
+		this.levelText.textObject.content = this.level.type;
 	};
 
 	return Main;
@@ -799,11 +887,13 @@ var HeroShip = /** @class */ (function (_super) {
 	HeroShip.prototype.upgrade = function () {
 		this.life++;
 		this.setWeapon();
+		this.game.changeState();
 	}
 
 	HeroShip.prototype.downgrade = function () {
 		this.life--;
 		this.setWeapon();
+		this.game.changeState();
 	}
 
 	HeroShip.prototype.hit = function (bullet) {
@@ -837,6 +927,69 @@ var HeroShip = /** @class */ (function (_super) {
 	return HeroShip;
 }(WeaponedShip));
 
+var MovementEngine =  /** @class */ (function () {
+
+	MovementEngine.prototype.hexi = null;
+
+	MovementEngine.prototype.sprite = null;
+
+	MovementEngine.prototype.movements = null;
+
+	MovementEngine.prototype.firstMovement = null;
+
+	MovementEngine.prototype.movementItensity = 0;
+
+	MovementEngine.prototype.movementItensityCounter = 0;
+
+	MovementEngine.prototype.movementItensitySlot = 0;
+
+	MovementEngine.prototype.movementConfiguration = null;
+
+	function MovementEngine($hexi, sprite, movementConfiguration) {
+		this.hexi = $hexi;
+		this.sprite = sprite;
+		this.movementConfiguration = movementConfiguration;
+		this.setMovement();
+	}
+
+	MovementEngine.prototype.update = function () {
+		if (this.sprite.parent == null) return;
+
+		this.hexi.move(this.sprite);
+
+		this.updateMovement();
+	};
+
+	MovementEngine.prototype.setMovement = function () {
+		var _this = this;
+
+		this.movements = deepCopy(Main.enemyMovementConfiguration[_this.movementConfiguration]);
+
+		_this.firstMovement = this.movements.movements[0];
+		var intensityOptions = _this.firstMovement.intensity[_this.movementItensitySlot];
+		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
+		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
+		_this.sprite.vx = _this.firstMovement.speedDelta.vx;
+		_this.sprite.vy = _this.firstMovement.speedDelta.vy;
+	};
+
+	MovementEngine.prototype.updateMovement = function () {
+		var _this = this;
+		_this.movementItensityCounter++;
+		if (_this.movementItensityCounter <= _this.movementItensity) return;
+		_this.movementItensityCounter = 0;
+
+		var intensityOptions = _this.firstMovement.intensity[_this.movementItensitySlot];
+		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
+
+		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
+		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vx;
+		_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vy;
+	};
+
+	return MovementEngine;
+}());
+
 var EnemyShip = /** @class */ (function (_super) {
 	__extends(EnemyShip, _super);
 
@@ -850,17 +1003,9 @@ var EnemyShip = /** @class */ (function (_super) {
 
 	EnemyShip.prototype.weaponItensitySlot = 0;
 
-	EnemyShip.prototype.movements = null;
-
-	EnemyShip.prototype.firstMovement = null;
-
-	EnemyShip.prototype.movementItensity = 0;
-
-	EnemyShip.prototype.movementItensityCounter = 0;
-
-	EnemyShip.prototype.movementItensitySlot = 0;
-
 	EnemyShip.prototype.firstWeapon = null;
+
+	EnemyShip.prototype.movementEngine = null;
 
 	function EnemyShip($hexi, game, type) {
 		var _this = _super.call(this, $hexi, game) || this;
@@ -875,9 +1020,10 @@ var EnemyShip = /** @class */ (function (_super) {
 		}
 
 		_this.setWeapon();
-		_this.setMovement();
 		_this.game.gameScene.addChild(_this.sprite);
-		_this.life = _this.shipConfiguration.life
+		_this.life = _this.shipConfiguration.life;
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, _this.shipConfiguration.movement);
+
 		return _this;
 	}
 
@@ -885,9 +1031,6 @@ var EnemyShip = /** @class */ (function (_super) {
 		_super.prototype.update.call(this);
 
 		if (this.sprite.parent == null) return;
-
-		this.hexi.move(this.sprite);
-
 
 		var collision = this.hexi.contain(this.sprite,
 			{
@@ -898,7 +1041,7 @@ var EnemyShip = /** @class */ (function (_super) {
 			}, true);
 
 		this.updateShooting();
-		this.updateMovement();
+		this.movementEngine.update();
 	};
 
 	EnemyShip.prototype.setWeapon = function () {
@@ -914,26 +1057,6 @@ var EnemyShip = /** @class */ (function (_super) {
 		_this.weaponIntensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
 		_this.weaponItensitySlot = _this.hexi.randomInt(0, _this.firstWeapon.options.intensity.length - 1);
 		this.isWeaponShooting = true;
-	};
-
-	EnemyShip.prototype.setMovement = function () {
-		var _this = this;
-
-		this.movements = deepCopy(Main.enemyMovementConfiguration[_this.shipConfiguration.movement]);
-
-		// this.automatedWeapons = deepCopy(_this.shipConfiguration.weapons);
-		// this.automatedWeapons.forEach(function (weapon) {
-		// 	var currentWeapon = Main.enemyWeaponConfiguration[weapon.weapon];
-		// 	weapon.options = currentWeapon;
-		// });
-
-		_this.firstMovement = this.movements.movements[0];
-		var intensityOptions = _this.firstMovement.intensity[_this.movementItensitySlot];
-		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
-		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
-		_this.sprite.vx = _this.firstMovement.speedDelta.vx;
-		_this.sprite.vy = _this.firstMovement.speedDelta.vy;
-		// this.isWeaponShooting = true;
 	};
 
 	EnemyShip.prototype.updateShooting = function () {
@@ -959,20 +1082,6 @@ var EnemyShip = /** @class */ (function (_super) {
 		_this.weaponIntensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
 
 		_this.weaponItensitySlot = _this.hexi.randomInt(0, _this.firstWeapon.options.intensity.length - 1);
-	};
-
-	EnemyShip.prototype.updateMovement = function () {
-		var _this = this;
-		_this.movementItensityCounter++;
-		if (_this.movementItensityCounter <= _this.movementItensity) return;
-		_this.movementItensityCounter = 0;
-
-		var intensityOptions = _this.firstMovement.intensity[_this.movementItensitySlot];
-		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
-
-		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
-		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vx;
-		_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vy;
 	};
 
 	EnemyShip.prototype.shootWithWeapon = function (weapon) {
@@ -1018,6 +1127,8 @@ var BonusShip = /** @class */ (function (_super) {
 
 	BonusShip.prototype.upgradeBonuses = null;
 
+	BonusShip.prototype.movementEngine = null;
+
 	function BonusShip($hexi, game, type) {
 		var _this = _super.call(this, $hexi, game) || this;
 		_this.type = type;
@@ -1033,7 +1144,10 @@ var BonusShip = /** @class */ (function (_super) {
 		this.upgradeBonus = deepCopy(_this.shipConfiguration.upgradeBonus);
 
 		_this.game.gameScene.addChild(_this.sprite);
-		_this.life = _this.shipConfiguration.life
+		_this.life = _this.shipConfiguration.life;
+
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, _this.shipConfiguration.movement);
+
 		return _this;
 	}
 
@@ -1043,7 +1157,6 @@ var BonusShip = /** @class */ (function (_super) {
 
 		this.shootWithUpgrade(this.upgradeBonus);
 	};
-
 
 	BonusShip.prototype.shootWithUpgrade = function (upgradeBonus) {
 		var _this = this;
@@ -1065,6 +1178,22 @@ var BonusShip = /** @class */ (function (_super) {
 				return upgradeSprite;
 			}).bind(_this)
 		);
+	};
+
+	BonusShip.prototype.update = function () {
+		_super.prototype.update.call(this);
+
+		if (this.sprite.parent == null) return;
+
+		var collision = this.hexi.contain(this.sprite,
+			{
+				x: Main.gameArea.left + Main.gameArea.padding,
+				y: Main.gameArea.top + Main.gameArea.padding,
+				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
+				height: this.hexi.canvas.height - Main.gameArea.enemyBottom - Main.gameArea.padding
+			}, true);
+
+		this.movementEngine.update();
 	};
 
 	return BonusShip;
