@@ -17,7 +17,7 @@ var Main = /** @class */ (function () {
 		top: 3,
 		left: 140,
 		bottom: 10,
-		enemyBottom: 140,
+		enemyBottom: 160,
 		right: 78,
 		padding: 7
 	}
@@ -69,20 +69,26 @@ var Main = /** @class */ (function () {
 	Main.enemyWeaponConfiguration = {
 		"torpedo": {
 			"sprite": "Bullet1_1.png",
-			"intensity": [{ "min": 100, "max": 150 }, { "min": 150, "max": 200 }, { "min": 65, "max": 100 }],
-			"speed": 3,
+			"intensity": [{ "min": 100, "max": 150 }, { "min": 150, "max": 200 }, { "min": 75, "max": 100 }],
+			"speed": 2.5,
 			"type": "bullet"
 		},
 		"intensiveTorpedo": {
 			"sprite": "Bullet1_1.png",
 			"intensity": [{ "min": 35, "max": 80 }, { "min": 65, "max": 100 }],
-			"speed": 3,
+			"speed": 2.5,
+			"type": "bullet"
+		},
+		"veryIntensiveTorpedo" : {
+			"sprite": "Bullet1_1.png",
+			"intensity": [{ "min": 35, "max": 80 }, { "min": 5, "max": 10 }, { "min": 15, "max": 25 }, { "min": 65, "max": 100 }, { "min": 10, "max": 20 }],
+			"speed": 2.5,
 			"type": "bullet"
 		},
 		"redPlasm": {
 			"sprite": "Bullet2_1.png",
-			"intensity": [{ "min": 100, "max": 150 }, { "min": 5, "max": 10 }, { "min": 10, "max": 20 }, { "min": 150, "max": 200 }, { "min": 5, "max": 10 }, { "min": 20, "max": 35 }],
-			"speed": 5,
+			"intensity": [{ "min": 150, "max": 200 }, { "min": 10, "max": 20 }, { "min": 40, "max": 70 }, { "min": 150, "max": 300 }, { "min": 15, "max": 25 }, { "min": 20, "max": 55 }],
+			"speed": 3.5,
 			"type": "bullet"
 		},
 	};
@@ -189,10 +195,10 @@ var Main = /** @class */ (function () {
 				{
 					"type": "freeMovement",
 					"speedDelta": {
-						"vx": -2,
-						"vy": 2
+						"vx": -1.5,
+						"vy": 1.5
 					},
-					"intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }]
+					"intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
 				}
 			]
 		},
@@ -205,6 +211,18 @@ var Main = /** @class */ (function () {
 						"vy": 0
 					},
 					"intensity": [{ "min": 20, "max": 150 }, { "min": 150, "max": 350 }]
+				}
+			]
+		},
+		"movingDown": {
+			"movements": [
+				{
+					"type": "freeMovement",
+					"speedDelta": {
+						"vx": -1.5,
+						"vy": [0.5, 0]
+					},
+					"intensity": [{ "min": 150, "max": 200 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
 				}
 			]
 		},
@@ -242,6 +260,14 @@ var Main = /** @class */ (function () {
 			],
 			"sprite": "AlienShip4_1.png",
 			"movement": "bothNormal"
+		},
+		"alien5": {
+			"life": 10,
+			"weapons": [
+				{ "weapon": "veryIntensiveTorpedo", "position": { x: 0, y: 0 } }
+			],
+			"sprite": "AlienShip5_1.png",
+			"movement": "movingDown"
 		},
 	};
 
@@ -368,6 +394,33 @@ var Main = /** @class */ (function () {
 			"bonuses": [
 				{ "type": "bonus1", "position": { x: 350, y: 10 } },
 			]
+		},
+		9: {
+			"enemies": [
+				{ "type": "alien2", "position": { x: 170, y: 48 } },
+				{ "type": "alien2", "position": { x: 520, y: 42 } },
+				{ "type": "alien2", "position": { x: 250, y: 86 } },
+				{ "type": "alien2", "position": { x: 440, y: 86 } },
+				{ "type": "alien2", "position": { x: 340, y: 112 } },
+				{ "type": "alien2", "position": { x: 200, y: 137 } },
+				{ "type": "alien2", "position": { x: 490, y: 130 } },
+				{ "type": "alien2", "position": { x: 280, y: 160 } },
+				{ "type": "alien2", "position": { x: 430, y: 165 } },
+				{ "type": "alien2", "position": { x: 352, y: 187 } },
+				{ "type": "alien4", "position": { x: 340, y: 55 } },
+				{ "type": "alien4", "position": { x: 168, y: 192 } },
+				{ "type": "alien4", "position": { x: 520, y: 188 } }
+			],
+			"bonuses": [
+			]
+		},
+		10: {
+			"enemies": [
+				{ "type": "alien5", "position": { x: 190, y: 35 } },
+				{ "type": "alien2", "position": { x: 520, y: 42 } },
+			],
+			"bonuses": [
+			]
 		}
 	};
 
@@ -440,7 +493,7 @@ var Main = /** @class */ (function () {
 
 
 	Main.prototype.level = {
-		"wave": 8,
+		"wave": 10,
 		"type": 1
 	};
 
@@ -969,8 +1022,12 @@ var MovementEngine =  /** @class */ (function () {
 		var intensityOptions = _this.firstMovement.intensity[_this.movementItensitySlot];
 		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
 		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
-		_this.sprite.vx = _this.firstMovement.speedDelta.vx;
-		_this.sprite.vy = _this.firstMovement.speedDelta.vy;
+		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vx;
+		if (Array.isArray(_this.firstMovement.speedDelta.vy)) {
+			_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+		} else {
+			_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vy;
+		}
 	};
 
 	MovementEngine.prototype.updateMovement = function () {
@@ -984,7 +1041,11 @@ var MovementEngine =  /** @class */ (function () {
 
 		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
 		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vx;
-		_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vy;
+		if (Array.isArray(_this.firstMovement.speedDelta.vy)) {
+			_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+		} else {
+			_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vy;
+		}
 	};
 
 	return MovementEngine;
