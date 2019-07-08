@@ -70,10 +70,15 @@ var Main = /** @class */ (function () {
 			"sound": "alienTorpedo"
 		},
 		"greenLaser": {
-			"sprite": "Bullet9_3.png",
-			"laserSprite": "Bullet9_2.png",
-			"hitPoints": 15,
-			"intensity": 30,
+			"sprites": {
+				"beamSprite": "Bullet9_2.png",
+				"shineSprite": "Bullet9_3.png"
+			},
+			"laserSprite": "",
+			"hitPoints": 10,
+			"intensity": 55,
+			"timeToLive": 20,
+			"speed": 0,
 			"type": "laser",
 			"sound": "alienTorpedo"
 		}
@@ -524,6 +529,8 @@ var Main = /** @class */ (function () {
 
 	Main.prototype.heroBullets = [];
 
+	Main.prototype.heroLaser = null;
+
 	Main.prototype.enemyBullets = [];
 
 	Main.prototype.upgrades = [];
@@ -696,6 +703,11 @@ var Main = /** @class */ (function () {
 			this.hero.upgrade();
 		}).bind(this);
 
+		var nextButton = this.hexi.keyboard(78);
+		nextButton.press = (function () {
+			this.nextLevel();
+		}).bind(this);
+
 		this.hexi.state = this.playLoop.bind(this);
 	};
 
@@ -723,6 +735,15 @@ var Main = /** @class */ (function () {
 		this.hexi.pause();
 		this.level.wave = 1;
 		this.hero.life = 1;
+		this.clearShips();
+
+		this.setupLevel(this.level.wave);
+		this.changeState();
+		this.hexi.resume();
+	};
+
+	Main.prototype.clearShips = function () {
+		var _this = this;
 		this.enemies.forEach(function (enemy) {
 			enemy.remove();
 		});
@@ -747,10 +768,6 @@ var Main = /** @class */ (function () {
 			_this.hexi.stage.removeChild(bullet);
 		});
 		this.heroBullets = [];
-
-		this.setupLevel(this.level.wave);
-		this.changeState();
-		this.hexi.resume();
 	};
 
 	Main.prototype.playLoop = function () {
@@ -774,10 +791,8 @@ var Main = /** @class */ (function () {
 		});
 
 
-		if (this.enemies.length == 0 && this.bonuses.length == 0) {
-			this.level.wave++;
-			this.setupLevel(this.level.wave);
-			this.changeState();
+		if (this.enemies.length == 0 && this.bonuses.length == 0 && this.upgrades.length == 0) {
+			this.nextLevel();
 		}
 
 		this.heroBullets.forEach(function (bullet) {
@@ -801,6 +816,25 @@ var Main = /** @class */ (function () {
 		this.heroBullets = this.heroBullets.filter(function (bullet) {
 			return bullet.parent;
 		});
+
+		if (_this.heroLaser) {
+			_this.heroLaser.beam.x = _this.hero.sprite.x + _this.heroLaser.beam.halfWidth;
+			_this.heroLaser.shine.x = _this.hero.sprite.x + _this.heroLaser.shine.halfWidth;
+			_this.heroLaser.timeToLive--;
+
+			_this.enemies.forEach(function (enemy) {
+				if (_this.hexi.hitTestRectangle(_this.heroLaser.beam, enemy.sprite)) {
+					enemy.hit(_this.heroLaser);
+				}
+			})
+
+			if (_this.heroLaser.timeToLive <= 0) {
+				_this.hexi.stage.remove(_this.heroLaser.beam);
+				_this.hexi.stage.remove(_this.heroLaser.shine);
+				_this.heroLaser.beam.alpha = _this.heroLaser.timeToLive % 2 === 1 ? 1 : 0.1;
+				_this.heroLaser = null;
+			}
+		}
 
 		for (var bulletIndex in this.enemyBullets) {
 			if (this.enemyBullets.hasOwnProperty(bulletIndex)) {
@@ -828,10 +862,21 @@ var Main = /** @class */ (function () {
 				_this.hero.hitUpgrade(upgradeItem);
 			}
 		})
+		this.upgrades = this.upgrades.filter(function (upgradeItem) {
+			return upgradeItem.parent;
+		});
 
 		this.hexi.move(this.heroBullets);
 		this.hexi.move(this.enemyBullets);
 		this.hexi.move(this.upgrades);
+	};
+
+	Main.prototype.nextLevel = function () {
+
+		this.clearShips();
+		this.level.wave++;
+		this.setupLevel(this.level.wave);
+		this.changeState();
 	};
 
 
@@ -985,22 +1030,43 @@ var HeroShip = /** @class */ (function (_super) {
 		var _this = this;
 		var currentWeapon = Main.heroWeaponConfiguration[weapon.weapon];
 		_this.game.sounds[currentWeapon.sound].play();
-		_this.hexi.shoot(
-			_this.sprite, 4.7124,   // 3/2*pi          
-			_this.sprite.halfWidth + weapon.position.x, weapon.position.y,
-			_this.hexi.stage, currentWeapon.speed,
-			_this.game.heroBullets,
-			(function () {
-				var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
-					? currentWeapon.sprite
-					: _this.hexi.json("images/bullet-texture.json").animations[currentWeapon.animatedSprite]);
-				if (currentWeapon.animatedSprite) {
-					bulletSprite.playAnimation();
-				}
-				bulletSprite.weapon = currentWeapon;
-				return bulletSprite;
-			}).bind(_this)
-		);
+
+		if (currentWeapon.type == "laser") {
+			var beam = _this.hexi.sprite(currentWeapon.sprites.beamSprite);
+			beam.height = _this.sprite.y - Main.gameArea.top - Main.gameArea.padding;
+			beam.x = _this.sprite.x + weapon.position.x + beam.halfWidth;
+			beam.y = 0;
+
+			var shine = _this.hexi.sprite(currentWeapon.sprites.shineSprite);
+			shine.x = _this.sprite.x + weapon.position.x + shine.halfWidth;
+			shine.y = _this.sprite.y - shine.height;
+
+			_this.game.heroLaser = {
+				"beam": beam,
+				"shine": shine,
+				"timeToLive" : currentWeapon.timeToLive,
+				"type" : "laser",
+				"hitEnemies" : [],
+				"weapon" : currentWeapon
+			};
+		} else {
+			_this.hexi.shoot(
+				_this.sprite, 4.7124,   // 3/2*pi          
+				_this.sprite.halfWidth + weapon.position.x, weapon.position.y,
+				_this.hexi.stage, currentWeapon.speed,
+				_this.game.heroBullets,
+				(function () {
+					var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
+						? currentWeapon.sprite
+						: _this.hexi.json("images/bullet-texture.json").animations[currentWeapon.animatedSprite]);
+					if (currentWeapon.animatedSprite) {
+						bulletSprite.playAnimation();
+					}
+					bulletSprite.weapon = currentWeapon;
+					return bulletSprite;
+				}).bind(_this));
+		}
+
 	};
 
 	HeroShip.prototype.setWeapon = function () {
@@ -1287,8 +1353,13 @@ var EnemyShip = /** @class */ (function (_super) {
 	};
 
 	EnemyShip.prototype.hit = function (bullet) {
-		this.game.hexi.stage.remove(bullet);
-		this.life -= bullet.weapon.hitPoints;
+		if (bullet.type == "laser" && bullet.hitEnemies.indexOf(this) == -1) {
+			bullet.hitEnemies.push(this);
+			this.life -= bullet.weapon.hitPoints;
+		} else {
+			this.game.hexi.stage.remove(bullet);
+			this.life -= bullet.weapon.hitPoints;
+		}
 		if (this.life <= 0) {
 			this.remove();
 		}
@@ -1340,7 +1411,7 @@ var BonusShip = /** @class */ (function (_super) {
 
 	BonusShip.prototype.shootWithUpgrade = function (upgradeBonus) {
 		var _this = this;
-		_this.game.sounds.shoot.play();
+		//_this.game.sounds.shoot.play();
 		var upgradeBonusConfig = Main.upgradeConfiguration[upgradeBonus.type];
 
 		_this.hexi.shoot(
@@ -1349,6 +1420,7 @@ var BonusShip = /** @class */ (function (_super) {
 			_this.hexi.stage, upgradeBonusConfig.speed,
 			_this.game.upgrades,
 			(function () {
+
 				var upgradeSprite = _this.hexi.sprite(upgradeBonusConfig.sprite
 					? upgradeBonusConfig.sprite
 					: _this.hexi.json("images/bullet-texture.json").animations[upgradeBonusConfig.animatedSprite]);
