@@ -25,8 +25,16 @@ var Main = /** @class */ (function () {
 	Main.resources = [
 		"images/ships-texture.json",
 		"images/bullet-texture.json",
-		"sounds/shoot.wav"
+		"sounds/alien-torpedo-shoot.wav",
+		"sounds/alien-red-plasma-shoot.wav",
+		"sounds/hero-torpedo-shoot.wav",
 	];
+
+	Main.sounds = {
+		"alienTorpedo": "sounds/alien-torpedo-shoot.wav",
+		"redPlasma": "sounds/alien-red-plasma-shoot.wav",
+		"heroTorpedo": "sounds/hero-torpedo-shoot.wav",
+	};
 
 	Main.heroWeaponConfiguration = {
 		"torpedo": {
@@ -34,35 +42,40 @@ var Main = /** @class */ (function () {
 			"hitPoints": 1,
 			"intensity": 25,
 			"speed": 5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "heroTorpedo"
 		},
 		"automatedTorpedo": {
 			"sprite": "Bullet1_1.png",
 			"hitPoints": 1,
 			"intensity": 50,
 			"speed": 5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "heroTorpedo"
 		},
 		"greenPlasma": {
 			"animatedSprite": "Bullet3",
 			"hitPoints": 5,
 			"intensity": 30,
 			"speed": 7,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "alienTorpedo"
 		},
 		"pulsePlasma": {
 			"animatedSprite": "Bullet7",
 			"hitPoints": 10,
 			"intensity": 20,
 			"speed": 8,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "alienTorpedo"
 		},
 		"greenLaser": {
 			"sprite": "Bullet9_3.png",
 			"laserSprite": "Bullet9_2.png",
 			"hitPoints": 15,
 			"intensity": 30,
-			"type": "laser"
+			"type": "laser",
+			"sound": "alienTorpedo"
 		}
 	};
 
@@ -71,25 +84,29 @@ var Main = /** @class */ (function () {
 			"sprite": "Bullet1_1.png",
 			"intensity": [{ "min": 100, "max": 150 }, { "min": 150, "max": 200 }, { "min": 75, "max": 100 }],
 			"speed": 2.5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "alienTorpedo"
 		},
 		"intensiveTorpedo": {
 			"sprite": "Bullet1_1.png",
 			"intensity": [{ "min": 35, "max": 80 }, { "min": 65, "max": 100 }],
 			"speed": 2.5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "alienTorpedo"
 		},
-		"veryIntensiveTorpedo" : {
+		"veryIntensiveTorpedo": {
 			"sprite": "Bullet1_1.png",
-			"intensity": [{ "min": 35, "max": 80 }, { "min": 5, "max": 10 }, { "min": 15, "max": 25 }, { "min": 65, "max": 100 }, { "min": 10, "max": 20 }],
+			"intensity": [{ "min": 100, "max": 150 }, { "min": 5, "max": 10 }, { "min": 100, "max": 150 }, { "min": 10, "max": 20 }],
 			"speed": 2.5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "alienTorpedo"
 		},
 		"redPlasm": {
 			"sprite": "Bullet2_1.png",
 			"intensity": [{ "min": 150, "max": 200 }, { "min": 10, "max": 20 }, { "min": 40, "max": 70 }, { "min": 150, "max": 300 }, { "min": 15, "max": 25 }, { "min": 20, "max": 55 }],
 			"speed": 3.5,
-			"type": "bullet"
+			"type": "bullet",
+			"sound": "redPlasma"
 		},
 	};
 
@@ -202,6 +219,18 @@ var Main = /** @class */ (function () {
 				}
 			]
 		},
+		"bothSharpVertical": {
+			"movements": [
+				{
+					"type": "freeMovement",
+					"speedDelta": {
+						"vx": -1,
+						"vy": 2
+					},
+					"intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+				}
+			]
+		},
 		"horizontalFast": {
 			"movements": [
 				{
@@ -217,10 +246,10 @@ var Main = /** @class */ (function () {
 		"movingDown": {
 			"movements": [
 				{
-					"type": "freeMovement",
+					"type": "freeMovementDown",
 					"speedDelta": {
-						"vx": -1.5,
-						"vy": [0.5, 0]
+						"vx": -0.7,
+						"vy": 0.3
 					},
 					"intensity": [{ "min": 150, "max": 200 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
 				}
@@ -259,7 +288,7 @@ var Main = /** @class */ (function () {
 				{ "weapon": "redPlasm", "position": { x: 0, y: 0 } }
 			],
 			"sprite": "AlienShip4_1.png",
-			"movement": "bothNormal"
+			"movement": "bothSharpVertical"
 		},
 		"alien5": {
 			"life": 10,
@@ -416,10 +445,67 @@ var Main = /** @class */ (function () {
 		},
 		10: {
 			"enemies": [
-				{ "type": "alien5", "position": { x: 190, y: 35 } },
-				{ "type": "alien2", "position": { x: 520, y: 42 } },
+				{ "type": "alien1", "position": { x: 190, y: 35 } },
+				{ "type": "alien5", "position": { x: 475, y: 35 } },
+				{ "type": "alien4", "position": { x: 272, y: 90 } },
+				{ "type": "alien4", "position": { x: 380, y: 64 } },
+				{ "type": "alien4", "position": { x: 350, y: 78 } },
+				{ "type": "alien4", "position": { x: 270, y: 95 } },
+				{ "type": "alien4", "position": { x: 429, y: 92 } },
+				{ "type": "alien2", "position": { x: 208, y: 142 } },
+				{ "type": "alien2", "position": { x: 492, y: 136 } },
+				{ "type": "alien2", "position": { x: 290, y: 165 } },
+				{ "type": "alien2", "position": { x: 438, y: 170 } },
+				{ "type": "alien2", "position": { x: 336, y: 192 } },
+				{ "type": "alien2", "position": { x: 177, y: 248 } },
+				{ "type": "alien2", "position": { x: 500, y: 241 } },
+				{ "type": "alien2", "position": { x: 257, y: 272 } },
+				{ "type": "alien2", "position": { x: 360, y: 265 } },
+				{ "type": "alien2", "position": { x: 438, y: 275 } },
 			],
 			"bonuses": [
+			]
+		},
+		11: {
+			"enemies": [
+				{ "type": "alien1", "position": { x: 166, y: 22 } },
+				{ "type": "alien1", "position": { x: 505, y: 24 } },
+				{ "type": "alien1", "position": { x: 333, y: 34 } },
+				{ "type": "alien1", "position": { x: 233, y: 54 } },
+				{ "type": "alien1", "position": { x: 444, y: 54 } },
+				{ "type": "alien1", "position": { x: 170, y: 99 } },
+				{ "type": "alien1", "position": { x: 283, y: 106 } },
+				{ "type": "alien1", "position": { x: 331, y: 106 } },
+				{ "type": "alien1", "position": { x: 401, y: 100 } },
+				{ "type": "alien1", "position": { x: 499, y: 102 } },
+				{ "type": "alien1", "position": { x: 238, y: 143 } },
+				{ "type": "alien1", "position": { x: 448, y: 151 } },
+				{ "type": "alien1", "position": { x: 189, y: 174 } },
+				{ "type": "alien1", "position": { x: 278, y: 180 } },
+				{ "type": "alien1", "position": { x: 335, y: 185 } },
+				{ "type": "alien1", "position": { x: 392, y: 180 } },
+				{ "type": "alien1", "position": { x: 487, y: 183 } },
+				{ "type": "alien1", "position": { x: 237, y: 226 } },
+				{ "type": "alien1", "position": { x: 428, y: 226 } },
+				{ "type": "alien1", "position": { x: 333, y: 249 } },
+			],
+			"bonuses": [
+			]
+		},
+		12: {
+			"enemies": [
+				{ "type": "alien3", "position": { x: 300, y: 25 } },
+				{ "type": "alien3", "position": { x: 379, y: 22 } },
+				{ "type": "alien5", "position": { x: 335, y: 68 } },
+				{ "type": "alien4", "position": { x: 230, y: 98 } },
+				{ "type": "alien4", "position": { x: 445, y: 88 } },
+				{ "type": "alien2", "position": { x: 190, y: 130 } },
+				{ "type": "alien2", "position": { x: 490, y: 114 } },
+				{ "type": "alien2", "position": { x: 286, y: 175 } },
+				{ "type": "alien2", "position": { x: 383, y: 177 } },
+			],
+			"bonuses": [
+				{ "type": "bonus1", "position": { x: 340, y: 10 } },
 			]
 		}
 	};
@@ -493,7 +579,7 @@ var Main = /** @class */ (function () {
 
 
 	Main.prototype.level = {
-		"wave": 10,
+		"wave": 1,
 		"type": 1
 	};
 
@@ -542,7 +628,12 @@ var Main = /** @class */ (function () {
 		var _this = this;
 		this.hexi.pointer.visible = false;
 
-		this.sounds.shoot = this.hexi.sound("sounds/shoot.wav");
+		for (const key in Main.sounds) {
+			if (Main.sounds.hasOwnProperty(key)) {
+				this.sounds[key] = this.hexi.sound(Main.sounds[key]);
+				//this.sounds[key].fade(0.3, 1);
+			}
+		}
 
 		this.gameScene = this.hexi.group();
 		var gameArea = this.hexi.rectangle(
@@ -892,9 +983,8 @@ var HeroShip = /** @class */ (function (_super) {
 
 	HeroShip.prototype.shootWithWeapon = function (weapon) {
 		var _this = this;
-		_this.game.sounds.shoot.play();
 		var currentWeapon = Main.heroWeaponConfiguration[weapon.weapon];
-
+		_this.game.sounds[currentWeapon.sound].play();
 		_this.hexi.shoot(
 			_this.sprite, 4.7124,   // 3/2*pi          
 			_this.sprite.halfWidth + weapon.position.x, weapon.position.y,
@@ -998,6 +1088,8 @@ var MovementEngine =  /** @class */ (function () {
 
 	MovementEngine.prototype.movementConfiguration = null;
 
+	MovementEngine.prototype.isBounceBottom = true;
+
 	function MovementEngine($hexi, sprite, movementConfiguration) {
 		this.hexi = $hexi;
 		this.sprite = sprite;
@@ -1023,8 +1115,12 @@ var MovementEngine =  /** @class */ (function () {
 		_this.movementItensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
 		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
 		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vx;
-		if (Array.isArray(_this.firstMovement.speedDelta.vy)) {
-			_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+
+		if (_this.firstMovement.type == "freeMovementDown") {
+			//Array.isArray(_this.firstMovement.speedDelta.vy)) {
+			//_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+			_this.sprite.vy = _this.firstMovement.speedDelta.vy;
+			_this.isBounceBottom = false;
 		} else {
 			_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vy;
 		}
@@ -1032,6 +1128,31 @@ var MovementEngine =  /** @class */ (function () {
 
 	MovementEngine.prototype.updateMovement = function () {
 		var _this = this;
+
+		var collision = this.hexi.contain(this.sprite,
+			{
+				x: Main.gameArea.left + Main.gameArea.padding,
+				y: Main.gameArea.top + Main.gameArea.padding,
+				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
+				height: this.hexi.canvas.height - Main.gameArea.enemyBottom - Main.gameArea.padding
+			}, false, function (collision) {
+				if (collision.has("left")) {
+					_this.sprite.vx *= -1;
+				}
+
+				if (collision.has("right")) {
+					_this.sprite.vx *= -1;
+				}
+
+				if (collision.has("top")) {
+					_this.sprite.vy *= -1;
+				}
+
+				if (_this.isBounceBottom && collision.has("bottom")) {
+					_this.sprite.vy *= -1;
+				}
+			});
+
 		_this.movementItensityCounter++;
 		if (_this.movementItensityCounter <= _this.movementItensity) return;
 		_this.movementItensityCounter = 0;
@@ -1041,8 +1162,11 @@ var MovementEngine =  /** @class */ (function () {
 
 		_this.movementItensitySlot = _this.hexi.randomInt(0, _this.firstMovement.intensity.length - 1);
 		_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vx;
-		if (Array.isArray(_this.firstMovement.speedDelta.vy)) {
-			_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+
+		if (_this.firstMovement.type == "freeMovementDown") {
+			//Array.isArray(_this.firstMovement.speedDelta.vy)) {
+			//_this.sprite.vy = _this.firstMovement.speedDelta.vy[_this.hexi.randomInt(0, 1)];
+			_this.sprite.vy = _this.firstMovement.speedDelta.vy;
 		} else {
 			_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vy;
 		}
@@ -1091,15 +1215,9 @@ var EnemyShip = /** @class */ (function (_super) {
 	EnemyShip.prototype.update = function () {
 		_super.prototype.update.call(this);
 
-		if (this.sprite.parent == null) return;
+		var _this = this;
 
-		var collision = this.hexi.contain(this.sprite,
-			{
-				x: Main.gameArea.left + Main.gameArea.padding,
-				y: Main.gameArea.top + Main.gameArea.padding,
-				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
-				height: this.hexi.canvas.height - Main.gameArea.enemyBottom - Main.gameArea.padding
-			}, true);
+		if (this.sprite.parent == null) return;
 
 		this.updateShooting();
 		this.movementEngine.update();
@@ -1137,7 +1255,6 @@ var EnemyShip = /** @class */ (function (_super) {
 		this.automatedWeapons.forEach(function (weapon) {
 			_this.shootWithWeapon(weapon);
 		});
-		_this.game.sounds.shoot.play();
 
 		var intensityOptions = _this.firstWeapon.options.intensity[_this.weaponItensitySlot];
 		_this.weaponIntensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
@@ -1165,6 +1282,8 @@ var EnemyShip = /** @class */ (function (_super) {
 				return bulletSprite;
 			}).bind(_this)
 		);
+
+		_this.game.sounds[currentWeapon.sound].play();
 	};
 
 	EnemyShip.prototype.hit = function (bullet) {
