@@ -72,18 +72,12 @@ var Main = /** @class */ (function () {
 		"sounds/track4.ogg",
 	];
 
-	Main.prototype.heroWeaponConfiguration = null;
-
-	Main.prototype.enemyWeaponConfiguration = null;
-
 	Main.upgradeConfiguration = {
 		"upgrade1": {
 			"sprite": "Upgrade.png",
 			"speed": 3
 		}
 	};
-
-	Main.prototype.heroLevelWeapons = null;
 
 	Main.bonusShipsConfiguration = {
 		"bonus1": {
@@ -96,9 +90,15 @@ var Main = /** @class */ (function () {
 		},
 	};
 
-	Main.prototype.enemyMovementConfiguration = null;
+	Main.prototype.configuration = {
+		"enemyShipsConfiguration": null,
+		"enemyMovementConfiguration": null,
+		"heroLevelWeapons": null,
+		"enemyWeaponConfiguration": null,
+		"heroWeaponConfiguration": null,
+		"levelsConfiguration": null,
 
-	Main.prototype.enemyShipsConfiguration = null;
+	}
 
 	Main.levelWaveConfiguration = {
 		1: {
@@ -119,8 +119,6 @@ var Main = /** @class */ (function () {
 		"images/environment1.png",
 		"images/environment2.png"
 	];
-
-	Main.prototype.levelsConfiguration = null;
 
 	Main.heroSpeed = 10;
 
@@ -288,12 +286,14 @@ var Main = /** @class */ (function () {
 	Main.prototype.setup = function () {
 		var _this = this;
 
-		this.heroWeaponConfiguration = this.hexi.json("data/hero-weapon-configuration.json");
-		this.levelsConfiguration = this.hexi.json("data/levels-configuration.json");
-		this.enemyShipsConfiguration = this.hexi.json("data/enemy-ships-configuration.json");
-		this.enemyMovementConfiguration = this.hexi.json("data/enemy-movement-configuration.json");
-		this.heroLevelWeapons = this.hexi.json("data/hero-level-weapons-configuration.json");
-		this.enemyWeaponConfiguration = this.hexi.json("data/enemy-weapon-configuration.json");
+		_this.configuration = {
+			"heroWeaponConfiguration": this.hexi.json("data/hero-weapon-configuration.json"),
+			"levelsConfiguration": this.hexi.json("data/levels-configuration.json"),
+			"enemyShipsConfiguration": this.hexi.json("data/enemy-ships-configuration.json"),
+			"enemyMovementConfiguration": this.hexi.json("data/enemy-movement-configuration.json"),
+			"heroLevelWeapons": this.hexi.json("data/hero-level-weapons-configuration.json"),
+			"enemyWeaponConfiguration": this.hexi.json("data/enemy-weapon-configuration.json")
+		};
 
 		this.hexi.pointer.visible = false;
 
@@ -445,7 +445,7 @@ var Main = /** @class */ (function () {
 			}
 		}
 
-		var currentLevel = this.levelsConfiguration[currentWave];
+		var currentLevel = this.configuration.levelsConfiguration[currentWave];
 
 		currentLevel.enemies.forEach(function (enemyConfig) {
 			var enemy = new EnemyShip(_this.hexi, _this, enemyConfig.type)
@@ -785,58 +785,67 @@ var HeroShip = /** @class */ (function (_super) {
 		}
 	}
 
+	HeroShip.prototype.shootWithLaser = function (currentWeapon, weapon) {
+		var _this = this;
+		if (_this.game.bulletsController.heroLaser != null) {
+			return;
+		}
+		var beam = _this.hexi.sprite(currentWeapon.sprites.beamSprite);
+		beam.height = _this.sprite.y - Main.gameArea.top - Main.gameArea.padding;
+		beam.x = weapon.position.x;
+		beam.y = weapon.position.y;
+
+		var shine = _this.hexi.sprite(currentWeapon.sprites.shineSprite);
+		_this.sprite.putCenter(shine, 0, weapon.position.y - shine.halfHeight);
+
+		_this.game.bulletsController.heroLaser = {
+			"beam": beam,
+			"shine": shine,
+			"timeToLive": currentWeapon.timeToLive,
+			"type": "laser",
+			"hitEnemies": [],
+			"hitMax": currentWeapon.hitMax,
+			"weapon": currentWeapon
+		};
+	};
+
+	HeroShip.prototype.shootWithBullets = function (currentWeapon, weapon) {
+		var _this = this;
+		_this.hexi.shoot(
+			_this.sprite, 4.7124,   // 3/2*pi          
+			weapon.position.x, - _this.sprite.halfHeight + weapon.position.y,
+			_this.hexi.stage, currentWeapon.speed,
+			_this.game.bulletsController.heroBullets,
+			(function () {
+				var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
+					? currentWeapon.sprite
+					: _this.hexi.json("images/bullet-texture.json").animations[currentWeapon.animatedSprite]);
+				if (currentWeapon.animatedSprite) {
+					bulletSprite.playAnimation();
+				}
+				bulletSprite.weapon = currentWeapon;
+				bulletSprite.hitEnemies = [];
+				bulletSprite.type = currentWeapon.type;
+				bulletSprite.hitMax = currentWeapon.hitMax;
+				return bulletSprite;
+			}).bind(_this));
+	};
+
 	HeroShip.prototype.shootWithWeapon = function (weapon) {
 		var _this = this;
-		var currentWeapon = _this.game.heroWeaponConfiguration[weapon.weapon];
+		var currentWeapon = _this.game.configuration.heroWeaponConfiguration[weapon.weapon];
 
 		if (currentWeapon.type == "laser") {
-
-			if (_this.game.bulletsController.heroLaser != null) {
-				return;
-			}
-			var beam = _this.hexi.sprite(currentWeapon.sprites.beamSprite);
-			beam.height = _this.sprite.y - Main.gameArea.top - Main.gameArea.padding;
-			beam.x = weapon.position.x;
-			beam.y = weapon.position.y;
-
-			var shine = _this.hexi.sprite(currentWeapon.sprites.shineSprite);
-			_this.sprite.putCenter(shine, 0, weapon.position.y - shine.halfHeight);
-
-			_this.game.bulletsController.heroLaser = {
-				"beam": beam,
-				"shine": shine,
-				"timeToLive": currentWeapon.timeToLive,
-				"type": "laser",
-				"hitEnemies": [],
-				"hitMax": currentWeapon.hitMax,
-				"weapon": currentWeapon
-			};
+			_this.shootWithLaser(currentWeapon, weapon);
 		} else {
-			_this.hexi.shoot(
-				_this.sprite, 4.7124,   // 3/2*pi          
-				weapon.position.x, - _this.sprite.halfHeight + weapon.position.y,
-				_this.hexi.stage, currentWeapon.speed,
-				_this.game.bulletsController.heroBullets,
-				(function () {
-					var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
-						? currentWeapon.sprite
-						: _this.hexi.json("images/bullet-texture.json").animations[currentWeapon.animatedSprite]);
-					if (currentWeapon.animatedSprite) {
-						bulletSprite.playAnimation();
-					}
-					bulletSprite.weapon = currentWeapon;
-					bulletSprite.hitEnemies = [];
-					bulletSprite.type = currentWeapon.type;
-					bulletSprite.hitMax = currentWeapon.hitMax;
-					return bulletSprite;
-				}).bind(_this));
+			_this.shootWithBullets(currentWeapon, weapon);
 		}
 
 	};
 
 	HeroShip.prototype.setWeapon = function () {
 		var _this = this;
-		var weaponConfiguration = _this.game.heroLevelWeapons[this.life];
+		var weaponConfiguration = _this.game.configuration.heroLevelWeapons[this.life];
 
 		if (!weaponConfiguration) return;
 
@@ -864,13 +873,13 @@ var HeroShip = /** @class */ (function (_super) {
 		}
 
 		this.weapons.forEach(function (weapon) {
-			var currentWeapon = _this.game.heroWeaponConfiguration[weapon.weapon];
+			var currentWeapon = _this.game.configuration.heroWeaponConfiguration[weapon.weapon];
 			weapon.options = currentWeapon;
 			weapon.weaponItensityCounter = 0;
 		});
 
 		this.automatedWeapons.forEach(function (weapon) {
-			var currentWeapon = _this.game.heroWeaponConfiguration[weapon.weapon];
+			var currentWeapon = _this.game.configuration.heroWeaponConfiguration[weapon.weapon];
 			weapon.options = currentWeapon;
 			weapon.weaponItensityCounter = 0;
 		});
@@ -1068,7 +1077,7 @@ var EnemyShip = /** @class */ (function (_super) {
 	function EnemyShip($hexi, game, type) {
 		var _this = _super.call(this, $hexi, game) || this;
 		_this.type = type;
-		_this.shipConfiguration = deepCopy(game.enemyShipsConfiguration[type]);
+		_this.shipConfiguration = deepCopy(game.configuration.enemyShipsConfiguration[type]);
 
 		_this.sprite = _this.hexi.sprite(_this.shipConfiguration.sprite
 			? _this.shipConfiguration.sprite
@@ -1080,7 +1089,7 @@ var EnemyShip = /** @class */ (function (_super) {
 		_this.setWeapon();
 		_this.game.gameScene.addChild(_this.sprite);
 		_this.life = _this.shipConfiguration.life;
-		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite, _this.shipConfiguration.movement, game.enemyMovementConfiguration);
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite, _this.shipConfiguration.movement, game.configuration.enemyMovementConfiguration);
 
 		return _this;
 	}
@@ -1102,7 +1111,7 @@ var EnemyShip = /** @class */ (function (_super) {
 
 		if (_this.shipConfiguration.isSyncWeapon) {
 			this.automatedWeapons.forEach(function (weapon) {
-				var currentWeapon = _this.game.enemyWeaponConfiguration[weapon.weapon];
+				var currentWeapon = _this.game.configuration.enemyWeaponConfiguration[weapon.weapon];
 				weapon.options = currentWeapon;
 			});
 
@@ -1136,7 +1145,7 @@ var EnemyShip = /** @class */ (function (_super) {
 
 		} else {
 			this.automatedWeapons.forEach(function (weapon) {
-				var currentWeapon = _this.game.enemyWeaponConfiguration[weapon.weapon];
+				var currentWeapon = _this.game.configuration.enemyWeaponConfiguration[weapon.weapon];
 				weapon.options = currentWeapon;
 				weapon.weaponItensitySlot = _this.hexi.randomInt(0, weapon.options.intensity.length - 1);
 				if (weapon.isRandomIntensity) {
@@ -1211,10 +1220,10 @@ var EnemyShip = /** @class */ (function (_super) {
 				if (intensityOptions.type == undefined || intensityOptions.type === "shoot") {
 					_this.shootWithWeapon(weapon);
 				}
-				console.log(weapon.weaponItensitySlot);
+				//console.log(weapon.weaponItensitySlot);
 
 				weapon.weaponIntensity = _this.hexi.randomInt(intensityOptions.min, intensityOptions.max);
-				console.log(weapon.weaponIntensity);
+				//console.log(weapon.weaponIntensity);
 
 				weapon.intensityRepeatCounter++;
 				if (weapon.intensityRepeatCounter < intensityOptions.repeat) {
@@ -1238,7 +1247,7 @@ var EnemyShip = /** @class */ (function (_super) {
 
 	EnemyShip.prototype.shootWithWeapon = function (weapon) {
 		var _this = this;
-		var currentWeapon = _this.game.enemyWeaponConfiguration[weapon.weapon];
+		var currentWeapon = _this.game.configuration.enemyWeaponConfiguration[weapon.weapon];
 
 		_this.hexi.shoot(
 			_this.sprite, weapon.angle ? weapon.angle : 1.57,   // 3/2*pi          
@@ -1321,7 +1330,7 @@ var BonusShip = /** @class */ (function (_super) {
 		_this.game.gameScene.addChild(_this.sprite);
 		_this.life = _this.shipConfiguration.life;
 
-		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite, _this.shipConfiguration.movement, game.enemyMovementConfiguration);
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite, _this.shipConfiguration.movement, game.configuration.enemyMovementConfiguration);
 
 		return _this;
 	}
@@ -1391,7 +1400,7 @@ var BulletsController = /** @class */ (function () {
 		this.game = game;
 	}
 
-	BulletsController.prototype.update = function() {
+	BulletsController.prototype.update = function () {
 		var _this = this;
 		this.heroBullets = this.heroBullets.filter(function (bullet) {
 			if (bullet.y < -bullet.height) {
@@ -1455,7 +1464,7 @@ var BulletsController = /** @class */ (function () {
 		this.hexi.move(this.enemyBullets);
 	}
 
-	BulletsController.prototype.clearBullets = function() {
+	BulletsController.prototype.clearBullets = function () {
 		var _this = this;
 		this.enemyBullets.forEach(function (bullet) {
 			_this.hexi.stage.removeChild(bullet);
