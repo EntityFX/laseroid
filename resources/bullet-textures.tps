@@ -70,7 +70,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>2</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -326,6 +326,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">Explosion_1.png</key>
+            <key type="filename">Explosion_2.png</key>
+            <key type="filename">Explosion_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,14,27,27</rect>
+                <key>scale9Paddings</key>
+                <rect>14,14,27,27</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">Upgrade.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -356,6 +371,9 @@
             <filename>Bullet3_1.png</filename>
             <filename>Bullet3_2.png</filename>
             <filename>Upgrade.png</filename>
+            <filename>Explosion_3.png</filename>
+            <filename>Explosion_1.png</filename>
+            <filename>Explosion_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

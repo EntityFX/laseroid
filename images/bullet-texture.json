@@ -2,7 +2,7 @@
 
 "Bullet1_1.png":
 {
-	"frame": {"x":7,"y":0,"w":6,"h":10},
+	"frame": {"x":22,"y":0,"w":6,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":10},
@@ -10,7 +10,7 @@
 },
 "Bullet2_1.png":
 {
-	"frame": {"x":0,"y":58,"w":21,"h":20},
+	"frame": {"x":22,"y":22,"w":21,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":20},
@@ -18,7 +18,7 @@
 },
 "Bullet3_1.png":
 {
-	"frame": {"x":68,"y":58,"w":47,"h":45},
+	"frame": {"x":0,"y":49,"w":47,"h":45},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":45},
@@ -26,7 +26,7 @@
 },
 "Bullet3_2.png":
 {
-	"frame": {"x":21,"y":58,"w":47,"h":45},
+	"frame": {"x":49,"y":49,"w":47,"h":45},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":45},
@@ -34,7 +34,7 @@
 },
 "Bullet4_1.png":
 {
-	"frame": {"x":0,"y":156,"w":68,"h":20},
+	"frame": {"x":41,"y":0,"w":68,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":20},
@@ -42,7 +42,7 @@
 },
 "Bullet5_1.png":
 {
-	"frame": {"x":3,"y":0,"w":4,"h":15},
+	"frame": {"x":30,"y":0,"w":4,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":15},
@@ -50,7 +50,7 @@
 },
 "Bullet6_1.png":
 {
-	"frame": {"x":0,"y":0,"w":3,"h":20},
+	"frame": {"x":36,"y":0,"w":3,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":20},
@@ -58,7 +58,7 @@
 },
 "Bullet7_1.png":
 {
-	"frame": {"x":53,"y":103,"w":53,"h":53},
+	"frame": {"x":55,"y":96,"w":53,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":53},
@@ -66,7 +66,7 @@
 },
 "Bullet7_2.png":
 {
-	"frame": {"x":0,"y":103,"w":53,"h":53},
+	"frame": {"x":0,"y":96,"w":53,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":53},
@@ -74,7 +74,7 @@
 },
 "Bullet8_1.png":
 {
-	"frame": {"x":13,"y":0,"w":12,"h":22},
+	"frame": {"x":45,"y":22,"w":12,"h":22},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":22},
@@ -82,7 +82,7 @@
 },
 "Bullet9_1.png":
 {
-	"frame": {"x":82,"y":0,"w":20,"h":58},
+	"frame": {"x":57,"y":208,"w":20,"h":58},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":58},
@@ -90,7 +90,7 @@
 },
 "Bullet9_2.png":
 {
-	"frame": {"x":62,"y":0,"w":20,"h":1},
+	"frame": {"x":0,"y":0,"w":20,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":1},
@@ -98,15 +98,39 @@
 },
 "Bullet9_3.png":
 {
-	"frame": {"x":42,"y":0,"w":20,"h":20},
+	"frame": {"x":0,"y":22,"w":20,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
 	"sourceSize": {"w":20,"h":20}
 },
+"Explosion_1.png":
+{
+	"frame": {"x":0,"y":208,"w":55,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":55},
+	"sourceSize": {"w":55,"h":55}
+},
+"Explosion_2.png":
+{
+	"frame": {"x":57,"y":151,"w":55,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":55},
+	"sourceSize": {"w":55,"h":55}
+},
+"Explosion_3.png":
+{
+	"frame": {"x":0,"y":151,"w":55,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":55},
+	"sourceSize": {"w":55,"h":55}
+},
 "Upgrade.png":
 {
-	"frame": {"x":25,"y":0,"w":17,"h":25},
+	"frame": {"x":59,"y":22,"w":17,"h":25},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":25},
@@ -115,15 +139,16 @@
 "animations": {
 	"Bullet3": ["Bullet3_1.png","Bullet3_2.png"],
 	"Bullet7": ["Bullet7_1.png","Bullet7_2.png"],
-	"Bullet9": ["Bullet9_1.png","Bullet9_2.png","Bullet9_3.png"]
+	"Bullet9": ["Bullet9_1.png","Bullet9_2.png","Bullet9_3.png"],
+	"Explosion": ["Explosion_1.png","Explosion_2.png","Explosion_3.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "bullet-texture.png",
 	"format": "RGBA8888",
-	"size": {"w":115,"h":176},
+	"size": {"w":112,"h":266},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:51ffb58995ddc0b7c615dcef7e424b42:99423a6c0ff644c1cc1bd08fbe0a251a:6d01be30772d6df1babf0fa59fc1bb02$"
+	"smartupdate": "$TexturePacker:SmartUpdate:dc3d062ab137fda118bf9ac20247cc10:85a128349856cf1b0a103593f9ddeada:6d01be30772d6df1babf0fa59fc1bb02$"
 }
 }
