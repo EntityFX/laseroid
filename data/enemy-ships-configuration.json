@@ -1,0 +1,127 @@
+{
+    "alien1": {
+        "life": 2,
+        "weapons": [
+            { "weapon": "torpedo", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip1_1.png",
+        "movement": "horizontalNormal",
+        "killPoints": 150
+    },
+    "alien2": {
+        "life": 4,
+        "weapons": [
+            { "weapon": "torpedo", "position": { "x": 0, "y": 0 } }
+        ],
+        "animatedSprite": "AlienShip2",
+        "movement": "bothNormal",
+        "killPoints": 300
+    },
+    "alien3": {
+        "life": 8,
+        "weapons": [
+            { "weapon": "intensiveTorpedo", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip3_1.png",
+        "movement": "horizontalFast",
+        "killPoints": 600
+    },
+    "alien4": {
+        "life": 10,
+        "weapons": [
+            { "weapon": "redPlasm", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip4_1.png",
+        "movement": "bothSharpVertical",
+        "killPoints": 600
+    },
+    "alien5": {
+        "life": 10,
+        "weapons": [
+            { "weapon": "veryIntensiveTorpedo", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip5_1.png",
+        "movement": "movingDown",
+        "killPoints": 1100
+    },
+    "alien6": {
+        "life": 30,
+        "weapons": [
+            { "weapon": "veryIntensiveRedPlasm", "position": { "x": 0, "y": 0 } }
+        ],
+        "animatedSprite": "AlienShip6",
+        "movement": "horizontalSlowAndFollow",
+        "killPoints": 1900
+    },
+    "alien7": {
+        "life": 30,
+        "weapons": [
+            { "weapon": "bluePlasma", "position": { "x": 0, "y": 0 } }
+        ],
+        "animatedSprite": "AlienShip7",
+        "movement": "bothSharpVerticalFastAndFollow",
+        "killPoints": 1900
+    },
+    "alien70": {
+        "life": 30,
+        "weapons": [
+            { "weapon": "bluePlasma", "position": { "x": 0, "y": 0 } }
+        ],
+        "animatedSprite": "AlienShip70",
+        "movement": "bothSharpVerticalFast",
+        "killPoints": 2100
+    },
+    "alien8": {
+        "life": 30,
+        "weapons": [
+            { "weapon": "greenPlasma", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip8_1.png",
+        "movement": "bothFastAndFollow",
+        "killPoints": 9000
+    },
+    "alien9": {
+        "life": 30,
+        "weapons": [
+            { "weapon": "torpedo", "position": { "x": 0, "y": 0 } }
+        ],
+        "sprite": "AlienShip9_1.png",
+        "movement": "bothSharpVertical",
+        "killPoints": 2100
+    },
+    "alien10": {
+        "life": 35,
+        "weapons": [
+            { "weapon": "blueTorpedo", "position": { "x": -6, "y": 0 } },
+            { "weapon": "blueTorpedo", "position": { "x": 6, "y": 0 } }
+        ],
+        "sprite": "AlienShip10_1.png",
+        "movement": "horizontalFast",
+        "killPoints": 2100
+    },
+    "alien11": {
+        "life": 35,
+        "isSyncWeapon": true,
+        "weapons": [
+            { "weapon": "yellowLaser", "position": { "x": -24, "y": -3 } },
+            { "weapon": "yellowLaser", "position": { "x": -8, "y": 2 } },
+            { "weapon": "yellowLaser", "position": { "x": 8, "y": 3 } },
+            { "weapon": "yellowLaser", "position": { "x": 24, "y": -2 } }
+        ],
+        "sprite": "AlienShip11_1.png",
+        "movement": "bothFast",
+        "killPoints": 2900
+    },
+    "boss1": {
+        "life": 100,
+        "isSyncWeapon": true,
+        "weapons": [
+            { "weapon": "blueBossPlasma", "position": { "x": 0, "y": 0 } },
+            { "weapon": "greenBossPlasma", "position": { "x": -10, "y": -30 }, "angle": 2.3562 },
+            { "weapon": "greenBossPlasma", "position": { "x": 10, "y": -30 }, "angle": 0.7854 }
+        ],
+        "sprite": "BossShip1_1.png",
+        "movement": "bothSlowAndFollow",
+        "killPoints": 34000
+    }
+}

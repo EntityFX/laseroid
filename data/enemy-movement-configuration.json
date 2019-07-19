@@ -1,0 +1,170 @@
+{
+    "horizontalNormal": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 0
+                },
+                "intensity": [{ "min": 50, "max": 150 }, { "min": 150, "max": 250 }]
+            }
+        ]
+    },
+    "horizontalSlowAndFollow": {
+        "movements": [
+            {
+                "type": "followHero",
+                "speedDelta": {
+                    "vx": -0.63,
+                    "vy": 0
+                },
+                "intensity": [{ "min": 50, "max": 150 }, { "min": 150, "max": 250 }]
+            }
+        ]
+    },
+    "horizontalNormalAndFollow": {
+        "movements": [
+            {
+                "type": "followHero",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 0
+                },
+                "intensity": [{ "min": 50, "max": 150 }, { "min": 150, "max": 250 }]
+            }
+        ]
+    },
+    "bothNormal": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1.5,
+                    "vy": 1.5
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "bothSlow": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 0.63
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "bothSlowAndFollow": {
+        "movements": [
+            {
+                "type": "followHero",
+                "speedDelta": {
+                    "vx": -0.75,
+                    "vy": 0.75
+                },
+                "intensity": [{ "min": 250, "max": 250 }]
+            }
+        ]
+    },
+    "bothFast": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -3,
+                    "vy": 3
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "bothFastAndFollow": {
+        "movements": [
+            {
+                "type": "followHero",
+                "speedDelta": {
+                    "vx": -3,
+                    "vy": 1.5
+                },
+                "intensity": [{ "min": 25, "max": 50 }, { "min": 5, "max": 15 }, { "min": 25, "max": 50 }, { "min": 10, "max": 25 }]
+            }
+        ]
+    },
+    "bothSharpVertical": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 2
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "bothSharpVerticalFast": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 3
+                },
+                "intensity": [{ "min": 25, "max": 50 }, { "min": 5, "max": 75 }, { "min": 15, "max": 30 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "bothSharpVerticalFastAndFollow": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -1,
+                    "vy": 2
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 5, "max": 150 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    },
+    "horizontalFast": {
+        "movements": [
+            {
+                "type": "freeMovement",
+                "speedDelta": {
+                    "vx": -6,
+                    "vy": 0
+                },
+                "intensity": [{ "min": 20, "max": 150 }, { "min": 150, "max": 350 }]
+            }
+        ]
+    },
+    "horizontalFastAndFollow": {
+        "movements": [
+            {
+                "type": "followHero",
+                "speedDelta": {
+                    "vx": -4,
+                    "vy": 0
+                },
+                "intensity": [{ "min": 20, "max": 150 }, { "min": 150, "max": 350 }]
+            }
+        ]
+    },
+    "movingDown": {
+        "movements": [
+            {
+                "type": "freeMovementDown",
+                "speedDelta": {
+                    "vx": -0.7,
+                    "vy": 0.3
+                },
+                "intensity": [{ "min": 150, "max": 200 }, { "min": 200, "max": 300 }, { "min": 25, "max": 50 }]
+            }
+        ]
+    }
+}

@@ -1,0 +1,504 @@
+{
+	"1": {
+		"weapons": [
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		]
+	},
+	"2": {
+		"weapons": [
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": -10,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 10,
+					"y": 0
+				}
+			}
+		]
+	},
+	"3": {
+		"weapons": [
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": -10,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 10,
+					"y": 0
+				}
+			}
+		]
+	},
+	"4": {
+		"weapons": [
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": -10,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 10,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"5": {
+		"weapons": [
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": -10,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			},
+			{
+				"weapon": "torpedo",
+				"position": {
+					"x": 10,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"6": {
+		"weapons": [
+			{
+				"weapon": "greenPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"7": {
+		"weapons": [
+			{
+				"weapon": "greenPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"8": {
+		"weapons": [
+			{
+				"weapon": "pulsePlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"9": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"14": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"15": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "redPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"19": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "redPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"20": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "greenPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"24": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "greenPlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"25": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "bluePlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"29": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "bluePlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	},
+	"30": {
+		"weapons": [
+			{
+				"weapon": "greenLaser",
+				"position": {
+					"x": 0,
+					"y": -20
+				}
+			},
+			{
+				"weapon": "pulsePlasma",
+				"position": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		],
+		"automatedWeapons": [
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": -20,
+					"y": -15
+				}
+			},
+			{
+				"weapon": "automatedTorpedo",
+				"position": {
+					"x": 20,
+					"y": -15
+				}
+			}
+		]
+	}
+}
