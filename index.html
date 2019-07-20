@@ -19,8 +19,18 @@
 
 	<!-- Main application file -->
 	<script src="scripts/game/utils.js"></script>
+	<script src="scripts/game/main.js"></script>
 	<script src="scripts/game/game.js"></script>
-
+	<script src="scripts/game/movementEngine.js"></script>
+	<script src="scripts/game/ship.js"></script>
+	<script src="scripts/game/weaponedShip.js"></script>
+	<script src="scripts/game/enemyShip.js"></script>
+	<script src="scripts/game/heroShip.js"></script>
+	<script src="scripts/game/bonusShip.js"></script>
+	<script src="scripts/game/bulletsController.js"></script>
+	<script src="scripts/game/enemyController.js"></script>
+	<script src="scripts/game/inputDevice.js"></script>
+	<script src="scripts/game/mainScreen.js"></script>
 	<script>
 
 		var md = new MobileDetect(window.navigator.userAgent);
@@ -28,8 +38,7 @@
 
 		Main.graphics.isScaleToWindow = true;
 
-		var game = new Main(hexi, isMobile);
-		game.level.wave = 27;
+		var game = new Main(hexi, "laser-age", isMobile);
 		game.init();
 	</script>
 

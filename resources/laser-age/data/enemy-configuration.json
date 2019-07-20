@@ -1,0 +1,925 @@
+{
+    "enemyMovementConfiguration": {
+        "horizontalNormal": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 0
+                    },
+                    "intensity": [
+                        {
+                            "min": 50,
+                            "max": 150
+                        },
+                        {
+                            "min": 150,
+                            "max": 250
+                        }
+                    ]
+                }
+            ]
+        },
+        "horizontalSlowAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -0.63,
+                        "vy": 0
+                    },
+                    "intensity": [
+                        {
+                            "min": 50,
+                            "max": 150
+                        },
+                        {
+                            "min": 150,
+                            "max": 250
+                        }
+                    ]
+                }
+            ]
+        },
+        "horizontalNormalAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 0
+                    },
+                    "intensity": [
+                        {
+                            "min": 50,
+                            "max": 150
+                        },
+                        {
+                            "min": 150,
+                            "max": 250
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothNormal": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -1.5,
+                        "vy": 1.5
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 5,
+                            "max": 150
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothSlow": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 0.63
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 5,
+                            "max": 150
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothSlowAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -0.75,
+                        "vy": 0.75
+                    },
+                    "intensity": [
+                        {
+                            "min": 250,
+                            "max": 250
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothFast": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -3,
+                        "vy": 3
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 5,
+                            "max": 150
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothFastAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -3,
+                        "vy": 1.5
+                    },
+                    "intensity": [
+                        {
+                            "min": 25,
+                            "max": 50
+                        },
+                        {
+                            "min": 5,
+                            "max": 15
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        },
+                        {
+                            "min": 10,
+                            "max": 25
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothSharpVertical": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 2
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 5,
+                            "max": 150
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothSharpVerticalFast": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 3
+                    },
+                    "intensity": [
+                        {
+                            "min": 25,
+                            "max": 50
+                        },
+                        {
+                            "min": 5,
+                            "max": 75
+                        },
+                        {
+                            "min": 15,
+                            "max": 30
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "bothSharpVerticalFastAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -1,
+                        "vy": 4
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 5,
+                            "max": 150
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        "horizontalFast": {
+            "movements": [
+                {
+                    "type": "freeMovement",
+                    "speedDelta": {
+                        "vx": -6,
+                        "vy": 0
+                    },
+                    "intensity": [
+                        {
+                            "min": 20,
+                            "max": 150
+                        },
+                        {
+                            "min": 150,
+                            "max": 350
+                        }
+                    ]
+                }
+            ]
+        },
+        "horizontalFastAndFollow": {
+            "movements": [
+                {
+                    "type": "followHero",
+                    "speedDelta": {
+                        "vx": -4,
+                        "vy": 0
+                    },
+                    "intensity": [
+                        {
+                            "min": 20,
+                            "max": 150
+                        },
+                        {
+                            "min": 150,
+                            "max": 350
+                        }
+                    ]
+                }
+            ]
+        },
+        "movingDown": {
+            "movements": [
+                {
+                    "type": "freeMovementDown",
+                    "speedDelta": {
+                        "vx": -0.7,
+                        "vy": 0.3
+                    },
+                    "intensity": [
+                        {
+                            "min": 150,
+                            "max": 200
+                        },
+                        {
+                            "min": 200,
+                            "max": 300
+                        },
+                        {
+                            "min": 25,
+                            "max": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "enemyWeaponConfiguration": {
+        "torpedo": {
+            "sprite": "Bullet1_1.png",
+            "isRandomIntensity": false,
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 100,
+                    "max": 200,
+                    "type": "shoot"
+                },
+                {
+                    "min": 50,
+                    "max": 80,
+                    "type": "pause"
+                },
+                {
+                    "min": 30,
+                    "max": 100,
+                    "repeat": 2
+                }
+            ],
+            "speed": 2.5,
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "intensiveTorpedo": {
+            "sprite": "Bullet1_1.png",
+            "isRandomIntensity": false,
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 100,
+                    "type": "pause"
+                },
+                {
+                    "min": 35,
+                    "max": 80,
+                    "repeat": 3
+                },
+                {
+                    "min": 50,
+                    "max": 100,
+                    "type": "pause"
+                },
+                {
+                    "min": 65,
+                    "max": 100
+                }
+            ],
+            "speed": 2.5,
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "veryIntensiveTorpedo": {
+            "sprite": "Bullet1_1.png",
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 100,
+                    "type": "pause"
+                },
+                {
+                    "min": 100,
+                    "max": 200
+                },
+                {
+                    "min": 50,
+                    "max": 100,
+                    "type": "pause"
+                },
+                {
+                    "min": 10,
+                    "max": 30,
+                    "repeat": 5
+                }
+            ],
+            "speed": 2.5,
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "redPlasm": {
+            "sprite": "Bullet2_1.png",
+            "intensity": [
+                {
+                    "min": 100,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 35,
+                    "max": 120,
+                    "repeat": 5
+                },
+                {
+                    "min": 100,
+                    "max": 300,
+                    "type": "pause"
+                },
+                {
+                    "min": 40,
+                    "max": 70
+                },
+                {
+                    "min": 150,
+                    "max": 300
+                },
+                {
+                    "min": 20,
+                    "max": 55
+                }
+            ],
+            "speed": 3.5,
+            "type": "bullet",
+            "sound": "redPlasma"
+        },
+        "veryIntensiveRedPlasm": {
+            "sprite": "Bullet2_1.png",
+            "intensity": [
+                {
+                    "min": 100,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 5,
+                    "max": 20,
+                    "repeat": 5
+                },
+                {
+                    "min": 100,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 50,
+                    "max": 100
+                }
+            ],
+            "speed": 3.5,
+            "type": "bullet",
+            "sound": "redPlasma"
+        },
+        "bluePlasma": {
+            "sprite": "Bullet4_1.png",
+            "speed": 4.5,
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 40,
+                    "max": 70,
+                    "repeat": 2
+                },
+                {
+                    "min": 100,
+                    "max": 200,
+                    "type": "pause"
+                },
+                {
+                    "min": 15,
+                    "max": 50,
+                    "repeat": 2
+                }
+            ],
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "blueBossPlasma": {
+            "sprite": "Bullet4_1.png",
+            "speed": 4.5,
+            "intensity": [
+                {
+                    "min": 20,
+                    "max": 80,
+                    "type": "pause"
+                },
+                {
+                    "min": 3,
+                    "max": 20,
+                    "repeat": 3
+                },
+                {
+                    "min": 100,
+                    "max": 150,
+                    "type": "pause"
+                },
+                {
+                    "min": 1,
+                    "max": 30,
+                    "repeat": 10
+                }
+            ],
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "greenBossPlasma": {
+            "animatedSprite": "Bullet3",
+            "speed": 5,
+            "intensity": [
+                {
+                    "min": 200,
+                    "max": 300,
+                    "type": "pause"
+                },
+                {
+                    "min": 4,
+                    "max": 10,
+                    "repeat": 15
+                }
+            ],
+            "type": "bullet",
+            "sound": "alien-green-plasma-shoot"
+        },
+        "greenPlasma": {
+            "animatedSprite": "Bullet3",
+            "speed": 5,
+            "intensity": [
+                {
+                    "min": 150,
+                    "max": 200
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                },
+                {
+                    "min": 40,
+                    "max": 70
+                },
+                {
+                    "min": 150,
+                    "max": 300
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                },
+                {
+                    "min": 20,
+                    "max": 55
+                }
+            ],
+            "type": "bullet",
+            "sound": "alien-green-plasma-shoot"
+        },
+        "blueTorpedo": {
+            "sprite": "Bullet5_1.png",
+            "intensity": [
+                {
+                    "min": 100,
+                    "max": 350
+                },
+                {
+                    "min": 50,
+                    "max": 250,
+                    "type": "pause"
+                },
+                {
+                    "min": 150,
+                    "max": 300
+                }
+            ],
+            "speed": 3,
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        },
+        "yellowLaser": {
+            "sprite": "Bullet6_1.png",
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 80
+                },
+                {
+                    "min": 65,
+                    "max": 100
+                }
+            ],
+            "speed": {
+                "min": 3.2,
+                "max": 3.8
+            },
+            "type": "bullet",
+            "sound": "alienTorpedo"
+        }
+    },
+    "enemyShipsConfiguration": {
+        "alien1": {
+            "life": 2,
+            "weapons": [
+                {
+                    "weapon": "torpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip1_1.png",
+            "movement": "horizontalNormal",
+            "killPoints": 150
+        },
+        "alien100": {
+            "life": 2,
+            "weapons": [
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip1_1.png",
+            "movement": "horizontalNormal",
+            "killPoints": 150
+        },
+        "alien2": {
+            "life": 4,
+            "weapons": [
+                {
+                    "weapon": "torpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "animatedSprite": "AlienShip2",
+            "movement": "bothNormal",
+            "killPoints": 300
+        },
+        "alien3": {
+            "life": 8,
+            "weapons": [
+                {
+                    "weapon": "intensiveTorpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip3_1.png",
+            "movement": "horizontalFast",
+            "killPoints": 600
+        },
+        "alien4": {
+            "life": 10,
+            "weapons": [
+                {
+                    "weapon": "redPlasm",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip4_1.png",
+            "movement": "bothSharpVertical",
+            "killPoints": 600
+        },
+        "alien5": {
+            "life": 10,
+            "weapons": [
+                {
+                    "weapon": "veryIntensiveTorpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip5_1.png",
+            "movement": "movingDown",
+            "killPoints": 1100
+        },
+        "alien6": {
+            "life": 30,
+            "weapons": [
+                {
+                    "weapon": "veryIntensiveRedPlasm",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "animatedSprite": "AlienShip6",
+            "movement": "horizontalSlowAndFollow",
+            "killPoints": 1900
+        },
+        "alien7": {
+            "life": 30,
+            "weapons": [
+                {
+                    "weapon": "bluePlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "animatedSprite": "AlienShip7",
+            "movement": "bothSharpVerticalFastAndFollow",
+            "killPoints": 1900
+        },
+        "alien70": {
+            "life": 30,
+            "weapons": [
+                {
+                    "weapon": "bluePlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "animatedSprite": "AlienShip70",
+            "movement": "bothSharpVerticalFast",
+            "killPoints": 2100
+        },
+        "alien8": {
+            "life": 30,
+            "weapons": [
+                {
+                    "weapon": "greenPlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip8_1.png",
+            "movement": "bothFastAndFollow",
+            "killPoints": 9000
+        },
+        "alien9": {
+            "life": 30,
+            "weapons": [
+                {
+                    "weapon": "torpedo",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip9_1.png",
+            "movement": "bothSharpVertical",
+            "killPoints": 2100
+        },
+        "alien10": {
+            "life": 35,
+            "weapons": [
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": -6,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 6,
+                        "y": 0
+                    }
+                }
+            ],
+            "sprite": "AlienShip10_1.png",
+            "movement": "horizontalFast",
+            "killPoints": 2100
+        },
+        "alien11": {
+            "life": 35,
+            "isSyncWeapon": true,
+            "weapons": [
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": -24,
+                        "y": -3
+                    }
+                },
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": -8,
+                        "y": 2
+                    }
+                },
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": 8,
+                        "y": 3
+                    }
+                },
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": 24,
+                        "y": -2
+                    }
+                }
+            ],
+            "sprite": "AlienShip11_1.png",
+            "movement": "bothFast",
+            "killPoints": 2900
+        },
+        "boss1": {
+            "life": 100,
+            "isSyncWeapon": true,
+            "weapons": [
+                {
+                    "weapon": "blueBossPlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "greenBossPlasma",
+                    "position": {
+                        "x": -10,
+                        "y": -30
+                    },
+                    "angle": 2.3562
+                },
+                {
+                    "weapon": "greenBossPlasma",
+                    "position": {
+                        "x": 10,
+                        "y": -30
+                    },
+                    "angle": 0.7854
+                }
+            ],
+            "sprite": "BossShip1_1.png",
+            "movement": "bothSlowAndFollow",
+            "killPoints": 34000
+        }
+    },
+
+    "upgradeConfiguration": {
+        "upgrade1": {
+            "sprite": "Upgrade.png",
+            "speed": 3
+        }
+    },
+    "bonusShipsConfiguration": {
+        "bonus1": {
+            "animatedSprite": "PowerUps",
+            "movement": "horizontalNormal",
+            "upgradeBonus": {
+                "type": "upgrade1",
+                "position": { "x": 0, "y": 0
+                },
+                "killPoints": 100
+            }
+        }
+    }
+}

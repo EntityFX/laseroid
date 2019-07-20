@@ -43,4 +43,12 @@ String.prototype.toHHMMSS = function () {
     if (minutes < 10) { minutes = "0" + minutes; }
     if (seconds < 10) { seconds = "0" + seconds; }
     return hours + ':' + minutes + ':' + seconds;
-}
+};
+
+String.prototype.format = function () {
+    a = this;
+    for (k in arguments) {
+        a = a.replace("{" + k + "}", arguments[k])
+    }
+    return a
+};
