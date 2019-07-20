@@ -845,5 +845,42 @@
         ],
         "bonuses": [
         ]
+    },
+    "56": {
+        "enemies": [
+            { "type": "alien10", "position": { "x": 304, "y": 60 } },
+            { "type": "alien10", "position": { "x": 400, "y": 84 } },
+            { "type": "alien10", "position": { "x": 500, "y": 63 } },
+            { "type": "alien10", "position": { "x": 585, "y": 92 } },
+            { "type": "alien10", "position": { "x": 665, "y": 63 } },
+            { "type": "alien10", "position": { "x": 677, "y": 160 } },
+            { "type": "alien10", "position": { "x": 526, "y": 160 } },
+            { "type": "alien10", "position": { "x": 526, "y": 160 } },
+            { "type": "alien10", "position": { "x": 438, "y": 152 } },
+            { "type": "alien10", "position": { "x": 327, "y": 170 } },
+            { "type": "alien10", "position": { "x": 335, "y": 250 } },
+            { "type": "alien10", "position": { "x": 405, "y": 220 } },
+            { "type": "alien10", "position": { "x": 470, "y": 237 } },
+            { "type": "alien10", "position": { "x": 543, "y": 250 } },
+            { "type": "alien10", "position": { "x": 600, "y": 205 } },
+            { "type": "alien10", "position": { "x": 657, "y": 242 } },
+            { "type": "alien100", "position": { "x": 370, "y": 296 } },
+            { "type": "alien100", "position": { "x": 547, "y": 281 } },
+            { "type": "alien100", "position": { "x": 530, "y": 197 } },
+            { "type": "alien100", "position": { "x": 278, "y": 394 } },
+            { "type": "alien100", "position": { "x": 450, "y": 378 } },
+            { "type": "alien100", "position": { "x": 642, "y": 378 } }
+        ],
+        "bonuses": [
+        ]
+    },
+    "57": {
+        "enemies": [
+            { "type": "alien2", "position": { "x": 282, "y": 111 } },
+            { "type": "alien2", "position": { "x": 362, "y": 146 } },
+            { "type": "alien2", "position": { "x": 493, "y": 160 } }
+        ],
+        "bonuses": [
+        ]
     }
 }
