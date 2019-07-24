@@ -22,7 +22,7 @@ var Game = /** @class */ (function () {
     Game.prototype.onLevelChanged = null;
 
     Game.prototype.level = {
-        "wave": 1,
+        "wave": 56,
         "type": 1
     };
 
