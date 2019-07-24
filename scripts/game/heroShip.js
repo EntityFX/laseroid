@@ -58,6 +58,9 @@ var HeroShip = /** @class */ (function (_super) {
 				height: this.hexi.canvas.height - Main.gameArea.bottom - Main.gameArea.padding
 			}, false);
 
+		this.hexi.pointer.visible = collision ? true : false;
+
+
 		this.sprite.putCenter(this.collisionSprite, 0, 8);
 		this.sprite.putCenter(this.weaponSprites.leftWeapon, -20, -15);
 		this.sprite.putCenter(this.weaponSprites.rightWeapon, 20, -15);

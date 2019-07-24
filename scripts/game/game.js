@@ -75,10 +75,23 @@ var Game = /** @class */ (function () {
     }
 
     Game.prototype.nextLevel = function () {
-
         this.clearShips();
         this.level.wave++;
         this.setupLevel(this.level.wave);
+    };
+
+    Game.prototype.restoreState = function (gameState) {
+        var _this = this;
+        this.hexi.pause();
+        this.clearShips();
+        this.level.wave = gameState.wave;
+        this.score.points = gameState.scorePoints;
+        this.hero.life = gameState.life;
+        this.setupLevel(this.level.wave);
+        if (this.onGameReseted) {
+            this.onGameReseted();
+        }
+        this.hexi.resume();
     };
 
     Game.prototype.resetGame = function () {

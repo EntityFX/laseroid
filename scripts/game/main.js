@@ -25,6 +25,8 @@ var Main = /** @class */ (function () {
 	Main.resources = [
 		"images/environment1.png",
 		"images/environment2.png",
+		"images/environment3.png",
+		"images/environment4.png",
 		"images/interface.png",
 		"images/life-icon.png",
 
@@ -73,17 +75,22 @@ var Main = /** @class */ (function () {
 		"enemyConfiguration": null,
 		"heroConfiguration": null,
 		"levelsConfiguration": null,
-
 	}
 
-	Main.levelWaveConfiguration = {
-		1: {
-			"environment": "images/environment1.png",
-		},
-		2: {
-			"environment": "images/environment2.png"
-		},
-	};
+	// Main.levelWaveConfiguration = {
+	// 	1: {
+	// 		"environment": "images/environment1.png",
+	// 	},
+	// 	2: {
+	// 		"environment": "images/environment2.png"
+	// 	},
+	// 	3: {
+	// 		"environment": "images/environment3.png"
+	// 	},
+	// 	4: {
+	// 		"environment": "images/environment4.png"
+	// 	},
+	// };
 
 	Main.waveToLevelMapping = {
 		1: 0,
@@ -97,7 +104,9 @@ var Main = /** @class */ (function () {
 
 	Main.environments = [
 		"images/environment1.png",
-		"images/environment2.png"
+		"images/environment2.png",
+		"images/environment3.png",
+		"images/environment4.png",
 	];
 
     Main.prototype.hexi = null;
@@ -121,7 +130,12 @@ var Main = /** @class */ (function () {
     
     Main.prototype.gameTimeSeconds = 0;
 
-    Main.prototype.game = null;
+	Main.prototype.game = null;
+	Main.prototype.gameStorage = null;
+	
+	Main.prototype.fpsCounter = 0;
+	Main.prototype.lifeCheatCounter = 0;
+	Main.prototype.nextLevelCheatCounter = 0;
 
 	function Main($hexi, resourcesPackage, isMobile) {
 		var _this = this;
@@ -163,7 +177,7 @@ var Main = /** @class */ (function () {
 	};
 
 	Main.prototype.load = function () {
-
+		this.hexi.loadingBar();
 	};
 
 	Main.prototype.end = function () {
@@ -183,12 +197,6 @@ var Main = /** @class */ (function () {
 
         this.gameScene = this.hexi.group();
         this.screen = new MainScreen(_this.hexi, _this.resourcesPackage, this.gameScene);
-
-		setInterval(function name(params) {
-			_this.gameTimeSeconds++;
-			_this.changeState();
-		}, 1000);
-
 		for (var key in Main.sounds) {
 			if (Main.sounds.hasOwnProperty(key)) {
 				this.sounds[key] = this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, Main.sounds[key]));
@@ -224,8 +232,13 @@ var Main = /** @class */ (function () {
         });
 
         this.game = new Game(this.hexi, _this);
-        this.inputDevice = new InputDevice(_this.hexi, _this);
-        this.inputDevice.init();
+		this.inputDevice = new InputDevice(_this.hexi, _this);
+		this.gameStorage = new GameStorage(_this.hexi, _this);
+
+		this.screen.lifeTapped = this.inputDevice.lifeTapped.bind(this.inputDevice);
+		this.screen.nextLevelTapped = this.inputDevice.nextLevelTapped.bind(this.inputDevice);
+		this.screen.pauseTapped = this.inputDevice.pauseTapped.bind(this.inputDevice);
+		this.inputDevice.init();
 
         this.game.onGameReseted = (function() {
             _this.gameTimeSeconds = 0;
@@ -253,6 +266,14 @@ var Main = /** @class */ (function () {
 
         this.game.update();
 		//this.gameScene.update();
+
+		this.fpsCounter++;
+		if (this.fpsCounter >= (this.hexi.smoothie.fps || 60)) {
+			this.fpsCounter = 0;
+			_this.gameTimeSeconds++;
+			_this.changeState();
+		}
+		this.lifeCheatCounter--;
 	};
 
 	Main.prototype.nextLevel = function () {
@@ -283,6 +304,19 @@ var Main = /** @class */ (function () {
             "scorePoints" : this.game.score.points,
             "gameTimeSeconds" : this.gameTimeSeconds
         });
+	};
+
+	Main.prototype.saveGame = function () {
+		this.gameStorage.save();
+	};
+
+	Main.prototype.loadGame = function () {
+		var saveState = this.gameStorage.load();
+		if (!saveState) {
+			return;
+		}
+		this.gameTimeSeconds = saveState.gameTimeSeconds;
+		this.game.restoreState(saveState);
 	};
 
 	return Main;

@@ -84,11 +84,30 @@ var MainScreen = /** @class */ (function () {
 		"size": "12px",
 		"color": "#FFFFFF",
 		"text": "TIME"
-    };
+	};
+	
+	MainScreen.prototype.pauseButton = {
+		"position": { "x": 4, "y": 456 },
+		"button": null,
+		"font": "sans-serif",
+		"size": "14px",
+		"color": "#99CC00",
+		"fillColor": "#000000",
+		"text" : {
+			"0" : "PAUSE",
+			"1" : "RESUME",
+		},
+		"width" : 70,
+		"height" : 20
+	};
 
-    InputDevice.prototype.hexi = null;
-    InputDevice.prototype.resourcesPackage = null;
-    InputDevice.prototype.gameScene = null;
+    MainScreen.prototype.hexi = null;
+    MainScreen.prototype.resourcesPackage = null;
+	MainScreen.prototype.gameScene = null;
+	MainScreen.prototype.lifeTapped = null;
+
+	MainScreen.prototype.nextLevelSprite = null;
+	MainScreen.prototype.upgradeSprite = null;
 
     function MainScreen($hexi, resourcesPackage, gameScene) {
 		var _this = this;
@@ -106,15 +125,53 @@ var MainScreen = /** @class */ (function () {
 		this.environment = this.hexi.sprite(Main.environments.map(function(environment){
 			return "resources/{0}/{1}".format(_this.resourcesPackage, environment)
 		}), 146, 9);
-        this.environment.show(0);
-        
+		this.environment.show(0);
+		
+		this.nextLevelSprite = this.hexi.circle(
+			36, 
+			"#FF0000", 
+			"#AA0000", 
+			1,
+			82, 
+			93 
+		  );
+
+		this.upgradeSprite = this.hexi.circle(
+			36, 
+			"#0000FF", 
+			"#0000AA", 
+			1,
+			82, 
+			348 
+		  );
+
+		this.nextLevelSprite.interact = true;
+		this.nextLevelSprite.visible = false;
+		this.nextLevelSprite.release = function() {
+			if (_this.nextLevelTapped != null) {
+				_this.nextLevelTapped();
+			}
+		};
+		
+		this.upgradeSprite.interact = true;
+		this.upgradeSprite.visible = false;
+		this.upgradeSprite.release = function() {
+			if (_this.lifeTapped != null) {
+				_this.lifeTapped();
+			}
+		};
+
         this.lifeIcon = this.hexi.sprite("resources/{0}/images/life-icon.png".format(_this.resourcesPackage), 149, 434);
 
         this.gameScene.addChild(this.environment);
-        this.gameScene.addChild(this.lifeIcon);
+		this.gameScene.addChild(this.lifeIcon);
+
+
 		this.lifeText.textObject = this.hexi.text(initialState.life, this.lifeText.font, this.lifeText.size,
 			this.lifeText.color,
 			this.lifeText.position.x, this.lifeText.position.y);
+		this.lifeText.textObject.interact = true;
+
 		this.gameScene.addChild(this.lifeText.textObject);
 
 		this.levelText.textObject = this.hexi.text(initialState.level, this.levelText.font, this.levelText.size,
@@ -126,7 +183,6 @@ var MainScreen = /** @class */ (function () {
 			this.scorePointsText.color,
 			this.scorePointsText.position.x, this.scorePointsText.position.y);
 		this.gameScene.addChild(this.scorePointsText.textObject);
-		this.gameScene.addChild(this.levelText.textObject);
 
 		this.gameTimeText.textObject = this.hexi.text(String(initialState.gameTimeSeconds).toHHMMSS(), this.gameTimeText.font, this.gameTimeText.size,
 			this.gameTimeText.color,
@@ -157,6 +213,40 @@ var MainScreen = /** @class */ (function () {
 			this.gameTimeLabelText.color,
 			this.gameTimeLabelText.position.x, this.gameTimeLabelText.position.y);
 		this.gameScene.addChild(this.gameTimeLabelText.textObject);
+		this.gameScene.addChild(this.scorePointsLabelText.textObject);
+
+		this.pauseButton.button = this.hexi.group();
+
+		var pauseButton =this.hexi.rectangle(
+			this.pauseButton.width, 
+			this.pauseButton.height, 
+			this.pauseButton.fillColor, 
+			this.pauseButton.color, 
+			1, 
+			0, 0
+		  );
+
+		this.pauseButton.button.addChild(pauseButton);
+		var textObject = this.hexi.text(_this.pauseButton.text[0], this.pauseButton.font, this.pauseButton.size,
+			this.pauseButton.color,
+			0, 0);
+
+		this.pauseButton.button.addChild(textObject);
+		this.pauseButton.button.textObject = textObject;
+		textObject.setPosition(this.pauseButton.button.halfWidth - textObject.halfWidth, this.pauseButton.button.halfHeight - textObject.halfHeight);
+		this.pauseButton.button.setPosition(this.pauseButton.position.x, this.pauseButton.position.y);
+		this.pauseButton.button.interact = true;
+		this.gameScene.addChild(this.pauseButton.button);
+
+		this.pauseButton.button.release = function() {
+			if (_this.pauseTapped != null) {
+				_this.pauseButton.button.textObject.content = _this.pauseButton.text[_this.hexi.paused ? 0 : 1];
+				_this.pauseButton.button.textObject.setPosition(
+					_this.pauseButton.button.halfWidth - _this.pauseButton.button.textObject.halfWidth, 
+					_this.pauseButton.button.halfHeight - _this.pauseButton.button.textObject.halfHeight);
+				_this.pauseTapped();
+			}
+		};
     }
 
     MainScreen.prototype.update = function (state) {
