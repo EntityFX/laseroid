@@ -1,20 +1,20 @@
 "use strict";
 
-var EnemyShip = /** @class */ (function (_super) {
-	__extends(EnemyShip, _super);
+var Enemy = /** @class */ (function (_super) {
+	__extends(Enemy, _super);
 
-	EnemyShip.prototype.type = null;
+	Enemy.prototype.type = null;
 
-	EnemyShip.prototype.shipConfiguration = null;
+	Enemy.prototype.shipConfiguration = null;
 
-	EnemyShip.prototype.movementEngine = null;
+	Enemy.prototype.movementEngine = null;
 
-	EnemyShip.prototype.syncWeapons = {
+	Enemy.prototype.syncWeapons = {
 		"grouppedWeapons": null,
 		"grouppedCounters": {}
 	};
 
-	function EnemyShip($hexi, game, main, type) {
+	function Enemy($hexi, game, main, type) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.type = type;
 		_this.shipConfiguration = deepCopy(_this.configuration.enemyConfiguration.enemyShipsConfiguration[type]);
@@ -29,13 +29,13 @@ var EnemyShip = /** @class */ (function (_super) {
 		_this.setWeapon();
 		_this.gameScene.addChild(_this.sprite);
 		_this.life = _this.shipConfiguration.life;
-        _this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite,
+        _this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite,
              _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration);
 
 		return _this;
 	}
 
-	EnemyShip.prototype.update = function () {
+	Enemy.prototype.update = function () {
 		_super.prototype.update.call(this);
 
 		var _this = this;
@@ -46,7 +46,7 @@ var EnemyShip = /** @class */ (function (_super) {
 		this.movementEngine.update();
 	};
 
-	EnemyShip.prototype.setWeapon = function () {
+	Enemy.prototype.setWeapon = function () {
 		var _this = this;
 		this.automatedWeapons = deepCopy(_this.shipConfiguration.weapons);
 
@@ -106,7 +106,7 @@ var EnemyShip = /** @class */ (function (_super) {
 		this.isWeaponShooting = true;
 	};
 
-	EnemyShip.prototype.updateShooting = function () {
+	Enemy.prototype.updateShooting = function () {
 		_super.prototype.updateShooting.call(this);
 		var _this = this;
 
@@ -186,7 +186,7 @@ var EnemyShip = /** @class */ (function (_super) {
 		}
 	};
 
-	EnemyShip.prototype.shootWithWeapon = function (weapon) {
+	Enemy.prototype.shootWithWeapon = function (weapon) {
 		var _this = this;
 		var currentWeapon = _this.configuration.enemyConfiguration.enemyWeaponConfiguration[weapon.weapon];
 
@@ -214,7 +214,7 @@ var EnemyShip = /** @class */ (function (_super) {
 		_this.sounds[currentWeapon.sound].play();
 	};
 
-	EnemyShip.prototype.hit = function (bullet) {
+	Enemy.prototype.hit = function (bullet) {
 		if (bullet.type == "laser") {
 			if (bullet.hitEnemies.indexOf(this) == -1 && bullet.hitEnemies.length < bullet.hitMax) {
 				bullet.hitEnemies.push(this);
@@ -242,5 +242,5 @@ var EnemyShip = /** @class */ (function (_super) {
 	};
 
 
-	return EnemyShip;
-}(WeaponedShip));
+	return Enemy;
+}(WeaponedActor));

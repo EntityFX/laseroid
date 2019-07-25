@@ -24,7 +24,7 @@
         "horizontalSlowAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -0.63,
                         "vy": 0
@@ -45,7 +45,7 @@
         "horizontalNormalAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -1,
                         "vy": 0
@@ -124,7 +124,7 @@
         "bothSlowAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -0.75,
                         "vy": 0.75
@@ -170,7 +170,7 @@
         "bothFastAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -3,
                         "vy": 1.5
@@ -257,7 +257,7 @@
         "bothSharpVerticalFastAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -1,
                         "vy": 4
@@ -307,7 +307,7 @@
         "horizontalFastAndFollow": {
             "movements": [
                 {
-                    "type": "followHero",
+                    "type": "followPlayer",
                     "speedDelta": {
                         "vx": -4,
                         "vy": 0

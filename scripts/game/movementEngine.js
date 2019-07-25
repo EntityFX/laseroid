@@ -6,7 +6,7 @@ var MovementEngine =  /** @class */ (function () {
 
 	MovementEngine.prototype.sprite = null;
 
-	MovementEngine.prototype.heroSprite = null;
+	MovementEngine.prototype.playerSprite = null;
 
 	MovementEngine.prototype.movements = null;
 
@@ -24,10 +24,10 @@ var MovementEngine =  /** @class */ (function () {
 
 	MovementEngine.prototype.isBounceBottom = true;
 
-	function MovementEngine($hexi, sprite, heroSprite, movementConfigurationName, movementConfiguration) {
+	function MovementEngine($hexi, sprite, playerSprite, movementConfigurationName, movementConfiguration) {
 		this.hexi = $hexi;
 		this.sprite = sprite;
-		this.heroSprite = heroSprite;
+		this.playerSprite = playerSprite;
 		this.movementConfigurationName = movementConfigurationName;
 		this.movementConfiguration = movementConfiguration;
 		this.setMovement();
@@ -56,9 +56,9 @@ var MovementEngine =  /** @class */ (function () {
 			_this.isBounceBottom = false;
 			_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vx;
 		}
-		else if (_this.firstMovement.type == "followHero") {
+		else if (_this.firstMovement.type == "followPlayer") {
 			_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vx;
-			if (_this.sprite.x > _this.heroSprite.x) {
+			if (_this.sprite.x > _this.playerSprite.x) {
 				_this.sprite.vx = -1 * Math.abs(this.sprite.vx);
 			} else {
 				_this.sprite.vx = Math.abs(this.sprite.vx);
@@ -98,8 +98,8 @@ var MovementEngine =  /** @class */ (function () {
 				}
 			});
 
-		if (_this.firstMovement.type == "followHero") {
-			if (_this.sprite.x > _this.heroSprite.x) {
+		if (_this.firstMovement.type == "followPlayer") {
+			if (_this.sprite.x > _this.playerSprite.x) {
 				_this.sprite.vx = -1 * Math.abs(this.sprite.vx);
 			} else {
 				_this.sprite.vx = Math.abs(this.sprite.vx);
@@ -119,7 +119,7 @@ var MovementEngine =  /** @class */ (function () {
 			_this.sprite.vy = _this.firstMovement.speedDelta.vy;
 			_this.sprite.vx = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.sprite.vx;
 		}
-		else if (_this.firstMovement.type == "followHero") {
+		else if (_this.firstMovement.type == "followPlayer") {
 			_this.sprite.vy = (_this.hexi.randomInt(0, 1) == 0 ? -1 : 1) * _this.firstMovement.speedDelta.vy;
 		}
 		else {

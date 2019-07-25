@@ -1,0 +1,222 @@
+{
+    "screens": {
+        "mainScreen": {
+            "texts": {
+                "lifeText": {
+                    "position": {
+                        "x": 178,
+                        "y": 438
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "18px",
+                    "color": "#09BC09"
+                },
+                "waveText": {
+                    "position": {
+                        "x": 620,
+                        "y": 23
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#F0F0F0"
+                },
+                "levelText": {
+                    "position": {
+                        "x": 620,
+                        "y": 5
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#F0F0F0"
+                },
+                "scorePointsText": {
+                    "position": {
+                        "x": 4,
+                        "y": 96
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#B2B2B2"
+                },
+                "gameTimeText": {
+                    "position": {
+                        "x": 4,
+                        "y": 136
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#B2B2B2"
+                },
+                "levelLabelText": {
+                    "position": {
+                        "x": 565,
+                        "y": 5
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#99CC00",
+                    "text": "LEVEL"
+                },
+                "waveLabelText": {
+                    "position": {
+                        "x": 565,
+                        "y": 23
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#9DD19D",
+                    "text": "WAVE"
+                },
+                "scorePointsLabelText": {
+                    "position": {
+                        "x": 4,
+                        "y": 80
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#FFFFFF",
+                    "text": "SCORE"
+                },
+                "gameTimeLabelText": {
+                    "position": {
+                        "x": 4,
+                        "y": 120
+                    },
+                    "textObject": null,
+                    "font": "sans-serif",
+                    "size": "12px",
+                    "color": "#FFFFFF",
+                    "text": "TIME"
+                }
+            },
+            "buttons": {
+                "pauseButton": {
+                    "position": {
+                        "x": 4,
+                        "y": 456
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#99CC00",
+                    "fillColor": "#000000",
+                    "text": [
+                        "PAUSE",
+                        "RESUME"
+                    ],
+                    "border": {
+                        "type": "rectangle",
+                        "size": {
+                            "width": 70,
+                            "height": 20
+                        }
+                    }
+                },
+                "loadButton": {
+                    "position": {
+                        "x": 567,
+                        "y": 426
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#9DD19D",
+                    "fillColor": "#000000",
+                    "text": "LOAD",
+                    "border": {
+                        "type": "rectangle",
+                        "size": {
+                            "width": 70,
+                            "height": 20
+                        }
+                    }
+                },
+                "storeButton": {
+                    "position": {
+                        "x": 567,
+                        "y": 456
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#CCCC00",
+                    "fillColor": "#000000",
+                    "text": "STORE",
+                    "border": {
+                        "type": "rectangle",
+                        "size": {
+                            "width": 70,
+                            "height": 20
+                        }
+                    }
+                },
+                "resetButton": {
+                    "position": {
+                        "x": 567,
+                        "y": 366
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#CC0000",
+                    "fillColor": "#000000",
+                    "text": "RESET",
+                    "border": {
+                        "type": "rectangle",
+                        "size": {
+                            "width": 70,
+                            "height": 20
+                        }
+                    }
+                },
+                "nextLevelButton": {
+                    "position": {
+                        "x": 82,
+                        "y": 93
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#CC00CC",
+                    "fillColor": "#000000",
+                    "text": "",
+                    "alpha" : 0.5,
+                    "border": {
+                        "type": "circle",
+                        "size": {
+                            "radius": 36
+                        }
+                    }
+                },
+                "upgradeLevelButton": {
+                    "position": {
+                        "x": 82,
+                        "y": 348
+                    },
+                    "button": null,
+                    "font": "sans-serif",
+                    "size": "14px",
+                    "color": "#00CCCC",
+                    "fillColor": "#000000",
+                    "text": "",
+                    "alpha" : 0.5,
+                    "border": {
+                        "type": "circle",
+                        "size": {
+                            "radius": 36
+                        }
+                    }
+                }
+            },
+            "images": []
+        }
+    }
+}

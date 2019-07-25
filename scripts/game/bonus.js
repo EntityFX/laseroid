@@ -1,17 +1,17 @@
 "use strict";
 
-var BonusShip = /** @class */ (function (_super) {
-	__extends(BonusShip, _super);
+var Bonus = /** @class */ (function (_super) {
+	__extends(Bonus, _super);
 
-	BonusShip.prototype.type = null;
+	Bonus.prototype.type = null;
 
-	BonusShip.prototype.shipConfiguration = null;
+	Bonus.prototype.shipConfiguration = null;
 
-	BonusShip.prototype.upgradeBonuses = null;
+	Bonus.prototype.upgradeBonuses = null;
 
-	BonusShip.prototype.movementEngine = null;
+	Bonus.prototype.movementEngine = null;
 
-	function BonusShip($hexi, game, main, type) {
+	function Bonus($hexi, game, main, type) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.type = type;
 		_this.shipConfiguration = deepCopy(_this.configuration.enemyConfiguration.bonusShipsConfiguration[type]);
@@ -28,19 +28,19 @@ var BonusShip = /** @class */ (function (_super) {
 		_this.gameScene.addChild(_this.sprite);
 		_this.life = _this.shipConfiguration.life;
 
-		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.hero.sprite, _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration);
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite, _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration);
 
 		return _this;
 	}
 
-	BonusShip.prototype.hit = function (bullet) {
+	Bonus.prototype.hit = function (bullet) {
 		this.game.hexi.stage.remove(bullet);
 		this.remove();
 		_super.prototype.hit.call(this, bullet);
 		this.shootWithUpgrade(this.upgradeBonus);
 	};
 
-	BonusShip.prototype.shootWithUpgrade = function (upgradeBonus) {
+	Bonus.prototype.shootWithUpgrade = function (upgradeBonus) {
 		var _this = this;
 		//_this.game.sounds.shoot.play();
 		var upgradeBonusConfig = _this.configuration.enemyConfiguration.upgradeConfiguration[upgradeBonus.type];
@@ -63,7 +63,7 @@ var BonusShip = /** @class */ (function (_super) {
 		);
 	};
 
-	BonusShip.prototype.update = function () {
+	Bonus.prototype.update = function () {
 		_super.prototype.update.call(this);
 
 		if (this.sprite.parent == null) return;
@@ -79,5 +79,5 @@ var BonusShip = /** @class */ (function (_super) {
 		this.movementEngine.update();
 	};
 
-	return BonusShip;
-}(Ship));
+	return Bonus;
+}(Actor));

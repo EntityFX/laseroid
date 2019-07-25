@@ -34,8 +34,8 @@ var EnemyController= /** @class */ (function () {
 				_this.hexi.stage.remove(upgradeItem);
 			}
 
-			if (_this.hexi.hitTestRectangle(upgradeItem, _this.game.hero.collisionSprite)) {
-				_this.game.hero.hitUpgrade(upgradeItem);
+			if (_this.hexi.hitTestRectangle(upgradeItem, _this.game.player.collisionSprite)) {
+				_this.game.player.hitUpgrade(upgradeItem);
 			}
 			return upgradeItem.parent;
 		});

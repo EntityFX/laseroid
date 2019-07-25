@@ -21,36 +21,36 @@ var InputDevice = /** @class */ (function () {
         var _this = this;
 
         this.hexi.pointer.press = (function () {
-            _this.game.hero.startShoot();
+            _this.game.player.startShoot();
         }).bind(this);
     
         this.hexi.pointer.release = (function () {
-            _this.game.hero.stopShoot();
+            _this.game.player.stopShoot();
         }).bind(this);
     
         var spaceBar = this.hexi.keyboard(32);
     
         spaceBar.press = (function () {
-            _this.game.hero.startShoot();
+            _this.game.player.startShoot();
         }).bind(this);
     
         spaceBar.release = (function () {
-            _this.game.hero.stopShoot();
+            _this.game.player.stopShoot();
         }).bind(this);
     
         var plusButton = this.hexi.keyboard(189);
         plusButton.press = (function () {
-            _this.game.hero.downgrade();
+            _this.game.player.downgrade();
         }).bind(this);
     
         var minusButton = this.hexi.keyboard(187);
         minusButton.press = (function () {
-            _this.game.hero.upgrade();
+            _this.game.player.upgrade();
         }).bind(this);
     
         var minusButton2 = this.hexi.keyboard(61);
         minusButton2.press = (function () {
-            _this.game.hero.upgrade();
+            _this.game.player.upgrade();
         }).bind(this);
     
     
@@ -77,9 +77,21 @@ var InputDevice = /** @class */ (function () {
         this.main.lifeCheatCounter+= 60;
 
         if (this.main.lifeCheatCounter > 600) {
-            this.game.hero.upgrade();
+            this.game.player.upgrade();
             this.main.lifeCheatCounter = 0;
         }
+    };
+
+    InputDevice.prototype.loadTapped = function() {
+        this.main.loadGame();
+    };
+
+    InputDevice.prototype.storeTapped = function() {
+        this.main.saveGame();
+    };
+
+    InputDevice.prototype.resetTapped = function() {
+        this.main.game.resetGame();
     };
 
     InputDevice.prototype.nextLevelTapped = function() {

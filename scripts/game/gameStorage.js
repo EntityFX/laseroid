@@ -12,7 +12,7 @@ var GameStorage = /** @class */ (function () {
 
     GameStorage.prototype.save = function() {
         var storeObject = {
-            "life" : this.main.game.hero.life,
+            "life" : this.main.game.player.life,
             "wave" : this.main.game.level.wave,
             "scorePoints" : this.main.game.score.points,
             "gameTimeSeconds" : this.main.gameTimeSeconds,

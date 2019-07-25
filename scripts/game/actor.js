@@ -1,22 +1,22 @@
 "use strict";
 
-var Ship = /** @class */ (function () {
+var Actor = /** @class */ (function () {
 
-	Ship.prototype.hexi = null;
+	Actor.prototype.hexi = null;
 
-	Ship.prototype.sprite = null;
+	Actor.prototype.sprite = null;
 
-    Ship.prototype.game = null;
+    Actor.prototype.game = null;
     
-    Ship.prototype.configuration = null;
+    Actor.prototype.configuration = null;
 
-    Ship.prototype.resourcesPackage = null;
+    Actor.prototype.resourcesPackage = null;
 
-    Ship.prototype.sounds = null;
+    Actor.prototype.sounds = null;
 
-	Ship.prototype.life = 1;
+	Actor.prototype.life = 1;
 
-	function Ship($hexi, game, main) {
+	function Actor($hexi, game, main) {
 		this.hexi = $hexi;
         this.game = game;
         this.resourcesPackage = main.resourcesPackage;
@@ -25,22 +25,22 @@ var Ship = /** @class */ (function () {
         this.sounds = main.sounds;
 	}
 
-	Ship.prototype.move = function () {
+	Actor.prototype.move = function () {
 	}
 
 
-	Ship.prototype.update = function () {
+	Actor.prototype.update = function () {
 	}
 
-	Ship.prototype.setPosition = function (position) {
+	Actor.prototype.setPosition = function (position) {
 		this.sprite.setPosition(position.x, position.y);
 	};
 
-	Ship.prototype.remove = function () {
+	Actor.prototype.remove = function () {
 		this.gameScene.removeChild(this.sprite);
 	};
 
-	Ship.prototype.hit = function (bullet) {
+	Actor.prototype.hit = function (bullet) {
 		var _this = this;
 		var explosionSplashSprite = this.hexi.sprite(
             this.hexi.json("resources/{0}/images/bullet-texture.json".format(_this.resourcesPackage)).animations["Explosion"]);
@@ -56,5 +56,5 @@ var Ship = /** @class */ (function () {
 		this.sounds["explode"].play();
 	};
 
-	return Ship;
+	return Actor;
 }());

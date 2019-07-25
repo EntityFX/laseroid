@@ -50,7 +50,8 @@ var Main = /** @class */ (function () {
 
 		"data/hero-configuration.json",
 		"data/levels-configuration.json",
-		"data/enemy-configuration.json"
+		"data/enemy-configuration.json",
+		"data/ui-configuration.json",
 	];
 
 	Main.sounds = {
@@ -64,58 +65,17 @@ var Main = /** @class */ (function () {
 		"laser": "sounds/laser.wav",
 	};
 
-	Main.soundTrackConfiguration = [
-		"sounds/track1.ogg",
-		"sounds/track2.ogg",
-		"sounds/track3.ogg",
-		"sounds/track4.ogg",
-	];
-
 	Main.prototype.configuration = {
 		"enemyConfiguration": null,
-		"heroConfiguration": null,
+		"playerConfiguration": null,
 		"levelsConfiguration": null,
 	}
 
-	// Main.levelWaveConfiguration = {
-	// 	1: {
-	// 		"environment": "images/environment1.png",
-	// 	},
-	// 	2: {
-	// 		"environment": "images/environment2.png"
-	// 	},
-	// 	3: {
-	// 		"environment": "images/environment3.png"
-	// 	},
-	// 	4: {
-	// 		"environment": "images/environment4.png"
-	// 	},
-	// };
+	Main.prototype.hexi = null;
 
-	Main.waveToLevelMapping = {
-		1: 0,
-		25: 0,
-		26: 1,
-		49: 1,
-		50: 2,
-		74: 2,
-		75: 3
-	};
-
-	Main.environments = [
-		"images/environment1.png",
-		"images/environment2.png",
-		"images/environment3.png",
-		"images/environment4.png",
-	];
-
-    Main.prototype.hexi = null;
-    
-    Main.prototype.inputDevice = null;
+	Main.prototype.inputDevice = null;
 
 	Main.prototype.isMobile = false;
-
-
 
 	Main.prototype.gameScene = null;
 
@@ -126,13 +86,13 @@ var Main = /** @class */ (function () {
 	Main.prototype.soundTrack = null;
 	Main.prototype.soundTracks = [];
 
-    Main.prototype.resourcesPackage = "";
-    
-    Main.prototype.gameTimeSeconds = 0;
+	Main.prototype.resourcesPackage = "";
+
+	Main.prototype.gameTimeSeconds = 0;
 
 	Main.prototype.game = null;
 	Main.prototype.gameStorage = null;
-	
+
 	Main.prototype.fpsCounter = 0;
 	Main.prototype.lifeCheatCounter = 0;
 	Main.prototype.nextLevelCheatCounter = 0;
@@ -188,15 +148,19 @@ var Main = /** @class */ (function () {
 		var _this = this;
 
 		_this.configuration = {
-			"heroConfiguration": this.hexi.json("resources/{0}/data/hero-configuration.json".format(_this.resourcesPackage)),
+			"playerConfiguration": this.hexi.json("resources/{0}/data/hero-configuration.json".format(_this.resourcesPackage)),
 			"levelsConfiguration": this.hexi.json("resources/{0}/data/levels-configuration.json".format(_this.resourcesPackage)),
-			"enemyConfiguration": this.hexi.json("resources/{0}/data/enemy-configuration.json".format(_this.resourcesPackage))
+			"enemyConfiguration": this.hexi.json("resources/{0}/data/enemy-configuration.json".format(_this.resourcesPackage)),
+			"uiConfiguration": this.hexi.json("resources/{0}/data/ui-configuration.json".format(_this.resourcesPackage)),
 		};
 
-        this.hexi.pointer.visible = false;
+		this.hexi.pointer.visible = false;
 
-        this.gameScene = this.hexi.group();
-        this.screen = new MainScreen(_this.hexi, _this.resourcesPackage, this.gameScene);
+		this.gameScene = this.hexi.group();
+
+		this.screen = new MainScreen(_this.hexi, _this.resourcesPackage, this.gameScene, _this.configuration.levelsConfiguration.levels,
+			 _this.configuration.uiConfiguration.screens.mainScreen);
+
 		for (var key in Main.sounds) {
 			if (Main.sounds.hasOwnProperty(key)) {
 				this.sounds[key] = this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, Main.sounds[key]));
@@ -204,12 +168,10 @@ var Main = /** @class */ (function () {
 			}
 		}
 
-
-
-		Main.soundTrackConfiguration.forEach(function (soundTrackName) {
-			var soundObject = _this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, soundTrackName));
+		this.soundTracks = Object.values(_this.configuration.levelsConfiguration.levels).map(function (level) {
+			var soundObject = _this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, level.soundTrack));
 			soundObject.loop = true;
-			_this.soundTracks.push(soundObject);
+			return soundObject;
 		});
 
 		this.soundTrack = this.soundTracks[0];
@@ -220,51 +182,54 @@ var Main = /** @class */ (function () {
 			this.hexi.canvas.height - Main.gameArea.top - Main.gameArea.bottom - Main.gameArea.padding,
 			null, "#785E3A", Main.gameArea.padding, Main.gameArea.left, Main.gameArea.top);
 		gameArea.visible = false;
-        this.gameScene.addChild(gameArea);
-    
+		this.gameScene.addChild(gameArea);
 
-        this.screen.init({
-            "life" : 1,
-            "wave" : 1,
-            "level": 1,
-            "scorePoints" : 0,
-            "gameTimeSeconds" : 0
-        });
 
-        this.game = new Game(this.hexi, _this);
+		this.screen.init({
+			"life": 1,
+			"wave": 1,
+			"level": 1,
+			"scorePoints": 0,
+			"gameTimeSeconds": 0
+		});
+
+		this.game = new Game(this.hexi, _this);
 		this.inputDevice = new InputDevice(_this.hexi, _this);
 		this.gameStorage = new GameStorage(_this.hexi, _this);
 
 		this.screen.lifeTapped = this.inputDevice.lifeTapped.bind(this.inputDevice);
 		this.screen.nextLevelTapped = this.inputDevice.nextLevelTapped.bind(this.inputDevice);
 		this.screen.pauseTapped = this.inputDevice.pauseTapped.bind(this.inputDevice);
+		this.screen.loadTapped = this.inputDevice.loadTapped.bind(this.inputDevice);
+		this.screen.storeTapped = this.inputDevice.storeTapped.bind(this.inputDevice);
+		this.screen.resetTapped = this.inputDevice.resetTapped.bind(this.inputDevice);
 		this.inputDevice.init();
 
-        this.game.onGameReseted = (function() {
-            _this.gameTimeSeconds = 0;
-            _this.changeState();
-        }).bind(this);
+		this.game.onGameReseted = (function () {
+			_this.gameTimeSeconds = 0;
+			_this.changeState();
+		}).bind(this);
 
-        this.game.onLevelChanged = (function(currentWave) {
-            _this.levelChanged(currentWave);
-            _this.changeState();
-        }).bind(this);
+		this.game.onLevelChanged = (function (currentWave) {
+			_this.levelChanged(currentWave);
+			_this.changeState();
+		}).bind(this);
 
-        this.game.hero.onLifeChanged = (function(currentWave) {
-            _this.changeState();
-        }).bind(this);
-        
-        this.game.onEnemyDestroyed = (function() {
-            _this.changeState();
-        }).bind(this);
-        
+		this.game.player.onLifeChanged = (function (currentWave) {
+			_this.changeState();
+		}).bind(this);
+
+		this.game.onEnemyDestroyed = (function () {
+			_this.changeState();
+		}).bind(this);
+
 		this.hexi.state = this.playLoop.bind(this);
 	};
 
 	Main.prototype.playLoop = function () {
 		var _this = this;
 
-        this.game.update();
+		this.game.update();
 		//this.gameScene.update();
 
 		this.fpsCounter++;
@@ -279,12 +244,13 @@ var Main = /** @class */ (function () {
 	Main.prototype.nextLevel = function () {
 		this.gameScene.nextLevel();
 		this.changeState();
-    };
-    
-    Main.prototype.levelChanged = function(currentWave) {
-        var _this = this;
-        var levelValue = Main.waveToLevelMapping[currentWave];
-		if (levelValue != null) {
+	};
+
+	Main.prototype.levelChanged = function (currentWave) {
+		var _this = this;
+		var wave = this.configuration.levelsConfiguration.waves[currentWave];
+		if (wave != null) {
+			var levelValue = wave.level;
 			this.screen.changeEnvironment(levelValue);
 			var nextSoundTrack = _this.soundTracks[levelValue];
 			if (_this.soundTrack !== nextSoundTrack) {
@@ -293,17 +259,17 @@ var Main = /** @class */ (function () {
 				_this.soundTrack.playFrom(0);
 			}
 		}
-    }
+	}
 
 
 	Main.prototype.changeState = function () {
-        this.screen.update({
-            "life" : this.game.hero.life,
-            "wave" : this.game.level.wave,
-            "level": this.game.level.type,
-            "scorePoints" : this.game.score.points,
-            "gameTimeSeconds" : this.gameTimeSeconds
-        });
+		this.screen.update({
+			"life": this.game.player.life,
+			"wave": this.game.level.wave,
+			"level": this.game.level.type,
+			"scorePoints": this.game.score.points,
+			"gameTimeSeconds": this.gameTimeSeconds
+		});
 	};
 
 	Main.prototype.saveGame = function () {

@@ -7,11 +7,11 @@
  */
 var Game = /** @class */ (function () {
 
-    Game.heroSpeed = 10;
+    Game.playerSpeed = 10;
 
     Game.prototype.hexi = null;
 
-    Game.prototype.hero = null;
+    Game.prototype.player = null;
 
     Game.prototype.bulletsController = null;
 
@@ -22,7 +22,7 @@ var Game = /** @class */ (function () {
     Game.prototype.onLevelChanged = null;
 
     Game.prototype.level = {
-        "wave": 56,
+        "wave": 1,
         "type": 1
     };
 
@@ -34,7 +34,7 @@ var Game = /** @class */ (function () {
         var _this = this;
         this.hexi = $hexi;
         this.main = main;
-        this.hero = new HeroShip(this.hexi, this, main);
+        this.player = new Player(this.hexi, this, main);
         this.bulletsController = new BulletsController(this.hexi, this);
         this.enemyController = new EnemyController(this.hexi, this);
 
@@ -52,10 +52,10 @@ var Game = /** @class */ (function () {
     Game.prototype.setupLevel = function (currentWave) {
         var _this = this;
 
-        var currentLevel = this.main.configuration.levelsConfiguration[currentWave];
+        var currentLevel = this.main.configuration.levelsConfiguration.waves[currentWave];
 
         currentLevel.enemies.forEach(function (enemyConfig) {
-            var enemy = new EnemyShip(_this.hexi, _this, _this.main, enemyConfig.type)
+            var enemy = new Enemy(_this.hexi, _this, _this.main, enemyConfig.id)
             enemy.setPosition(enemyConfig.position);
             enemy.onDestroyed = _this.enemyDestroyed.bind(_this);
             _this.enemyController.enemies.push(enemy);
@@ -63,9 +63,9 @@ var Game = /** @class */ (function () {
 
         if (currentLevel.bonuses) {
             currentLevel.bonuses.forEach(function (bonusConfig) {
-                var bonusShip = new BonusShip(_this.hexi, _this, _this.main, bonusConfig.type)
-                bonusShip.setPosition(bonusConfig.position);
-                _this.enemyController.bonuses.push(bonusShip);
+                var bonus = new Bonus(_this.hexi, _this, _this.main, bonusConfig.id)
+                bonus.setPosition(bonusConfig.position);
+                _this.enemyController.bonuses.push(bonus);
             });
         }
 
@@ -86,11 +86,9 @@ var Game = /** @class */ (function () {
         this.clearShips();
         this.level.wave = gameState.wave;
         this.score.points = gameState.scorePoints;
-        this.hero.life = gameState.life;
+        this.player.life = gameState.life;
+        this.player.setLife(this.player.life);
         this.setupLevel(this.level.wave);
-        if (this.onGameReseted) {
-            this.onGameReseted();
-        }
         this.hexi.resume();
     };
 
@@ -100,7 +98,8 @@ var Game = /** @class */ (function () {
         this.score.points = 0;
         //this.gameTimeSeconds = 0;
         this.level.wave = 1;
-        this.hero.life = 1;
+        this.player.life = 1;
+        this.player.setLife(this.player.life);
         this.clearShips();
 
         this.setupLevel(this.level.wave);
@@ -117,7 +116,7 @@ var Game = /** @class */ (function () {
             this.nextLevel();
         }
 
-        this.hero.update();
+        this.player.update();
         this.bulletsController.update();
         this.enemyController.update();
 

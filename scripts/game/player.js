@@ -1,20 +1,20 @@
 "use strict";
 
-var HeroShip = /** @class */ (function (_super) {
-	__extends(HeroShip, _super);
+var Player = /** @class */ (function (_super) {
+	__extends(Player, _super);
 
-	HeroShip.prototype.weapons = [];
+	Player.prototype.weapons = [];
 
-	HeroShip.prototype.invisibilityCounter = 0;
+	Player.prototype.invisibilityCounter = 0;
 
-	HeroShip.prototype.collisionSprite = null;
+	Player.prototype.collisionSprite = null;
 
-	HeroShip.prototype.weaponSprites = {
+	Player.prototype.weaponSprites = {
 		"leftWeapon": null,
 		"rightWeapon": null
 	};
 
-	function HeroShip($hexi, game, main) {
+	function Player($hexi, game, main) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.sprite = this.hexi.sprite(["HeroShip.png"]);
 		_this.collisionSprite = this.hexi.rectangle(24, 20, "red", "red", 1);
@@ -30,7 +30,7 @@ var HeroShip = /** @class */ (function (_super) {
 		_this.sprite.playAnimation();
 		_this.weaponSprites.leftWeapon.playAnimation();
 		_this.weaponSprites.rightWeapon.playAnimation();
-		_this.hexi.arrowControl(_this.sprite, Game.heroSpeed);
+		_this.hexi.arrowControl(_this.sprite, Game.playerSpeed);
 
 		_this.gameScene.addChild(_this.sprite);
 		_this.gameScene.addChild(_this.collisionSprite);
@@ -41,7 +41,7 @@ var HeroShip = /** @class */ (function (_super) {
 		return _this;
 	}
 
-	HeroShip.prototype.update = function () {
+	Player.prototype.update = function () {
 		_super.prototype.update.call(this);
 
 		//this.sprite.vy = 0;
@@ -74,7 +74,7 @@ var HeroShip = /** @class */ (function (_super) {
 		this.updateShooting();
 	};
 
-	HeroShip.prototype.onShootStarted = function () {
+	Player.prototype.onShootStarted = function () {
 		var _this = this;
 		_this.weapons.forEach(function (weapon) {
 			if (weapon.weaponItensityCounter == 0) {
@@ -83,14 +83,14 @@ var HeroShip = /** @class */ (function (_super) {
 		});
 	}
 
-	HeroShip.prototype.onShootStopped = function () {
+	Player.prototype.onShootStopped = function () {
 		var _this = this;
 		_this.weapons.forEach(function (weapon) {
 			weapon.weaponItensityCounter = 0;
 		});
 	}
 
-	HeroShip.prototype.updateShooting = function () {
+	Player.prototype.updateShooting = function () {
 		_super.prototype.updateShooting.call(this);
 		var _this = this;
 
@@ -139,9 +139,9 @@ var HeroShip = /** @class */ (function (_super) {
 		}
 	}
 
-	HeroShip.prototype.shootWithLaser = function (currentWeapon, weapon) {
+	Player.prototype.shootWithLaser = function (currentWeapon, weapon) {
 		var _this = this;
-		if (_this.game.bulletsController.heroLaser != null) {
+		if (_this.game.bulletsController.playerLaser != null) {
 			return;
 		}
 		var beam = _this.hexi.sprite(currentWeapon.sprites.beamSprite);
@@ -152,7 +152,7 @@ var HeroShip = /** @class */ (function (_super) {
 		var shine = _this.hexi.sprite(currentWeapon.sprites.shineSprite);
 		_this.sprite.putCenter(shine, 0, weapon.position.y - shine.halfHeight);
 
-		_this.game.bulletsController.heroLaser = {
+		_this.game.bulletsController.playerLaser = {
 			"beam": beam,
 			"shine": shine,
 			"timeToLive": currentWeapon.timeToLive,
@@ -163,13 +163,13 @@ var HeroShip = /** @class */ (function (_super) {
 		};
 	};
 
-	HeroShip.prototype.shootWithBullets = function (currentWeapon, weapon) {
+	Player.prototype.shootWithBullets = function (currentWeapon, weapon) {
 		var _this = this;
 		_this.hexi.shoot(
 			_this.sprite, 4.7124,   // 3/2*pi          
 			weapon.position.x, - _this.sprite.halfHeight + weapon.position.y,
 			_this.hexi.stage, currentWeapon.speed,
-			_this.game.bulletsController.heroBullets,
+			_this.game.bulletsController.playerBullets,
 			(function () {
 				var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
 					? currentWeapon.sprite
@@ -185,9 +185,9 @@ var HeroShip = /** @class */ (function (_super) {
 			}).bind(_this));
 	};
 
-	HeroShip.prototype.shootWithWeapon = function (weapon) {
+	Player.prototype.shootWithWeapon = function (weapon) {
 		var _this = this;
-		var currentWeapon = _this.configuration.heroConfiguration.heroWeaponConfiguration[weapon.weapon];
+		var currentWeapon = _this.configuration.playerConfiguration.playerWeaponConfiguration[weapon.weapon];
 
 		if (currentWeapon.type == "laser") {
 			_this.shootWithLaser(currentWeapon, weapon);
@@ -197,9 +197,9 @@ var HeroShip = /** @class */ (function (_super) {
 
 	};
 
-	HeroShip.prototype.setWeapon = function () {
+	Player.prototype.setWeapon = function () {
 		var _this = this;
-		var weaponConfiguration = _this.configuration.heroConfiguration.heroLevelWeapons[this.life];
+		var weaponConfiguration = _this.configuration.playerConfiguration.playerLevelWeapons[this.life];
 
 		if (!weaponConfiguration) return;
 
@@ -227,36 +227,36 @@ var HeroShip = /** @class */ (function (_super) {
 		}
 
 		this.weapons.forEach(function (weapon) {
-			var currentWeapon = _this.configuration.heroConfiguration.heroWeaponConfiguration[weapon.weapon];
+			var currentWeapon = _this.configuration.playerConfiguration.playerWeaponConfiguration[weapon.weapon];
 			weapon.options = currentWeapon;
 			weapon.weaponItensityCounter = 0;
 		});
 
 		this.automatedWeapons.forEach(function (weapon) {
-			var currentWeapon = _this.configuration.heroConfiguration.heroWeaponConfiguration[weapon.weapon];
+			var currentWeapon = _this.configuration.playerConfiguration.playerWeaponConfiguration[weapon.weapon];
 			weapon.options = currentWeapon;
 			weapon.weaponItensityCounter = 0;
 		});
 	}
 
-	HeroShip.prototype.upgrade = function () {
+	Player.prototype.upgrade = function () {
 		this.life++;
-        this.setWeapon();
-        
-        if (this.onLifeChanged) {
-            this.onLifeChanged(this.life);
-        }
+		this.setLife(this.life);
 	}
 
-	HeroShip.prototype.downgrade = function () {
+	Player.prototype.downgrade = function () {
 		this.life--;
+		this.setLife(this.life);
+	}
+
+	Player.prototype.setLife = function (life) {
 		this.setWeapon();
         if (this.onLifeChanged) {
-            this.onLifeChanged(this.life);
+            this.onLifeChanged(life);
         }
 	}
 
-	HeroShip.prototype.hit = function (bullet) {
+	Player.prototype.hit = function (bullet) {
 		this.hexi.stage.remove(bullet);
 
 		if (this.invisibilityCounter > 0) {
@@ -273,7 +273,7 @@ var HeroShip = /** @class */ (function (_super) {
 		_super.prototype.hit.call(this, bullet);
 	};
 
-	HeroShip.prototype.hitUpgrade = function (upgradeItem) {
+	Player.prototype.hitUpgrade = function (upgradeItem) {
 		this.hexi.stage.remove(upgradeItem);
 
 		if (this.invisibilityCounter > 0) {
@@ -285,5 +285,5 @@ var HeroShip = /** @class */ (function (_super) {
 		this.invisibilityCounter = 25;
 	};
 
-	return HeroShip;
-}(WeaponedShip));
+	return Player;
+}(WeaponedActor));

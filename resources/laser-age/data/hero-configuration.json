@@ -1,5 +1,5 @@
 {
-    "heroWeaponConfiguration": {
+    "playerWeaponConfiguration": {
         "torpedo": {
             "sprite": "Bullet1_1.png",
             "hitPoints": 1,
@@ -64,7 +64,7 @@
             "sound": "laser"
         }
     },
-    "heroLevelWeapons": {
+    "playerLevelWeapons": {
         "1": {
             "weapons": [
                 {
