@@ -11,6 +11,8 @@ var BulletsController = /** @class */ (function () {
 
 	BulletsController.prototype.enemyBullets = [];
 
+	BulletsController.prototype.explosionSplashes = [];
+
 	function BulletsController($hexi, game) {
 		this.hexi = $hexi;
 		this.game = game;
@@ -37,6 +39,18 @@ var BulletsController = /** @class */ (function () {
 
 	BulletsController.prototype.update = function () {
 		var _this = this;
+
+		this.updatePlayerBullets();
+		this.updateEnemyBullets();
+		this.updatePlayerLaser();
+		this.updateExplosions();
+
+		this.hexi.move(this.playerBullets);
+		this.hexi.move(this.enemyBullets);
+	};
+
+	BulletsController.prototype.updatePlayerBullets = function () {
+		var _this = this;
 		this.playerBullets = this.playerBullets.filter(function (bullet) {
 			if (bullet.y < -bullet.height) {
 				_this.hexi.stage.remove(bullet);
@@ -56,32 +70,10 @@ var BulletsController = /** @class */ (function () {
 
 			return bullet.parent;
 		});
+	};
 
-		if (_this.playerLaser) {
-			_this.playerLaser.beam.x = _this.game.player.sprite.x - _this.playerLaser.beam.halfWidth;
-			_this.playerLaser.shine.x = _this.game.player.sprite.x - _this.playerLaser.shine.halfWidth;
-			_this.playerLaser.timeToLive--;
-
-			_this.game.enemyController.enemies.forEach(function (enemy) {
-				if (_this.intersects(_this.playerLaser.beam, enemy.sprite)) {
-					enemy.hit(_this.playerLaser);
-				}
-			})
-
-			_this.game.enemyController.bonuses.forEach(function (bonus) {
-				if (_this.intersects(_this.playerLaser.beam, bonus.sprite)) {
-					bonus.hit(_this.playerLaser);
-				}
-			})
-
-			if (_this.playerLaser.timeToLive <= 0) {
-				_this.hexi.stage.remove(_this.playerLaser.beam);
-				_this.hexi.stage.remove(_this.playerLaser.shine);
-				_this.playerLaser.beam.alpha = _this.playerLaser.timeToLive % 2 === 1 ? 1 : 0.1;
-				_this.playerLaser = null;
-			}
-		}
-
+	BulletsController.prototype.updateEnemyBullets = function () {
+		var _this = this;
 		this.enemyBullets = this.enemyBullets.filter(function (bullet) {
 
 			if (bullet.y >= _this.hexi.canvas.height + bullet.height) {
@@ -96,9 +88,47 @@ var BulletsController = /** @class */ (function () {
 
 			return bullet.parent;
 		});
+	};
 
-		this.hexi.move(this.playerBullets);
-		this.hexi.move(this.enemyBullets);
+	BulletsController.prototype.updatePlayerLaser = function () {
+		var _this = this;
+		if (!_this.playerLaser) {
+			return;
+		}
+		_this.playerLaser.beam.x = _this.game.player.sprite.x - _this.playerLaser.beam.halfWidth;
+		_this.playerLaser.shine.x = _this.game.player.sprite.x - _this.playerLaser.shine.halfWidth;
+		_this.playerLaser.timeToLive--;
+
+		_this.game.enemyController.enemies.forEach(function (enemy) {
+			if (_this.intersects(_this.playerLaser.beam, enemy.sprite)) {
+				enemy.hit(_this.playerLaser);
+			}
+		})
+
+		_this.game.enemyController.bonuses.forEach(function (bonus) {
+			if (_this.intersects(_this.playerLaser.beam, bonus.sprite)) {
+				bonus.hit(_this.playerLaser);
+			}
+		})
+
+		if (_this.playerLaser.timeToLive <= 0) {
+			_this.hexi.stage.remove(_this.playerLaser.beam);
+			_this.hexi.stage.remove(_this.playerLaser.shine);
+			_this.playerLaser.beam.alpha = _this.playerLaser.timeToLive % 2 === 1 ? 1 : 0.1;
+			_this.playerLaser = null;
+		}
+	};
+
+	BulletsController.prototype.updateExplosions = function () {
+		var _this = this;
+		this.explosionSplashes = this.explosionSplashes.filter(function (explosionSplash) {
+			explosionSplash.ticks++;
+
+			if (explosionSplash.ticks > 18) {
+				_this.hexi.stage.remove(explosionSplash);
+			}
+			return explosionSplash.parent;
+		});
 	};
 
 	BulletsController.prototype.clear = function () {

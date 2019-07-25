@@ -52,7 +52,7 @@ var Actor = /** @class */ (function () {
 		}
 		explosionSplashSprite.playAnimation();
 		explosionSplashSprite.ticks = 0;
-		this.game.explosionSplashes.push(explosionSplashSprite);
+		_this.game.bulletsController.explosionSplashes.push(explosionSplashSprite);
 		this.sounds["explode"].play();
 	};
 

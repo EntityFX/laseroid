@@ -17,8 +17,6 @@ var Game = /** @class */ (function () {
 
     Game.prototype.enemyController = null;
 
-    Game.prototype.explosionSplashes = [];
-
     Game.prototype.onLevelChanged = null;
 
     Game.prototype.level = {
@@ -119,15 +117,6 @@ var Game = /** @class */ (function () {
         this.player.update();
         this.bulletsController.update();
         this.enemyController.update();
-
-        this.explosionSplashes = this.explosionSplashes.filter(function (explosionSplash) {
-            explosionSplash.ticks++;
-
-            if (explosionSplash.ticks > 18) {
-                _this.hexi.stage.remove(explosionSplash);
-            }
-            return explosionSplash.parent;
-        });
     };
 
     Game.prototype.enemyDestroyed = function () {
