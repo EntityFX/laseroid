@@ -52,6 +52,11 @@ var Game = /** @class */ (function () {
 
         var currentLevel = this.main.configuration.levelsConfiguration.waves[currentWave];
 
+        if (currentLevel == null) {
+            currentWave = this.level.wave = 1;
+            currentLevel = this.main.configuration.levelsConfiguration.waves[currentWave];
+        }
+
         currentLevel.enemies.forEach(function (enemyConfig) {
             var enemy = new Enemy(_this.hexi, _this, _this.main, enemyConfig.id)
             enemy.setPosition(enemyConfig.position);
@@ -75,6 +80,24 @@ var Game = /** @class */ (function () {
     Game.prototype.nextLevel = function () {
         this.clearShips();
         this.level.wave++;
+        this.setupLevel(this.level.wave);
+    };
+
+    Game.prototype.previousLevel = function () {
+        this.clearShips();
+        this.level.wave--;
+        this.setupLevel(this.level.wave);
+    };
+
+    Game.prototype.forwardLevel = function () {
+        this.clearShips();
+        this.level.wave+=5;
+        this.setupLevel(this.level.wave);
+    };
+
+    Game.prototype.rewindLevel = function () {
+        this.clearShips();
+        this.level.wave-=5;
         this.setupLevel(this.level.wave);
     };
 

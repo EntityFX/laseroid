@@ -661,6 +661,25 @@
             },
             "type": "bullet",
             "sound": "yellow-laser"
+        },
+        "whiteLaser": {
+            "sprite": "Bullet8_1.png",
+            "intensity": [
+                {
+                    "min": 50,
+                    "max": 80
+                },
+                {
+                    "min": 60,
+                    "max": 120
+                }
+            ],
+            "speed": {
+                "min": 4,
+                "max": 6
+            },
+            "type": "bullet",
+            "sound": "yellow-laser"
         }
     },
     "enemyShipsConfiguration": {
@@ -990,6 +1009,152 @@
             "sprite": "BossShip2_1.png",
             "movement": "bothSlowAndFollow",
             "killPoints": 41300
+        },
+        "boss3": {
+            "life": 500,
+            "weapons": [
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": -15,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": 15,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": -52,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": -35,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 35,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 52,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "whiteLaser",
+                    "position": {
+                        "x": -115,
+                        "y": -12
+                    }
+                },
+                {
+                    "weapon": "whiteLaser",
+                    "position": {
+                        "x": 115,
+                        "y": -12
+                    }
+                }
+            ],
+            "sprite": "BossShip3_1.png",
+            "movement": "bothSlowAndFollow",
+            "killPoints": 100000
+        },
+        "epic": {
+            "life": 1000,
+            "weapons": [
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": -15,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "yellowLaser",
+                    "position": {
+                        "x": 15,
+                        "y": 0
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": -52,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": -35,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 35,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "blueTorpedo",
+                    "position": {
+                        "x": 52,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "whiteLaser",
+                    "position": {
+                        "x": -115,
+                        "y": -12
+                    }
+                },
+                {
+                    "weapon": "whiteLaser",
+                    "position": {
+                        "x": 115,
+                        "y": -12
+                    }
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 1.221730476396031,
+                    "speedMultiplier" : 1.08
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 1.919862177193762,
+                    "speedMultiplier" : 1.08
+                }
+            ],
+            "sprite": "BossShip3_1.png",
+            "movement": "bothSlowAndFollow",
+            "killPoints": 250000
         }
     },
 

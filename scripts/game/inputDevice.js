@@ -59,6 +59,22 @@ var InputDevice = /** @class */ (function () {
             _this.game.nextLevel();
         }).bind(this);
 
+        var previousButton = this.hexi.keyboard(80);
+        previousButton.press = (function () {
+            _this.game.previousLevel();
+        }).bind(this);
+
+    
+        var forwardButton = this.hexi.keyboard(70);
+        forwardButton.press = (function () {
+            _this.game.forwardLevel();
+        }).bind(this);
+
+        var rewindButton = this.hexi.keyboard(82);
+        rewindButton.press = (function () {
+            _this.game.rewindLevel();
+        }).bind(this);
+
         var saveButton = this.hexi.keyboard(83);
         saveButton.press = (function () {
             _this.main.saveGame();

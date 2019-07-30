@@ -25,10 +25,7 @@ var Enemy = /** @class */ (function (_super) {
 
 	Enemy.prototype.lifeLine = null;
 
-	Enemy.prototype.syncWeapons = {
-		"grouppedWeapons": null,
-		"grouppedCounters": {}
-	};
+	Enemy.prototype.syncWeapons = null;
 
 	function Enemy($hexi, game, main, type) {
 		var _this = _super.call(this, $hexi, game, main) || this;
@@ -80,6 +77,11 @@ var Enemy = /** @class */ (function (_super) {
 	Enemy.prototype.setWeapon = function () {
 		var _this = this;
 		this.automatedWeapons = deepCopy(_this.shipConfiguration.weapons);
+
+		this.syncWeapons = {
+			"grouppedWeapons": null,
+			"grouppedCounters": {}
+		};
 
 		if (_this.shipConfiguration.isSyncWeapon) {
 			this.automatedWeapons.forEach(function (weapon) {
