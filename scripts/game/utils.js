@@ -33,6 +33,30 @@ function groupBy(sourceArray, property) {
     }, {});
 }
 
+function rgbToHex(r, g, b) {
+    function rgbToHexComponent(rgb) {
+        var hex = (rgb | 0).toString(16);
+        if (hex.length < 2) {
+            hex = "0" + hex;
+        }
+        return hex;
+    };
+
+    var red = rgbToHexComponent(r);
+    var green = rgbToHexComponent(g);
+    var blue = rgbToHexComponent(b);
+    return "#" + red + green + blue;
+}
+
+function hexToRgb(hex) {
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+
+    return r + "," + g + "," + b;
+}
+
 String.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10);
     var hours = Math.floor(sec_num / 3600);

@@ -13,15 +13,6 @@ var Main = /** @class */ (function () {
 		isScaleToWindow: false
 	};
 
-	Main.gameArea = {
-		top: 3,
-		left: 140,
-		bottom: 10,
-		enemyBottom: 160,
-		right: 78,
-		padding: 6
-	}
-
 	Main.resources = [
 		"images/environment1.png",
 		"images/environment2.png",
@@ -39,6 +30,8 @@ var Main = /** @class */ (function () {
 		"sounds/explode.wav",
 		"sounds/hero-green-plasma-shoot.wav",
 		"sounds/alien-green-plasma-shoot.wav",
+		"sounds/alien-blue-torpedo-shoot.wav",
+		"sounds/alien-yellow-laser.wav",
 		"sounds/pulse-plasma.wav",
 		"sounds/laser.wav",
 
@@ -61,6 +54,8 @@ var Main = /** @class */ (function () {
 		"explode": "sounds/explode.wav",
 		"green-plasma-shoot": "sounds/hero-green-plasma-shoot.wav",
 		"alien-green-plasma-shoot": "sounds/alien-green-plasma-shoot.wav",
+		"blue-torpedo": "sounds/alien-blue-torpedo-shoot.wav",
+		"yellow-laser": "sounds/alien-yellow-laser.wav",
 		"pulse-plasma": "sounds/pulse-plasma.wav",
 		"laser": "sounds/laser.wav",
 	};
@@ -159,7 +154,7 @@ var Main = /** @class */ (function () {
 		this.gameScene = this.hexi.group();
 
 		this.screen = new MainScreen(_this.hexi, _this.resourcesPackage, this.gameScene, _this.configuration.levelsConfiguration.levels,
-			 _this.configuration.uiConfiguration.screens.mainScreen);
+			_this.configuration.uiConfiguration.screens.mainScreen);
 
 		for (var key in Main.sounds) {
 			if (Main.sounds.hasOwnProperty(key)) {
@@ -178,9 +173,14 @@ var Main = /** @class */ (function () {
 		this.soundTrack.play();
 
 		var gameArea = this.hexi.rectangle(
-			this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.left - Main.gameArea.padding,
-			this.hexi.canvas.height - Main.gameArea.top - Main.gameArea.bottom - Main.gameArea.padding,
-			null, "#785E3A", Main.gameArea.padding, Main.gameArea.left, Main.gameArea.top);
+			this.hexi.canvas.width - _this.configuration.uiConfiguration.gameArea.right
+				- _this.configuration.uiConfiguration.gameArea.left
+				- _this.configuration.uiConfiguration.gameArea.padding,
+			this.hexi.canvas.height - _this.configuration.uiConfiguration.gameArea.top 
+				- _this.configuration.uiConfiguration.gameArea.bottom 
+				- _this.configuration.uiConfiguration.gameArea.padding,
+			null, "#785E3A", _this.configuration.uiConfiguration.gameArea.padding, 
+			_this.configuration.uiConfiguration.gameArea.left, _this.configuration.uiConfiguration.gameArea.top);
 		gameArea.visible = false;
 		this.gameScene.addChild(gameArea);
 
@@ -224,6 +224,7 @@ var Main = /** @class */ (function () {
 		}).bind(this);
 
 		this.hexi.state = this.playLoop.bind(this);
+		_this.changeState();
 	};
 
 	Main.prototype.playLoop = function () {
@@ -252,7 +253,7 @@ var Main = /** @class */ (function () {
 		if (wave != null) {
 			var levelValue = wave.level;
 			this.screen.changeEnvironment(levelValue);
-			var nextSoundTrack = _this.soundTracks[levelValue];
+			var nextSoundTrack = _this.soundTracks[levelValue - 1];
 			if (_this.soundTrack !== nextSoundTrack) {
 				_this.soundTrack.pause();
 				_this.soundTrack = nextSoundTrack;

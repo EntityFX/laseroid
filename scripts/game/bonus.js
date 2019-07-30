@@ -28,7 +28,10 @@ var Bonus = /** @class */ (function (_super) {
 		_this.gameScene.addChild(_this.sprite);
 		_this.life = _this.shipConfiguration.life;
 
-		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite, _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration);
+		_this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite
+			, _this.shipConfiguration.movement
+			, _this.configuration.enemyConfiguration.enemyMovementConfiguration
+			, _this.configuration.uiConfiguration.gameArea);
 
 		return _this;
 	}
@@ -70,10 +73,10 @@ var Bonus = /** @class */ (function (_super) {
 
 		var collision = this.hexi.contain(this.sprite,
 			{
-				x: Main.gameArea.left + Main.gameArea.padding,
-				y: Main.gameArea.top + Main.gameArea.padding,
-				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
-				height: this.hexi.canvas.height - Main.gameArea.enemyBottom - Main.gameArea.padding
+				x: this.configuration.uiConfiguration.gameArea.left + this.configuration.uiConfiguration.gameArea.padding,
+				y: this.configuration.uiConfiguration.gameArea.top + this.configuration.uiConfiguration.gameArea.padding,
+				width: this.hexi.canvas.width - this.configuration.uiConfiguration.gameArea.right - this.configuration.uiConfiguration.gameArea.padding,
+				height: this.hexi.canvas.height - this.configuration.uiConfiguration.gameArea.enemyBottom - this.configuration.uiConfiguration.gameArea.padding
 			}, true);
 
 		this.movementEngine.update();

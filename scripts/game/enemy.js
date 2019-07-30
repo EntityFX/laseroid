@@ -9,6 +9,22 @@ var Enemy = /** @class */ (function (_super) {
 
 	Enemy.prototype.movementEngine = null;
 
+	Enemy.prototype.initialLife = 0;
+
+	Enemy.prototype.lifeText =  {
+		"position": {
+			"x": 0,
+			"y": 0
+		},
+		"font": "sans-serif",
+		"size": "10px",
+		"color": "#00F000"
+	};
+
+	Enemy.prototype.textObject = null;
+
+	Enemy.prototype.lifeLine = null;
+
 	Enemy.prototype.syncWeapons = {
 		"grouppedWeapons": null,
 		"grouppedCounters": {}
@@ -28,9 +44,24 @@ var Enemy = /** @class */ (function (_super) {
 
 		_this.setWeapon();
 		_this.gameScene.addChild(_this.sprite);
+
 		_this.life = _this.shipConfiguration.life;
+		_this.initialLife = _this.shipConfiguration.life;
+
+		_this.textObject = _this.hexi.text(_this.life, _this.lifeText.font, _this.lifeText.size,
+		_this.getLifeColor(),
+		_this.lifeText.position.x, _this.lifeText.position.y);
+		_this.sprite.addChild(_this.textObject);
+		_this.sprite.putTop(this.textObject, 0, -3);
+
+		_this.lifeLine = _this.hexi.line(_this.getLifeColor(), 2, 0, 0, _this.sprite.width, 0);
+		_this.sprite.addChild(_this.lifeLine);
+		_this.sprite.putTop(this.lifeLine, -this.sprite.halfWidth + 1, 0);
+		//_this.lifeLine.strokeStyle = this.getLifeColor();
+
         _this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite,
-             _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration);
+			 _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration
+			 , _this.configuration.uiConfiguration.gameArea);
 
 		return _this;
 	}
@@ -190,15 +221,18 @@ var Enemy = /** @class */ (function (_super) {
 		var _this = this;
 		var currentWeapon = _this.configuration.enemyConfiguration.enemyWeaponConfiguration[weapon.weapon];
 
+		var speed = currentWeapon.speed.min && currentWeapon.speed.max
+		? _this.hexi.randomFloat(currentWeapon.speed.min, currentWeapon.speed.max)
+		: currentWeapon.speed;
+			
+		speed = weapon.speedMultiplier ? weapon.speedMultiplier * speed : speed;
+
 		_this.hexi.shoot(
 			_this.sprite, weapon.angle ? weapon.angle : 1.57,   // 3/2*pi          
 			weapon.position.x,
 			_this.sprite.halfHeight + weapon.position.y,
 			_this.hexi.stage,
-			currentWeapon.speed.min && currentWeapon.speed.max
-				? _this.hexi.randomFloat(currentWeapon.speed.min, currentWeapon.speed.max)
-				: currentWeapon.speed,
-			_this.game.bulletsController.enemyBullets,
+			speed, _this.game.bulletsController.enemyBullets,
 			(function () {
 				var bulletSprite = _this.hexi.sprite(currentWeapon.sprite
 					? currentWeapon.sprite
@@ -239,7 +273,19 @@ var Enemy = /** @class */ (function (_super) {
             }
 			this.remove();
 		}
+		this.textObject.content = this.life + "/" + this.initialLife;
+		this.sprite.putTop(this.textObject, 0, -3);
+		this.textObject.style.fill = this.getLifeColor();
+		this.lifeLine.strokeStyle  = this.getLifeColor();
+		this.lifeLine.scaleX = this.life / this.initialLife;
 	};
+
+	Enemy.prototype.getLifeColor = function() {
+		var r = 255 - (this.life / this.initialLife * 128);
+		var g = (this.life / this.initialLife * 255);
+		var b = 0;
+		return rgbToHex(r, g, b);
+	}
 
 
 	return Enemy;

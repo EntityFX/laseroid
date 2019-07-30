@@ -23,13 +23,15 @@ var MovementEngine =  /** @class */ (function () {
 	MovementEngine.prototype.movementConfigurationName = null;
 
 	MovementEngine.prototype.isBounceBottom = true;
+	MovementEngine.prototype.gameAreaConfiguration = true;
 
-	function MovementEngine($hexi, sprite, playerSprite, movementConfigurationName, movementConfiguration) {
+	function MovementEngine($hexi, sprite, playerSprite, movementConfigurationName, movementConfiguration, gameAreaConfiguration) {
 		this.hexi = $hexi;
 		this.sprite = sprite;
 		this.playerSprite = playerSprite;
 		this.movementConfigurationName = movementConfigurationName;
 		this.movementConfiguration = movementConfiguration;
+		this.gameAreaConfiguration = gameAreaConfiguration;
 		this.setMovement();
 	}
 
@@ -76,10 +78,10 @@ var MovementEngine =  /** @class */ (function () {
 
 		var collision = this.hexi.contain(this.sprite,
 			{
-				x: Main.gameArea.left + Main.gameArea.padding,
-				y: Main.gameArea.top + Main.gameArea.padding,
-				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
-				height: this.hexi.canvas.height - Main.gameArea.enemyBottom - Main.gameArea.padding
+				x: this.gameAreaConfiguration.left + this.gameAreaConfiguration.padding,
+				y: this.gameAreaConfiguration.top + this.gameAreaConfiguration.padding,
+				width: this.hexi.canvas.width - this.gameAreaConfiguration.right - this.gameAreaConfiguration.padding,
+				height: this.hexi.canvas.height - this.gameAreaConfiguration.enemyBottom - this.gameAreaConfiguration.padding
 			}, false, function (collision) {
 				if (collision.has("left")) {
 					_this.sprite.vx *= -1;

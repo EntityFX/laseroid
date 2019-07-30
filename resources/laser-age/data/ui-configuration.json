@@ -1,4 +1,12 @@
 {
+    "gameArea" : {
+		"top": 3,
+		"left": 140,
+		"bottom": 10,
+		"enemyBottom": 160,
+		"right": 78,
+		"padding": 6
+	},
     "screens": {
         "mainScreen": {
             "texts": {
@@ -101,7 +109,7 @@
                 "pauseButton": {
                     "position": {
                         "x": 4,
-                        "y": 456
+                        "y": 444
                     },
                     "button": null,
                     "font": "sans-serif",
@@ -116,14 +124,14 @@
                         "type": "rectangle",
                         "size": {
                             "width": 70,
-                            "height": 20
+                            "height": 32
                         }
                     }
                 },
                 "loadButton": {
                     "position": {
                         "x": 567,
-                        "y": 426
+                        "y": 400
                     },
                     "button": null,
                     "font": "sans-serif",
@@ -135,14 +143,14 @@
                         "type": "rectangle",
                         "size": {
                             "width": 70,
-                            "height": 20
+                            "height": 32
                         }
                     }
                 },
                 "storeButton": {
                     "position": {
                         "x": 567,
-                        "y": 456
+                        "y": 440
                     },
                     "button": null,
                     "font": "sans-serif",
@@ -154,14 +162,14 @@
                         "type": "rectangle",
                         "size": {
                             "width": 70,
-                            "height": 20
+                            "height": 32
                         }
                     }
                 },
                 "resetButton": {
                     "position": {
                         "x": 567,
-                        "y": 366
+                        "y": 340
                     },
                     "button": null,
                     "font": "sans-serif",
@@ -173,7 +181,7 @@
                         "type": "rectangle",
                         "size": {
                             "width": 70,
-                            "height": 20
+                            "height": 32
                         }
                     }
                 },

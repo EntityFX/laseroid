@@ -52,10 +52,10 @@ var Player = /** @class */ (function (_super) {
 
 		var collision = this.hexi.contain(this.sprite,
 			{
-				x: Main.gameArea.left + Main.gameArea.padding,
-				y: this.hexi.canvas.height - Main.gameArea.enemyBottom + Main.gameArea.padding,
-				width: this.hexi.canvas.width - Main.gameArea.right - Main.gameArea.padding,
-				height: this.hexi.canvas.height - Main.gameArea.bottom - Main.gameArea.padding
+				x:  this.configuration.uiConfiguration.gameArea.left + this.configuration.uiConfiguration.gameArea.padding,
+				y: this.hexi.canvas.height - this.configuration.uiConfiguration.gameArea.enemyBottom + this.configuration.uiConfiguration.gameArea.padding,
+				width: this.hexi.canvas.width - this.configuration.uiConfiguration.gameArea.right - this.configuration.uiConfiguration.gameArea.padding,
+				height: this.hexi.canvas.height - this.configuration.uiConfiguration.gameArea.bottom - this.configuration.uiConfiguration.gameArea.padding
 			}, false);
 
 		this.hexi.pointer.visible = collision ? true : false;
@@ -145,7 +145,7 @@ var Player = /** @class */ (function (_super) {
 			return;
 		}
 		var beam = _this.hexi.sprite(currentWeapon.sprites.beamSprite);
-		beam.height = _this.sprite.y - Main.gameArea.top - Main.gameArea.padding;
+		beam.height = _this.sprite.y - this.configuration.uiConfiguration.gameArea.top - this.configuration.uiConfiguration.gameArea.padding;
 		beam.x = weapon.position.x;
 		beam.y = weapon.position.y;
 

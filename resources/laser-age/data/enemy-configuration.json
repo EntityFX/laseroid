@@ -572,6 +572,24 @@
             "type": "bullet",
             "sound": "alien-green-plasma-shoot"
         },
+        "greenBossPlasma2": {
+            "animatedSprite": "Bullet3",
+            "speed": 3.5,
+            "intensity": [
+                {
+                    "min": 150,
+                    "max": 300,
+                    "type": "pause"
+                },
+                {
+                    "min": 4,
+                    "max": 60,
+                    "repeat": 2
+                }
+            ],
+            "type": "bullet",
+            "sound": "alien-green-plasma-shoot"
+        },
         "greenPlasma": {
             "animatedSprite": "Bullet3",
             "speed": 5,
@@ -623,7 +641,7 @@
             ],
             "speed": 3,
             "type": "bullet",
-            "sound": "alienTorpedo"
+            "sound": "blue-torpedo"
         },
         "yellowLaser": {
             "sprite": "Bullet6_1.png",
@@ -642,7 +660,7 @@
                 "max": 3.8
             },
             "type": "bullet",
-            "sound": "alienTorpedo"
+            "sound": "yellow-laser"
         }
     },
     "enemyShipsConfiguration": {
@@ -901,6 +919,77 @@
             "sprite": "BossShip1_1.png",
             "movement": "bothSlowAndFollow",
             "killPoints": 34000
+        },
+        "boss2": {
+            "life": 250,
+            "isSyncWeapon": true,
+            "weapons": [
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 0.5235987755982988,
+                    "speedMultiplier" : 1.9
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 0.6981317007977318,
+                    "speedMultiplier" : 1.6
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 1.221730476396031,
+                    "speedMultiplier" : 1.08
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 1.570796326794897
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 1.919862177193762,
+                    "speedMultiplier" : 1.08
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 2.443460952792061,
+                    "speedMultiplier" : 1.6
+                },
+                {
+                    "weapon": "greenBossPlasma2",
+                    "position": {
+                        "x": 0,
+                        "y": -30
+                    },
+                    "angle": 2.617993877991494,
+                    "speedMultiplier" : 1.9
+                }
+            ],
+            "sprite": "BossShip2_1.png",
+            "movement": "bothSlowAndFollow",
+            "killPoints": 41300
         }
     },
 

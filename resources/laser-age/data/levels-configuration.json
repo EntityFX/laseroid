@@ -4996,159 +4996,2130 @@
         "66": {
             "level": 3,
             "enemies": [
-              {
-                "id": "alien2",
-                "position": {
-                  "x": 420,
-                  "y": 102
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 420,
+                        "y": 102
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 519,
+                        "y": 133
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 245,
+                        "y": 214
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 424,
+                        "y": 297
+                    }
+                },
+                {
+                    "id": "alien9",
+                    "position": {
+                        "x": 330,
+                        "y": 100
+                    }
+                },
+                {
+                    "id": "alien9",
+                    "position": {
+                        "x": 406,
+                        "y": 172
+                    }
+                },
+                {
+                    "id": "alien9",
+                    "position": {
+                        "x": 512,
+                        "y": 90
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 490,
+                        "y": 134
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 363,
+                        "y": 205
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 457,
+                        "y": 215
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 236,
+                        "y": 88
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 251,
+                        "y": 279
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 295,
+                        "y": 131
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 514,
+                        "y": 231
+                    }
                 }
-              },
-              {
-                "id": "alien2",
-                "position": {
-                  "x": 519,
-                  "y": 133
-                }
-              },
-              {
-                "id": "alien2",
-                "position": {
-                  "x": 245,
-                  "y": 214
-                }
-              },
-              {
-                "id": "alien2",
-                "position": {
-                  "x": 424,
-                  "y": 297
-                }
-              },
-              {
-                "id": "alien9",
-                "position": {
-                  "x": 330,
-                  "y": 100
-                }
-              },
-              {
-                "id": "alien9",
-                "position": {
-                  "x": 406,
-                  "y": 172
-                }
-              },
-              {
-                "id": "alien9",
-                "position": {
-                  "x": 512,
-                  "y": 90
-                }
-              },
-              {
-                "id": "alien10",
-                "position": {
-                  "x": 490,
-                  "y": 134
-                }
-              },
-              {
-                "id": "alien10",
-                "position": {
-                  "x": 363,
-                  "y": 205
-                }
-              },
-              {
-                "id": "alien10",
-                "position": {
-                  "x": 457,
-                  "y": 215
-                }
-              },
-              {
-                "id": "alien10",
-                "position": {
-                  "x": 236,
-                  "y": 88
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 251,
-                  "y": 279
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 295,
-                  "y": 131
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 514,
-                  "y": 231
-                }
-              }
             ]
-          },
-          "67" :{
+        },
+        "67": {
             "level": 3,
             "enemies": [
-              {
-                "id": "alien2",
-                "position": {
-                  "x": 430,
-                  "y": 113
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 430,
+                        "y": 113
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 230,
+                        "y": 123
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 327,
+                        "y": 106
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 489,
+                        "y": 99
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 234,
+                        "y": 232
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 302,
+                        "y": 142
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 436,
+                        "y": 193
+                    }
                 }
-              },
-              {
-                "id": "alien70",
-                "position": {
-                  "x": 230,
-                  "y": 123
-                }
-              },
-              {
-                "id": "alien70",
-                "position": {
-                  "x": 327,
-                  "y": 106
-                }
-              },
-              {
-                "id": "alien70",
-                "position": {
-                  "x": 489,
-                  "y": 99
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 234,
-                  "y": 232
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 302,
-                  "y": 142
-                }
-              },
-              {
-                "id": "alien100",
-                "position": {
-                  "x": 436,
-                  "y": 193
-                }
-              }
             ]
-          }
+        },
+        "68": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 269,
+                        "y": 166
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 342,
+                        "y": 93
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 403,
+                        "y": 148
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 523,
+                        "y": 160
+                    }
+                },
+                {
+                    "id": "alien8",
+                    "position": {
+                        "x": 292,
+                        "y": 68
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 212,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 362,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 486,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "69": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 205,
+                        "y": 114
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 285,
+                        "y": 120
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 363,
+                        "y": 132
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 427,
+                        "y": 110
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 513,
+                        "y": 98
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 211,
+                        "y": 178
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 279,
+                        "y": 189
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 339,
+                        "y": 193
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 410,
+                        "y": 196
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 475,
+                        "y": 162
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 505,
+                        "y": 188
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 472,
+                        "y": 240
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 366,
+                        "y": 254
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 265,
+                        "y": 241
+                    }
+                }
+            ]
+        },
+        "70": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 178,
+                        "y": 46
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 240,
+                        "y": 58
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 322,
+                        "y": 61
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 411,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 497,
+                        "y": 41
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 195,
+                        "y": 107
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 258,
+                        "y": 116
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 335,
+                        "y": 122
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 400,
+                        "y": 125
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 485,
+                        "y": 104
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 229,
+                        "y": 187
+                    }
+                }
+            ]
+        },
+        "71": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 257,
+                        "y": 45
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 303,
+                        "y": 47
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 350,
+                        "y": 42
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 410,
+                        "y": 55
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 205,
+                        "y": 170
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 284,
+                        "y": 158
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 343,
+                        "y": 191
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 344,
+                        "y": 101
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 411,
+                        "y": 162
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 469,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 445,
+                        "y": 200
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 494,
+                        "y": 214
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 396,
+                        "y": 238
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 172,
+                        "y": 211
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 239,
+                        "y": 225
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 307,
+                        "y": 254
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 228,
+                        "y": 90
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 465,
+                        "y": 86
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 212,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 362,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 486,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "72": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 339,
+                        "y": 73
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 293,
+                        "y": 98
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 387,
+                        "y": 99
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 320,
+                        "y": 142
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 365,
+                        "y": 137
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 216,
+                        "y": 143
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 359,
+                        "y": 185
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 522,
+                        "y": 143
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 227,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 394,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 481,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "73": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 290,
+                        "y": 71
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 322,
+                        "y": 108
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 368,
+                        "y": 108
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 399,
+                        "y": 70
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 345,
+                        "y": 69
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 217,
+                        "y": 189
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 346,
+                        "y": 225
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 477,
+                        "y": 189
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 194,
+                        "y": 91
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 505,
+                        "y": 85
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 345,
+                        "y": 74
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 255,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 453,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "74": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 231,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 298,
+                        "y": 44
+                    }
+                },
+                {
+                    "id": "alien5",
+                    "position": {
+                        "x": 403,
+                        "y": 44
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 263,
+                        "y": 68
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 373,
+                        "y": 67
+                    }
+                },
+                {
+                    "id": "alien4",
+                    "position": {
+                        "x": 442,
+                        "y": 66
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 253,
+                        "y": 104
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 348,
+                        "y": 103
+                    }
+                },
+                {
+                    "id": "alien10",
+                    "position": {
+                        "x": 472,
+                        "y": 100
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 212,
+                        "y": 159
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 279,
+                        "y": 176
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 369,
+                        "y": 158
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 451,
+                        "y": 173
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 340,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "75": {
+            "level": 3,
+            "enemies": [
+                {
+                    "id": "boss2",
+                    "position": {
+                        "x": 322,
+                        "y": 67
+                    }
+                }
+            ]
+        },
+        "76": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 243,
+                        "y": 90
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 501,
+                        "y": 94
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 375,
+                        "y": 97
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 301,
+                        "y": 136
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 434,
+                        "y": 136
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 371,
+                        "y": 190
+                    }
+                }
+            ]
+        },
+        "77": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 225,
+                        "y": 95
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 497,
+                        "y": 94
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 366,
+                        "y": 110
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 302,
+                        "y": 139
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 424,
+                        "y": 139
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 365,
+                        "y": 190
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 533,
+                        "y": 166
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 171,
+                        "y": 169
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 211,
+                        "y": 220
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 494,
+                        "y": 219
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 360,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "78": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 247,
+                        "y": 40
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 468,
+                        "y": 40
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 308,
+                        "y": 87
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 410,
+                        "y": 87
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 226,
+                        "y": 165
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 496,
+                        "y": 165
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 360,
+                        "y": 50
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 235,
+                        "y": 127
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 482,
+                        "y": 127
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 360,
+                        "y": 165
+                    }
+                }
+            ]
+        },
+        "79": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 354,
+                        "y": 77
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 232,
+                        "y": 160
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 479,
+                        "y": 157
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 354,
+                        "y": 216
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 305,
+                        "y": 63
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 249,
+                        "y": 50
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 190,
+                        "y": 35
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 211,
+                        "y": 82
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 272,
+                        "y": 105
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 402,
+                        "y": 63
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 454,
+                        "y": 50
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 514,
+                        "y": 35
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 439,
+                        "y": 103
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 502,
+                        "y": 86
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 263,
+                        "y": 191
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 204,
+                        "y": 211
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 264,
+                        "y": 242
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 441,
+                        "y": 191
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 442,
+                        "y": 242
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 513,
+                        "y": 208
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 360,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "80": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 185,
+                        "y": 32
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 234,
+                        "y": 53
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 524,
+                        "y": 32
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 284,
+                        "y": 110
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 465,
+                        "y": 212
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 332,
+                        "y": 231
+                    }
+                }
+            ]
+        },
+        "81": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 197,
+                        "y": 36
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 509,
+                        "y": 35
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 290,
+                        "y": 157
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 427,
+                        "y": 157
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 337,
+                        "y": 198
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 380,
+                        "y": 198
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 357,
+                        "y": 252
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 290,
+                        "y": 281
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 427,
+                        "y": 281
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 359,
+                        "y": 322
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 473,
+                        "y": 209
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 509,
+                        "y": 170
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 246,
+                        "y": 206
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 197,
+                        "y": 170
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 202,
+                        "y": 102
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 355,
+                        "y": 102
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 497,
+                        "y": 102
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 360,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 260,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 460,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "82": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "boss2",
+                    "position": {
+                        "x": 344,
+                        "y": 97
+                    }
+                }
+            ]
+        },
+        "83": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 207,
+                        "y": 41
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 400,
+                        "y": 30
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 515,
+                        "y": 43
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 160,
+                        "y": 94
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 248,
+                        "y": 120
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 370,
+                        "y": 130
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 428,
+                        "y": 134
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 515,
+                        "y": 135
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 166,
+                        "y": 47
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 196,
+                        "y": 108
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 236,
+                        "y": 72
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 298,
+                        "y": 57
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 359,
+                        "y": 66
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 298,
+                        "y": 125
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 457,
+                        "y": 108
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 431,
+                        "y": 64
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 522,
+                        "y": 89
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 370,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 260,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 460,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "84": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 188,
+                        "y": 157
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 353,
+                        "y": 196
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 514,
+                        "y": 157
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 202,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 506,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 367,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 420,
+                        "y": 105
+                    }
+                },
+                {
+                    "id": "alien3",
+                    "position": {
+                        "x": 288,
+                        "y": 105
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 276,
+                        "y": 46
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 440,
+                        "y": 46
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 188,
+                        "y": 101
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 355,
+                        "y": 96
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 487,
+                        "y": 98
+                    }
+                }
+            ]
+        },
+        "85": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 212,
+                        "y": 54
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 485,
+                        "y": 62
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 348,
+                        "y": 89
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 344,
+                        "y": 46
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 210,
+                        "y": 105
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 483,
+                        "y": 111
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 349,
+                        "y": 138
+                    }
+                },
+                {
+                    "id": "alien2",
+                    "position": {
+                        "x": 351,
+                        "y": 202
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 225,
+                        "y": 165
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 458,
+                        "y": 164
+                    }
+                }
+            ]
+        },
+        "86": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 377,
+                        "y": 100
+                    }
+                },
+                {
+                    "id": "alien8",
+                    "position": {
+                        "x": 301,
+                        "y": 102
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 205,
+                        "y": 115
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 492,
+                        "y": 115
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 349,
+                        "y": 176
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 370,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 260,
+                        "y": 10
+                    }
+                },
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 460,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "87": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 353,
+                        "y": 27
+                    }
+                },
+                {
+                    "id": "alien6",
+                    "position": {
+                        "x": 179,
+                        "y": 27
+                    }
+                },
+                {
+                    "id": "alien6",
+                    "position": {
+                        "x": 518,
+                        "y": 27
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 212,
+                        "y": 82
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 475,
+                        "y": 82
+                    }
+                },
+                {
+                    "id": "alien11",
+                    "position": {
+                        "x": 353,
+                        "y": 132
+                    }
+                }
+            ]
+        },
+        "88": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien7",
+                    "position": {
+                        "x": 430,
+                        "y": 72
+                    }
+                },
+                {
+                    "id": "alien8",
+                    "position": {
+                        "x": 221,
+                        "y": 72
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 253,
+                        "y": 125
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 379,
+                        "y": 122
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 509,
+                        "y": 37
+                    }
+                }
+            ]
+        },
+        "89": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 298,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 393,
+                        "y": 51
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 227,
+                        "y": 118
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 467,
+                        "y": 118
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 343,
+                        "y": 118
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 266,
+                        "y": 88
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 420,
+                        "y": 88
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 203,
+                        "y": 56
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 474,
+                        "y": 56
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 440,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "90": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 293,
+                        "y": 64
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 375,
+                        "y": 64
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 215,
+                        "y": 132
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 462,
+                        "y": 132
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 255,
+                        "y": 90
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 412,
+                        "y": 90
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 335,
+                        "y": 123
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 199,
+                        "y": 66
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 488,
+                        "y": 66
+                    }
+                },
+                {
+                    "id": "alien9",
+                    "position": {
+                        "x": 445,
+                        "y": 91
+                    }
+                }
+            ],
+            "bonuses": [
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 450,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+        "91": {
+            "level": 4,
+            "enemies": [
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 197,
+                        "y": 55
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 501,
+                        "y": 55
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 345,
+                        "y": 110
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 265,
+                        "y": 84
+                    }
+                },
+                {
+                    "id": "alien70",
+                    "position": {
+                        "x": 428,
+                        "y": 86
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 301,
+                        "y": 56
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 397,
+                        "y": 56
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 227,
+                        "y": 139
+                    }
+                },
+                {
+                    "id": "alien100",
+                    "position": {
+                        "x": 466,
+                        "y": 139
+                    }
+                },
+                {
+                    "id": "alien9",
+                    "position": {
+                        "x": 468,
+                        "y": 86
+                    }
+                }
+            ]
+        }
     }
 }
