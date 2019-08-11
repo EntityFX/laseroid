@@ -60,41 +60,40 @@ var Main = /** @class */ (function () {
 		"laser": "sounds/laser.wav",
 	};
 
-	Main.prototype.configuration = {
-		"enemyConfiguration": null,
-		"playerConfiguration": null,
-		"levelsConfiguration": null,
-	}
-
-	Main.prototype.hexi = null;
-
-	Main.prototype.inputDevice = null;
-
-	Main.prototype.isMobile = false;
-
-	Main.prototype.gameScene = null;
-
-	Main.prototype.sounds = {
-		"shoot": null
-	};
-
-	Main.prototype.soundTrack = null;
-	Main.prototype.soundTracks = [];
-
-	Main.prototype.resourcesPackage = "";
-
-	Main.prototype.gameTimeSeconds = 0;
-
-	Main.prototype.game = null;
-	Main.prototype.gameStorage = null;
-
-	Main.prototype.fpsCounter = 0;
-	Main.prototype.lifeCheatCounter = 0;
-	Main.prototype.nextLevelCheatCounter = 0;
-
 	function Main($hexi, resourcesPackage, isMobile) {
 		var _this = this;
+
+		this.configuration = {
+			"enemyConfiguration": null,
+			"playerConfiguration": null,
+			"levelsConfiguration": null,
+		}
+	
+		this.inputDevice = null;
+	
+		this.isMobile = false;
+	
+		this.gameScene = null;
+	
+		this.sounds = {
+			"shoot": null
+		};
+	
+		this.soundTrack = null;
+		this.soundTracks = [];
+	
+		this.gameTimeSeconds = 0;
+	
+		this.game = null;
+		this.gameStorage = null;
+	
+		this.fpsCounter = 0;
+		this.lifeCheatCounter = 0;
+		this.nextLevelCheatCounter = 0;
+
 		this.resourcesPackage = resourcesPackage;
+
+
 		var normalizedResourcesPath = Main.resources.map(function (resource) {
 			return "resources/{0}/{1}".format(_this.resourcesPackage, resource)
 		});
@@ -284,6 +283,7 @@ var Main = /** @class */ (function () {
 		}
 		this.gameTimeSeconds = saveState.gameTimeSeconds;
 		this.game.restoreState(saveState);
+		this.changeState();
 	};
 
 	return Main;

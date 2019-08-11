@@ -57,11 +57,8 @@ var MainScreen = /** @class */ (function () {
 		if (pauseButton) {
 			pauseButton.release = function () {
 				if (_this.pauseTapped != null) {
-					pauseButton.textObject.content = pauseButton.texts[_this.hexi.paused ? 0 : 1];
-					pauseButton.textObject.setPosition(
-						pauseButton.halfWidth - pauseButton.textObject.halfWidth,
-						pauseButton.halfHeight - pauseButton.textObject.halfHeight);
 					_this.pauseTapped();
+					_this.updatePauseButtonState();
 				}
 			};
 		}
@@ -97,6 +94,7 @@ var MainScreen = /** @class */ (function () {
 		nextLevelSprite.release = function () {
 			if (_this.nextLevelTapped != null) {
 				_this.nextLevelTapped();
+				
 			}
 		};
 
@@ -109,12 +107,21 @@ var MainScreen = /** @class */ (function () {
 
 	}
 
+	MainScreen.prototype.updatePauseButtonState= function() {
+		var pauseButton = this.buttons["pauseButton"];
+		pauseButton.textObject.content = pauseButton.texts[this.hexi.paused ? 1 : 0];
+		pauseButton.textObject.setPosition(
+			pauseButton.halfWidth - pauseButton.textObject.halfWidth,
+			pauseButton.halfHeight - pauseButton.textObject.halfHeight);
+	};
+
 	MainScreen.prototype.update = function (state) {
 		this.texts["lifeText"].content = state.life;
 		this.texts["waveText"].content = state.wave;
 		this.texts["levelText"].content = state.level;
 		this.texts["scorePointsText"].content = state.scorePoints;
 		this.texts["gameTimeText"].content = String(state.gameTimeSeconds).toHHMMSS();
+		this.updatePauseButtonState();
 	};
 
 	MainScreen.prototype.changeEnvironment = function (index) {

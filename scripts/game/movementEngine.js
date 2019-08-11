@@ -2,30 +2,18 @@
 
 var MovementEngine =  /** @class */ (function () {
 
-	MovementEngine.prototype.hexi = null;
-
-	MovementEngine.prototype.sprite = null;
-
-	MovementEngine.prototype.playerSprite = null;
-
-	MovementEngine.prototype.movements = null;
-
-	MovementEngine.prototype.firstMovement = null;
-
-	MovementEngine.prototype.movementItensity = 0;
-
-	MovementEngine.prototype.movementItensityCounter = 0;
-
-	MovementEngine.prototype.movementItensitySlot = 0;
-
-	MovementEngine.prototype.movementConfiguration = null;
-
-	MovementEngine.prototype.movementConfigurationName = null;
-
-	MovementEngine.prototype.isBounceBottom = true;
-	MovementEngine.prototype.gameAreaConfiguration = true;
-
 	function MovementEngine($hexi, sprite, playerSprite, movementConfigurationName, movementConfiguration, gameAreaConfiguration) {
+		this.movements = null;
+
+		this.firstMovement = null;
+
+		this.movementItensity = 0;
+
+		this.movementItensityCounter = 0;
+
+		this.movementItensitySlot = 0;
+
+		this.isBounceBottom = true;
 		this.hexi = $hexi;
 		this.sprite = sprite;
 		this.playerSprite = playerSprite;

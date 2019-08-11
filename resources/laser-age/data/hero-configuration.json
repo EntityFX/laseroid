@@ -16,6 +16,14 @@
             "type": "bullet",
             "sound": "heroTorpedo"
         },
+        "automatedYellowLaser": {
+            "sprite": "Bullet6_1.png",
+            "hitPoints": 2,
+            "intensity": 40,
+            "speed": 3.8,
+            "type": "bullet",
+            "sound": "yellow-laser"
+        },
         "redPlasma": {
             "sprite": "Bullet2_1.png",
             "hitPoints": 2,
@@ -221,33 +229,6 @@
                 }
             ]
         },
-        "7": {
-            "weapons": [
-                {
-                    "weapon": "greenPlasma",
-                    "position": {
-                        "x": 0,
-                        "y": 0
-                    }
-                }
-            ],
-            "automatedWeapons": [
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": -20,
-                        "y": -15
-                    }
-                },
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": 20,
-                        "y": -15
-                    }
-                }
-            ]
-        },
         "8": {
             "weapons": [
                 {
@@ -302,68 +283,7 @@
                 }
             ]
         },
-        "14": {
-            "weapons": [
-                {
-                    "weapon": "greenLaser",
-                    "position": {
-                        "x": 0,
-                        "y": -20
-                    }
-                }
-            ],
-            "automatedWeapons": [
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": -20,
-                        "y": -15
-                    }
-                },
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": 20,
-                        "y": -15
-                    }
-                }
-            ]
-        },
         "15": {
-            "weapons": [
-                {
-                    "weapon": "greenLaser",
-                    "position": {
-                        "x": 0,
-                        "y": -20
-                    }
-                },
-                {
-                    "weapon": "redPlasma",
-                    "position": {
-                        "x": 0,
-                        "y": 0
-                    }
-                }
-            ],
-            "automatedWeapons": [
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": -20,
-                        "y": -15
-                    }
-                },
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": 20,
-                        "y": -15
-                    }
-                }
-            ]
-        },
-        "19": {
             "weapons": [
                 {
                     "weapon": "greenLaser",
@@ -431,75 +351,7 @@
                 }
             ]
         },
-        "24": {
-            "weapons": [
-                {
-                    "weapon": "greenLaser",
-                    "position": {
-                        "x": 0,
-                        "y": -20
-                    }
-                },
-                {
-                    "weapon": "greenPlasma",
-                    "position": {
-                        "x": 0,
-                        "y": 0
-                    }
-                }
-            ],
-            "automatedWeapons": [
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": -20,
-                        "y": -15
-                    }
-                },
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": 20,
-                        "y": -15
-                    }
-                }
-            ]
-        },
         "25": {
-            "weapons": [
-                {
-                    "weapon": "greenLaser",
-                    "position": {
-                        "x": 0,
-                        "y": -20
-                    }
-                },
-                {
-                    "weapon": "bluePlasma",
-                    "position": {
-                        "x": 0,
-                        "y": 0
-                    }
-                }
-            ],
-            "automatedWeapons": [
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": -20,
-                        "y": -15
-                    }
-                },
-                {
-                    "weapon": "automatedTorpedo",
-                    "position": {
-                        "x": 20,
-                        "y": -15
-                    }
-                }
-            ]
-        },
-        "29": {
             "weapons": [
                 {
                     "weapon": "greenLaser",
@@ -560,6 +412,74 @@
                 },
                 {
                     "weapon": "automatedTorpedo",
+                    "position": {
+                        "x": 20,
+                        "y": -15
+                    }
+                }
+            ]
+        },
+        "35": {
+            "weapons": [
+                {
+                    "weapon": "greenLaser",
+                    "position": {
+                        "x": 0,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "pulsePlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "automatedWeapons": [
+                {
+                    "weapon": "automatedYellowLaser",
+                    "position": {
+                        "x": -20,
+                        "y": -15
+                    }
+                },
+                {
+                    "weapon": "automatedTorpedo",
+                    "position": {
+                        "x": 20,
+                        "y": -15
+                    }
+                }
+            ]
+        },
+        "40": {
+            "weapons": [
+                {
+                    "weapon": "greenLaser",
+                    "position": {
+                        "x": 0,
+                        "y": -20
+                    }
+                },
+                {
+                    "weapon": "pulsePlasma",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "automatedWeapons": [
+                {
+                    "weapon": "automatedYellowLaser",
+                    "position": {
+                        "x": -20,
+                        "y": -15
+                    }
+                },
+                {
+                    "weapon": "automatedYellowLaser",
                     "position": {
                         "x": 20,
                         "y": -15

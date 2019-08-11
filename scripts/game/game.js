@@ -9,25 +9,6 @@ var Game = /** @class */ (function () {
 
     Game.playerSpeed = 10;
 
-    Game.prototype.hexi = null;
-
-    Game.prototype.player = null;
-
-    Game.prototype.bulletsController = null;
-
-    Game.prototype.enemyController = null;
-
-    Game.prototype.onLevelChanged = null;
-
-    Game.prototype.level = {
-        "wave": 1,
-        "type": 1
-    };
-
-    Game.prototype.score = {
-        "points": 0
-    };
-
     function Game($hexi, main) {
         var _this = this;
         this.hexi = $hexi;
@@ -35,6 +16,18 @@ var Game = /** @class */ (function () {
         this.player = new Player(this.hexi, this, main);
         this.bulletsController = new BulletsController(this.hexi, this);
         this.enemyController = new EnemyController(this.hexi, this);
+    
+    
+        this.onLevelChanged = null;
+    
+        this.level = {
+            "wave": 1,
+            "type": 1
+        };
+    
+        this.score = {
+            "points": 0
+        };
 
         this.setupLevel(this.level.wave);
         //this.changeState();
@@ -109,7 +102,21 @@ var Game = /** @class */ (function () {
         this.score.points = gameState.scorePoints;
         this.player.life = gameState.life;
         this.player.setLife(this.player.life);
-        this.setupLevel(this.level.wave);
+
+        var currentLevel = this.main.configuration.levelsConfiguration.waves[this.level.wave];
+
+        if (currentLevel == null) {
+            currentWave = this.level.wave = 1;
+            currentLevel = this.main.configuration.levelsConfiguration.waves[this.level.wave];
+        }
+
+        gameState.enemies.forEach(function (enemyConfig) {
+            var enemy = new Enemy(_this.hexi, _this, _this.main, enemyConfig.id, enemyConfig.life)
+            enemy.setPosition(enemyConfig.position);
+            enemy.onDestroyed = _this.enemyDestroyed.bind(_this);
+            _this.enemyController.enemies.push(enemy);
+        });
+
         this.hexi.resume();
     };
 

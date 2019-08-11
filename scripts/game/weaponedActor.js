@@ -3,13 +3,8 @@
 var WeaponedActor = /** @class */ (function (_super) {
 	__extends(WeaponedActor, _super);
 
-	WeaponedActor.prototype.isWeaponShooting = false;
-
-	WeaponedActor.prototype.canShot = false;
-
-	WeaponedActor.prototype.automatedWeapons = [];
-
 	function WeaponedActor($hexi, game, main) {
+		this.automatedWeapons = [];
 		return _super !== null && _super.apply(this, arguments) || this;
 	}
 

@@ -2,27 +2,15 @@
 
 var Actor = /** @class */ (function () {
 
-	Actor.prototype.hexi = null;
-
-	Actor.prototype.sprite = null;
-
-    Actor.prototype.game = null;
-    
-    Actor.prototype.configuration = null;
-
-    Actor.prototype.resourcesPackage = null;
-
-    Actor.prototype.sounds = null;
-
-	Actor.prototype.life = 1;
-
 	function Actor($hexi, game, main) {
 		this.hexi = $hexi;
         this.game = game;
         this.resourcesPackage = main.resourcesPackage;
         this.gameScene = main.gameScene;
         this.configuration = main.configuration;
-        this.sounds = main.sounds;
+		this.sounds = main.sounds;
+		this.life = 1;
+		this.sprite = null;
 	}
 
 	Actor.prototype.move = function () {

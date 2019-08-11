@@ -3,31 +3,7 @@
 var Enemy = /** @class */ (function (_super) {
 	__extends(Enemy, _super);
 
-	Enemy.prototype.type = null;
-
-	Enemy.prototype.shipConfiguration = null;
-
-	Enemy.prototype.movementEngine = null;
-
-	Enemy.prototype.initialLife = 0;
-
-	Enemy.prototype.lifeText =  {
-		"position": {
-			"x": 0,
-			"y": 0
-		},
-		"font": "sans-serif",
-		"size": "10px",
-		"color": "#00F000"
-	};
-
-	Enemy.prototype.textObject = null;
-
-	Enemy.prototype.lifeLine = null;
-
-	Enemy.prototype.syncWeapons = null;
-
-	function Enemy($hexi, game, main, type) {
+	function Enemy($hexi, game, main, type, altLife = null) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.type = type;
 		_this.shipConfiguration = deepCopy(_this.configuration.enemyConfiguration.enemyShipsConfiguration[type]);
@@ -38,14 +14,23 @@ var Enemy = /** @class */ (function (_super) {
 		if (_this.shipConfiguration.animatedSprite) {
 			_this.sprite.playAnimation();
 		}
-
+		_this.syncWeapons = null;
 		_this.setWeapon();
 		_this.gameScene.addChild(_this.sprite);
 
-		_this.life = _this.shipConfiguration.life;
+		_this.life = altLife != null ? altLife : _this.shipConfiguration.life;
 		_this.initialLife = _this.shipConfiguration.life;
 
-		_this.textObject = _this.hexi.text(_this.life, _this.lifeText.font, _this.lifeText.size,
+		_this.lifeText =  {
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"font": "sans-serif",
+			"size": "10px",
+			"color": "#00F000"
+		};
+		_this.textObject = _this.hexi.text(_this.life + "/" + _this.initialLife, _this.lifeText.font, _this.lifeText.size,
 		_this.getLifeColor(),
 		_this.lifeText.position.x, _this.lifeText.position.y);
 		_this.sprite.addChild(_this.textObject);
@@ -54,11 +39,12 @@ var Enemy = /** @class */ (function (_super) {
 		_this.lifeLine = _this.hexi.line(_this.getLifeColor(), 2, 0, 0, _this.sprite.width, 0);
 		_this.sprite.addChild(_this.lifeLine);
 		_this.sprite.putTop(this.lifeLine, -this.sprite.halfWidth + 1, 0);
-		//_this.lifeLine.strokeStyle = this.getLifeColor();
+		_this.setLifeLine();
 
         _this.movementEngine = new MovementEngine($hexi, _this.sprite, game.player.sprite,
 			 _this.shipConfiguration.movement, _this.configuration.enemyConfiguration.enemyMovementConfiguration
 			 , _this.configuration.uiConfiguration.gameArea);
+
 
 		return _this;
 	}
@@ -91,9 +77,9 @@ var Enemy = /** @class */ (function (_super) {
 
 
 			_this.syncWeapons.grouppedWeapons = groupBy(this.automatedWeapons, "weapon");
-			for (const weaponKey in _this.syncWeapons.grouppedWeapons) {
+			for (var weaponKey in _this.syncWeapons.grouppedWeapons) {
 				if (_this.syncWeapons.grouppedWeapons.hasOwnProperty(weaponKey)) {
-					const weapons = _this.syncWeapons.grouppedWeapons[weaponKey];
+					var weapons = _this.syncWeapons.grouppedWeapons[weaponKey];
 					_this.syncWeapons.grouppedCounters[weaponKey] = {
 						"weaponItensitySlot": 0,
 						"weaponIntensity": 0,
@@ -148,7 +134,11 @@ var Enemy = /** @class */ (function (_super) {
 		}
 
 		if (_this.shipConfiguration.isSyncWeapon) {
-			for (const weaponKey in _this.syncWeapons.grouppedWeapons) {
+			if (this.syncWeapons == null || _this.syncWeapons.grouppedWeapons == null) {
+				return;
+			}
+
+			for (var weaponKey in _this.syncWeapons.grouppedWeapons) {
 				if (_this.syncWeapons.grouppedWeapons.hasOwnProperty(weaponKey)) {
 					var weapons = _this.syncWeapons.grouppedWeapons[weaponKey];
 					var weaponCounters = _this.syncWeapons.grouppedCounters[weaponKey];
@@ -275,13 +265,17 @@ var Enemy = /** @class */ (function (_super) {
             }
 			this.remove();
 		}
+		this.setLifeLine();
+	};
+
+	Enemy.prototype.setLifeLine = function() {
 		this.textObject.content = this.life + "/" + this.initialLife;
 		this.sprite.putTop(this.textObject, 0, -3);
 		this.textObject.style.fill = this.getLifeColor();
 		this.lifeLine.strokeStyle  = this.getLifeColor();
 		this.lifeLine.scaleX = this.life / this.initialLife;
-	};
-
+	}
+	
 	Enemy.prototype.getLifeColor = function() {
 		var r = 255 - (this.life / this.initialLife * 128);
 		var g = (this.life / this.initialLife * 255);

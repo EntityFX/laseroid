@@ -131,7 +131,7 @@
                 "loadButton": {
                     "position": {
                         "x": 567,
-                        "y": 400
+                        "y": 380
                     },
                     "button": null,
                     "font": "sans-serif",
@@ -169,7 +169,7 @@
                 "resetButton": {
                     "position": {
                         "x": 567,
-                        "y": 340
+                        "y": 320
                     },
                     "button": null,
                     "font": "sans-serif",

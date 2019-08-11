@@ -3,24 +3,17 @@
 var Player = /** @class */ (function (_super) {
 	__extends(Player, _super);
 
-	Player.prototype.weapons = [];
-
-	Player.prototype.invisibilityCounter = 0;
-
-	Player.prototype.collisionSprite = null;
-
-	Player.prototype.weaponSprites = {
-		"leftWeapon": null,
-		"rightWeapon": null
-	};
-
 	function Player($hexi, game, main) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.sprite = this.hexi.sprite(["HeroShip.png"]);
 		_this.collisionSprite = this.hexi.rectangle(24, 20, "red", "red", 1);
 		var weaponSprites = _this.hexi.json("resources/{0}/images/ships-texture.json".format(_this.resourcesPackage)).animations["Weapon"];
-		_this.weaponSprites.leftWeapon = this.hexi.sprite(weaponSprites);
-		_this.weaponSprites.rightWeapon = this.hexi.sprite(weaponSprites);
+		_this.invisibilityCounter = 0;
+
+		_this.weaponSprites = {
+			"leftWeapon": this.hexi.sprite(weaponSprites),
+			"rightWeapon": this.hexi.sprite(weaponSprites)
+		};
 
 		_this.sprite.y = _this.hexi.canvas.height - 80;
 		_this.sprite.putCenter(_this.collisionSprite, 0, 0);
@@ -37,6 +30,12 @@ var Player = /** @class */ (function (_super) {
 		_this.gameScene.addChild(_this.weaponSprites.leftWeapon);
 		_this.gameScene.addChild(_this.weaponSprites.rightWeapon);
 		_this.collisionSprite.visible = false
+
+		_this.weapons = [];
+		_this.weaponLifeLevels = Object.keys(_this.configuration.playerConfiguration.playerLevelWeapons)
+									.map(function(item) {
+										return parseInt(item);
+									});
 		_this.setWeapon();
 		return _this;
 	}
@@ -199,9 +198,21 @@ var Player = /** @class */ (function (_super) {
 
 	Player.prototype.setWeapon = function () {
 		var _this = this;
-		var weaponConfiguration = _this.configuration.playerConfiguration.playerLevelWeapons[this.life];
+		var weaponConfiguration = null
 
-		if (!weaponConfiguration) return;
+		for (let index = 0; index < _this.weaponLifeLevels.length; index++) {
+			var beginLife = _this.weaponLifeLevels[index];
+			var endLife = _this.weaponLifeLevels[index+1];
+
+			if (this.life >= beginLife && (endLife == undefined || this.life < endLife)) {
+				weaponConfiguration = _this.configuration.playerConfiguration.playerLevelWeapons[beginLife];
+				break;
+			}
+		}
+
+		if (!weaponConfiguration){
+			return;
+		}
 
 		this.weapons = deepCopy(weaponConfiguration.weapons);
 
