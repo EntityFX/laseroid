@@ -1,0 +1,81 @@
+@startuml
+abstract class Actor {
+    # hexi : Hexi
+    # game : Game
+    # main : Main 
+
+    + life : number
+    + initialLife : number
+    # sprite : "Hexi.Sprite"
+
+    + {abstract} move()
+    + {abstract} update()
+    + setPosition(position : {x, y}) 
+
+    + remove()  
+    + hit()  
+}
+
+class WeaponedActor {
+    # automatedWeapons : Array
+    # canShoot : boolean
+    - isWeaponShooting : boolean
+
+    + startShoot()
+    + stopShoot()  
+    + onShootStarted()    
+    + onShootStopped()    
+    + updateShooting()    
+}
+
+class Enemy {
+    + type : string
+    # syncWeapons : JSON
+
+    #movementEngine : MovementEngine
+    +shipConfiguration : JSON
+
+    + setWeapon()
+    - shootWithWeapon()
+    - setLifeLine()
+
+        + hit()  
+}
+
+class Player {
+    # weapons : Array
+    # collisionSprite : "Hexi.Sprite"
+
+    - weaponLifeLevels : Array<int>
+    - invisibilityCounter : number
+
+    + upgrade()
+    + downgrade()
+
+    # shootWithLaser(currentWeapon, weapon)
+    # shootWithBullets(currentWeapon, weapon)
+    # setWeapon()
+    # setLife(life: number)
+    # hitUpgrade(upgradeItem)
+}
+
+class Bonus {
+    + type : string
+
+    # movementEngine : MovementEngine
+    + shipConfiguration : JSON
+    # upgradeBonus : JSON
+
+    # shootWithUpgrade(upgradeBonus : JSON)
+}
+
+
+
+
+
+
+Actor <|-- WeaponedActor 
+WeaponedActor <|-- Enemy
+WeaponedActor <|-- Player
+Actor <|-- Bonus
+@enduml

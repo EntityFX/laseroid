@@ -1,0 +1,84 @@
+@startuml
+class Game {
+    + level : JSON
+    + score : JSON
+    - bulletsController : BulletsController
+    - enemyController : EnemyController  
+    - player : Player   
+
+    # hexi : Hexi
+
+    + onEnemyDestroyed : Function
+    + onLevelChanged : Function
+
+    + clearShips()
+    + setupLevel(currentWave)
+    + nextLevel()
+    + previousLevel()
+    + forwardLevel()
+    + rewindLevel()
+    + restoreState(gameState: JSON)
+    + resetGame()
+    + update()
+    + enemyDestroyed()
+}
+
+
+class Main {
+    # {static} resources : Array<string>
+    # {static} sounds : Map<string, string>
+
+    + gameScene : Hexi.Scene
+    - inputDevice : InputDevice
+    # hexi : Hexi
+    # game : Game
+    # gameStorage : GameStorage
+
+    + init()
+    + load()
+    + setup()
+    + playLoop()
+    + nextLevel()
+    + saveGame()
+    + loadGame()
+
+    # levelChanged(currentWave)
+    # changeState()
+}
+
+class GameStorage {
+    - game : Game
+
+    + save()
+    + load()
+}
+
+class InputDevice {
+    - game : Game
+
+    + init()
+
+    + loadTapped()
+    + storeTapped()
+    + resetTapped()
+    + pauseTapped()
+}
+
+class Hexi {
+    + stage : Stage
+    + canvas : Canvas
+
+    + start()
+    + move(sprite)
+    + sprite()
+    + json()
+    + pause()
+    + resume()
+}
+
+
+Game "1" *-- "1" InputDevice
+Game "1" *-- "1" GameStorage
+Hexi "1" o-- "1" Main
+Main "1" *-- "1" Game
+@enduml
