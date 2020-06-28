@@ -303,10 +303,42 @@ JSON-конфигурация уровня :
 
 ![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/game.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/game.png?raw=true)
 
+
+
+### Ядро игры
+
+![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true)
+
+#### Класс Main
+
+Является точкой входа и контейнером игрового кода.
+
+
+
+Поля:
+
+* *resources* - содержит список всех загружаемых ресурсов (текстуры, звук, json)
+* *sounds* - словарь звуков: Ключ - название, Значение - путь
+* *gameScene* - объект HexiJS на 
+* *game* - объект игрового контейнера
+* *hexi* - инстанс HexiJS
+* *gameStorage* - сохраняет состояние игры в localStorage
+
+Методы:
+
+* *init()* - инициализирует HexiJS
+* *load()* - загружает ресурсы (текстуры, звук, json)
+* *setup()* - устанавливает игровую область, события нажатия кнопок, запускает фоновую музыку
+* *playLoop()* - точка изменения состояния игры (считает движение, коллизии, снаряды, перерисовывает пространство). 
+* *saveGame()* - сохраняет игру
+* *loadGame()* - загружает игру
+
+#### Класс Game
+
+#### Класс GameStorage
+
+#### Класс InputDevice
+
 ### Иерархия классов действующих лиц
 
 ![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/actors.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/actors.png?raw=true)
-
-### Ядро игрового движка
-
-![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true)
