@@ -3,7 +3,7 @@ LaserAge game port on HexiJS
 
 ## Details
 
-https://github.com/EntityFX/laseroid/doc/article-rus.md
+https://github.com/EntityFX/laseroid/blob/master/doc/article-rus.md
 
 ## Demo Game
 
