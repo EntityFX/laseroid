@@ -9,6 +9,8 @@
 В терминах игры уровень - волна (Wave), а несколько волн объединены в большой уровень (Level), который представляет из себя просто смену заднего фона,
 т. е. всего 4 больших уровня в каждом из которых 25 волн. В последней волне большого уровня обычно бывает босс - противник с огромным значением жизни и мощным оружием.
 
+![https://github.com/EntityFX/laseroid/blob/master/doc/LaserAgeNext.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/LaserAgeNext.png?raw=true)
+
 ------
 
 
@@ -18,6 +20,8 @@
 
 Представляет из себя обычную прямоугольную область, в верхней части располагаются корабли противника, а снизу игрок.
 Область движения игрока ограничена так, что он не может сталкиваться с кораблями противника, а корабли противника с игроком.
+
+![https://github.com/EntityFX/laseroid/blob/master/doc/Stage.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/Stage.png?raw=true)
 
 ### Оружие
 
@@ -221,6 +225,52 @@ JSON-конфигурация движения противника :
 }
 ```
 
+#### Бонусы
+
+Специальный вид противника ![https://raw.githubusercontent.com/EntityFX/laseroid/master/resources/laser-age/graphics/PowerUps_1.png](https://raw.githubusercontent.com/EntityFX/laseroid/master/resources/laser-age/graphics/PowerUps_1.png), который не имеет оружия и при уничтожении порождает спрайт с бонусом ![https://raw.githubusercontent.com/EntityFX/laseroid/master/resources/laser-age/graphics/Upgrade.png](https://raw.githubusercontent.com/EntityFX/laseroid/master/resources/laser-age/graphics/Upgrade.png), который должен поймать корабль игрока. Если игрок поймает бонус, то увеличивается его уровень (жизнь).
+
+### Уровни
+
+Каждый уровень содержит множество различного вида противников, которые расположены определённым образом. Также уровень может содержать один и более бонусов.
+
+
+
+JSON-конфигурация уровня :
+
+```json
+        "2": {
+            "level": 1, 
+            "enemies": [ // список противников
+                {
+                    "id": "alien1",
+                    "position": {
+                        "x": 200,
+                        "y": 35
+                    }
+                },
+                //...
+                {
+                    "id": "alien1",
+                    "position": {
+                        "x": 525,
+                        "y": 40
+                    }
+                }
+            ],
+            "bonuses": [ // список бонусов
+                {
+                    "id": "bonus1",
+                    "position": {
+                        "x": 350,
+                        "y": 10
+                    }
+                }
+            ]
+        },
+```
+
+
+
 ## Выбор JavaScript библиотеки для реализации
 
 Я просмотрел множество библиотек графики для JavaScript, но остановился на Hexi JS: https://github.com/kittykatattack/hexi .
@@ -254,3 +304,9 @@ JSON-конфигурация движения противника :
 ![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/game.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/game.png?raw=true)
 
 ### Иерархия классов действующих лиц
+
+![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/actors.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/actors.png?raw=true)
+
+### Ядро игрового движка
+
+![https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true](https://github.com/EntityFX/laseroid/blob/master/doc/diagrams/core.png?raw=true)
