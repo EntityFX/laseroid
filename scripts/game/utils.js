@@ -76,3 +76,65 @@ String.prototype.format = function () {
     }
     return a
 };
+
+
+(function () {
+	'use strict';
+  
+    if (window.AudioContext) {
+        window.isSoundSupported = true;
+        return;
+    }
+
+    window.isSoundSupported = false;
+
+    function AudioContext() {
+        this.createStereoPanner = false;
+    }
+
+    AudioContext.prototype.delayNode = function() {
+        return {};
+    };
+
+    AudioContext.prototype.feedbackNode = function() {
+        return {};
+    };
+
+    AudioContext.prototype.filterNode = function() {
+        return {};
+    };
+    
+    AudioContext.prototype.convolverNode = function() {
+        return {};
+    };
+
+    AudioContext.prototype.createConvolver = function() {
+        return {};
+    };
+
+    AudioContext.prototype.createBiquadFilter = function() {
+        return {};
+    };
+
+    AudioContext.prototype.createGain = function() {
+        return {};
+    };
+
+    AudioContext.prototype.createDelay = function() {
+        return {};
+    };
+
+    AudioContext.prototype.createPanner = function() {
+        return {};
+    };
+
+    AudioContext.prototype.decodeAudioData = function(response, bufferHandler) {
+        bufferHandler({
+            "duration" : 0,
+            "length" : 0
+        });
+    };
+
+    window.AudioContext = AudioContext;
+
+})();

@@ -3,7 +3,7 @@
 var Enemy = /** @class */ (function (_super) {
 	__extends(Enemy, _super);
 
-	function Enemy($hexi, game, main, type, altLife = null) {
+	function Enemy($hexi, game, main, type, altLife) {
 		var _this = _super.call(this, $hexi, game, main) || this;
 		_this.type = type;
 		_this.shipConfiguration = deepCopy(_this.configuration.enemyConfiguration.enemyShipsConfiguration[type]);
@@ -237,7 +237,9 @@ var Enemy = /** @class */ (function (_super) {
 			}).bind(_this)
 		);
 
-		_this.sounds[currentWeapon.sound].play();
+		if (_this.isSoundsEnabled) {
+			_this.sounds[currentWeapon.sound].play();
+		}
 	};
 
 	Enemy.prototype.hit = function (bullet) {

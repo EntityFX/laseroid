@@ -128,12 +128,16 @@ var Player = /** @class */ (function (_super) {
 		});
 
 		if (playManualWeaponShootSound) {
-			_this.sounds[_this.weapons[0].options.sound].play();
+			if (_this.isSoundsEnabled) {
+				_this.sounds[_this.weapons[0].options.sound].play();
+			}
 			playManualWeaponShootSound = false;
 		}
 
 		if (playAutomatedWeaponShootSound) {
-			_this.sounds[_this.automatedWeapons[0].options.sound].play();
+			if (_this.isSoundsEnabled) {
+				_this.sounds[_this.automatedWeapons[0].options.sound].play();
+			}
 			playAutomatedWeaponShootSound = false;
 		}
 	}

@@ -13,39 +13,47 @@ var Main = /** @class */ (function () {
 		isScaleToWindow: false
 	};
 
-	Main.resources = [
-		"images/environment1.png",
-		"images/environment2.png",
-		"images/environment3.png",
-		"images/environment4.png",
-		"images/interface.png",
-		"images/life-icon.png",
+	Main.allResources = {
+		"environmentImages": [
+			"images/interface.png",
+			"images/life-icon.png",
+			"images/environment1.png",
+			"images/environment2.png",
+			"images/environment3.png",
+			"images/environment4.png"
+		],
+		"textureJsons" : [
+			"images/ships-texture.json",
+			"images/bullet-texture.json"
+		],
+		"dataJsons" : [
+			"data/hero-configuration.json",
+			"data/levels-configuration.json",
+			"data/enemy-configuration.json",
+			"data/ui-configuration.json",
+		],
+		"sounds" : [
+			"sounds/alien-torpedo-shoot.wav",
+			"sounds/alien-red-plasma-shoot.wav",
+			"sounds/hero-torpedo-shoot.wav",
+			"sounds/explode.wav",
+			"sounds/hero-green-plasma-shoot.wav",
+			"sounds/alien-green-plasma-shoot.wav",
+			"sounds/alien-blue-torpedo-shoot.wav",
+			"sounds/alien-yellow-laser.wav",
+			"sounds/pulse-plasma.wav",
+			"sounds/laser.wav"
+		],
+		"music" : [
+			"sounds/track0.ogg",
+			"sounds/track1.ogg",
+			"sounds/track2.ogg",
+			"sounds/track3.ogg",
+			"sounds/track4.ogg"
+		]
+	};
 
-		"images/ships-texture.json",
-		"images/bullet-texture.json",
-
-		"sounds/alien-torpedo-shoot.wav",
-		"sounds/alien-red-plasma-shoot.wav",
-		"sounds/hero-torpedo-shoot.wav",
-		"sounds/explode.wav",
-		"sounds/hero-green-plasma-shoot.wav",
-		"sounds/alien-green-plasma-shoot.wav",
-		"sounds/alien-blue-torpedo-shoot.wav",
-		"sounds/alien-yellow-laser.wav",
-		"sounds/pulse-plasma.wav",
-		"sounds/laser.wav",
-
-		"sounds/track0.ogg",
-		"sounds/track1.ogg",
-		"sounds/track2.ogg",
-		"sounds/track3.ogg",
-		"sounds/track4.ogg",
-
-		"data/hero-configuration.json",
-		"data/levels-configuration.json",
-		"data/enemy-configuration.json",
-		"data/ui-configuration.json",
-	];
+	Main.resources = [];
 
 	Main.sounds = {
 		"alienTorpedo": "sounds/alien-torpedo-shoot.wav",
@@ -60,33 +68,45 @@ var Main = /** @class */ (function () {
 		"laser": "sounds/laser.wav",
 	};
 
-	function Main($hexi, resourcesPackage, isMobile) {
+	function Main($hexi, resourcesPackage, isMobile, isSoundsEnabled) {
 		var _this = this;
+
+		Main.resources = Main.resources
+			.concat(Main.allResources["textureJsons"])
+			.concat(Main.allResources["dataJsons"])
+			.concat(Main.allResources["environmentImages"]);
+
+		if (isSoundsEnabled) {
+			Main.resources = Main.resources
+			.concat(Main.allResources["sounds"])
+			.concat(Main.allResources["music"]);
+		}
 
 		this.configuration = {
 			"enemyConfiguration": null,
 			"playerConfiguration": null,
 			"levelsConfiguration": null,
 		}
-	
+
 		this.inputDevice = null;
-	
-		this.isMobile = false;
-	
+		this.isSoundsEnabled = isSoundsEnabled || false;
+
+		this.isMobile = isMobile || false;
+
 		this.gameScene = null;
-	
+
 		this.sounds = {
 			"shoot": null
 		};
-	
+
 		this.soundTrack = null;
 		this.soundTracks = [];
-	
+
 		this.gameTimeSeconds = 0;
-	
+
 		this.game = null;
 		this.gameStorage = null;
-	
+
 		this.fpsCounter = 0;
 		this.lifeCheatCounter = 0;
 		this.nextLevelCheatCounter = 0;
@@ -97,7 +117,7 @@ var Main = /** @class */ (function () {
 		var normalizedResourcesPath = Main.resources.map(function (resource) {
 			return "resources/{0}/{1}".format(_this.resourcesPackage, resource)
 		});
-		this.hexi = $hexi(Main.graphics.width, Main.graphics.height, this.setup.bind(this), normalizedResourcesPath, this.load.bind(this), "webgl");
+		this.hexi = $hexi(Main.graphics.width, Main.graphics.height, this.setup.bind(this), normalizedResourcesPath, this.load.bind(this), "auto");
 		//this.hexi.fps = 45;
 	}
 
@@ -155,30 +175,14 @@ var Main = /** @class */ (function () {
 		this.screen = new MainScreen(_this.hexi, _this.resourcesPackage, this.gameScene, _this.configuration.levelsConfiguration.levels,
 			_this.configuration.uiConfiguration.screens.mainScreen);
 
-		for (var key in Main.sounds) {
-			if (Main.sounds.hasOwnProperty(key)) {
-				this.sounds[key] = this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, Main.sounds[key]));
-				//this.sounds[key].fade(0.3, 1);
-			}
-		}
-
-		this.soundTracks = Object.values(_this.configuration.levelsConfiguration.levels).map(function (level) {
-			var soundObject = _this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, level.soundTrack));
-			soundObject.loop = true;
-			return soundObject;
-		});
-
-		this.soundTrack = this.soundTracks[0];
-		this.soundTrack.play();
-
 		var gameArea = this.hexi.rectangle(
 			this.hexi.canvas.width - _this.configuration.uiConfiguration.gameArea.right
-				- _this.configuration.uiConfiguration.gameArea.left
-				- _this.configuration.uiConfiguration.gameArea.padding,
-			this.hexi.canvas.height - _this.configuration.uiConfiguration.gameArea.top 
-				- _this.configuration.uiConfiguration.gameArea.bottom 
-				- _this.configuration.uiConfiguration.gameArea.padding,
-			null, "#785E3A", _this.configuration.uiConfiguration.gameArea.padding, 
+			- _this.configuration.uiConfiguration.gameArea.left
+			- _this.configuration.uiConfiguration.gameArea.padding,
+			this.hexi.canvas.height - _this.configuration.uiConfiguration.gameArea.top
+			- _this.configuration.uiConfiguration.gameArea.bottom
+			- _this.configuration.uiConfiguration.gameArea.padding,
+			null, "#785E3A", _this.configuration.uiConfiguration.gameArea.padding,
 			_this.configuration.uiConfiguration.gameArea.left, _this.configuration.uiConfiguration.gameArea.top);
 		gameArea.visible = false;
 		this.gameScene.addChild(gameArea);
@@ -222,6 +226,10 @@ var Main = /** @class */ (function () {
 			_this.changeState();
 		}).bind(this);
 
+		if (this.isSoundsEnabled) {
+			this.setupSounds();
+		}
+
 		this.hexi.state = this.playLoop.bind(this);
 		_this.changeState();
 	};
@@ -252,15 +260,22 @@ var Main = /** @class */ (function () {
 		if (wave != null) {
 			var levelValue = wave.level;
 			this.screen.changeEnvironment(levelValue);
-			var nextSoundTrack = _this.soundTracks[levelValue - 1];
-			if (_this.soundTrack !== nextSoundTrack) {
-				_this.soundTrack.pause();
-				_this.soundTrack = nextSoundTrack;
-				_this.soundTrack.playFrom(0);
-			}
+			this.changeSoundTrack(levelValue);
 		}
 	}
 
+	Main.prototype.changeSoundTrack = function(levelValue) {
+		var _this = this;
+		if (!this.isSoundsEnabled) {
+			return;
+		}
+		var nextSoundTrack = _this.soundTracks[levelValue - 1];
+		if (_this.soundTrack !== nextSoundTrack) {
+			_this.soundTrack.pause();
+			_this.soundTrack = nextSoundTrack;
+			_this.soundTrack.playFrom(0);
+		}
+	};
 
 	Main.prototype.changeState = function () {
 		this.screen.update({
@@ -284,6 +299,25 @@ var Main = /** @class */ (function () {
 		this.gameTimeSeconds = saveState.gameTimeSeconds;
 		this.game.restoreState(saveState);
 		this.changeState();
+	};
+
+	Main.prototype.setupSounds = function() {
+		var _this = this;
+		for (var key in Main.sounds) {
+			if (Main.sounds.hasOwnProperty(key)) {
+				this.sounds[key] = this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, Main.sounds[key]));
+				//this.sounds[key].fade(0.3, 1);
+			}
+		}
+
+		this.soundTracks = Object.values(_this.configuration.levelsConfiguration.levels).map(function (level) {
+			var soundObject = _this.hexi.sound("resources/{0}/{1}".format(_this.resourcesPackage, level.soundTrack));
+			soundObject.loop = true;
+			return soundObject;
+		});
+
+		this.soundTrack = this.soundTracks[0];
+		this.soundTrack.play();
 	};
 
 	return Main;

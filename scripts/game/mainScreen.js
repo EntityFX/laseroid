@@ -33,22 +33,23 @@ var MainScreen = /** @class */ (function () {
 	MainScreen.prototype.init = function (initialState) {
 		var _this = this;
 
-		this.interface = this.hexi.sprite("resources/{0}/images/interface.png".format(_this.resourcesPackage));
-		this.gameScene.addChild(this.interface );
-		this.environment = this.hexi.sprite(Object.values(_this.levels).map(function (level) {
-			return "resources/{0}/{1}".format(_this.resourcesPackage, level.background);
+		this.interface = this.hexi.sprite("resources/{0}/images/interface.png".format(_this.resourcesPackage), 0, 0);
+
+		this.environment = this.hexi.sprite(Object.keys(_this.levels).map(function (level) {
+			return "resources/{0}/{1}".format(_this.resourcesPackage, _this.levels[level].background);
 		}), 146, 9);
 
 		Object.keys(this.levels).forEach(function (level, index) {
 			_this.levelBackgroundMap[level] = index;
 		});
 
-		this.environment.show(0);
+
 
 		this.lifeIcon = this.hexi.sprite("resources/{0}/images/life-icon.png".format(_this.resourcesPackage), 149, 434);
-
+		this.gameScene.addChild(this.interface);
 		this.gameScene.addChild(this.environment);
 		this.gameScene.addChild(this.lifeIcon);
+		this.environment.show(0);
 
 		this.buildTexts();
 		this.buildButtons();
