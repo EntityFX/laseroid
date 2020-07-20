@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<script src="scripts/game/utils.js"></script>
 
 	<!-- Pixi renderer, Hexi's modules, and Hexi's core  -->
 	<script src="scripts/libs/mobile-detect.js"></script>
@@ -18,7 +19,7 @@
 	<!-- <script src="scripts/libs/hexi.min.js"></script> -->
 
 	<!-- Main application file -->
-	<script src="scripts/game/utils.js"></script>
+
 	<script src="scripts/game/main.js"></script>
 	<script src="scripts/game/game.js"></script>
 	<script src="scripts/game/movementEngine.js"></script>
@@ -36,10 +37,10 @@
 
 		var md = new MobileDetect(window.navigator.userAgent);
 		var isMobile = md.mobile() != null;
-
+		var isSoundSupported = window.isSoundSupported;
 		Main.graphics.isScaleToWindow = true;
 
-		var game = new Main(hexi, "laser-age", isMobile);
+		var game = new Main(hexi, "laser-age", isMobile, isSoundSupported);
 		game.init();
 	</script>
 
