@@ -24,7 +24,7 @@ function deepCopy(o) {
 
 function groupBy(sourceArray, property) {
     return sourceArray.reduce(function (accumulator, object) {
-        const key = object[property];
+        var key = object[property];
         if (!accumulator[key]) {
             accumulator[key] = [];
         }
